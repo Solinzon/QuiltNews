@@ -1,7 +1,5 @@
 package com.xushuzhan.quiltnews.ui.fragment.bottom;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,7 +12,8 @@ import android.widget.Toast;
 
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.ui.adapter.InfoFixedPageAdapter;
-import com.xushuzhan.quiltnews.ui.fragment.InfoPageFragment;
+import com.xushuzhan.quiltnews.ui.fragment.FirstTabFragment;
+import com.xushuzhan.quiltnews.ui.fragment.OtherInfoPageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +26,11 @@ public class HotNewsFragment extends Fragment {
     //储存fragment的数组
     private List<Fragment> mFragments;
     //tab选项卡中的标题
-    private String[] titles=new String[]{"标题1","标题2","标题2","标题4","标题5","标题6","标题7"};
+    private String[] titles=new String[]{"头条","标题2","标题2","标题4","标题5","标题6","标题7"};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_everyday_news, container, false);
+        View view = inflater.inflate(R.layout.fragment_hot_news_news, container, false);
         mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout1);
         mViewPager = (ViewPager) view.findViewById(R.id.view_pager1);
         return view;
@@ -43,9 +42,10 @@ public class HotNewsFragment extends Fragment {
         infoFixedPageAdapter = new InfoFixedPageAdapter(getChildFragmentManager());
         infoFixedPageAdapter.setTitles(titles);//标题
         mFragments = new ArrayList<>();
-        for (int i = 0; i < titles.length; i++) {
+        mFragments.add(new FirstTabFragment());
+        for (int i = 1; i < titles.length; i++) {
             //传入标题和page的id
-            mFragments.add(InfoPageFragment.newInstance());
+            mFragments.add(OtherInfoPageFragment.newInstance());
         }
         //把要显示的fragment集合传给adapter
         infoFixedPageAdapter.setFragments(mFragments);

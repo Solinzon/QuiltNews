@@ -1,7 +1,5 @@
 package com.xushuzhan.quiltnews.ui.fragment.bottom;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,7 +12,7 @@ import android.widget.Toast;
 
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.ui.adapter.InfoFixedPageAdapter;
-import com.xushuzhan.quiltnews.ui.fragment.InfoPageFragment;
+import com.xushuzhan.quiltnews.ui.fragment.OtherInfoPageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +44,7 @@ public class BeforeBedNewsFragment extends Fragment {
         mFragments = new ArrayList<>();
         for (int i = 0; i < titles.length; i++) {
             //传入标题和page的id
-            mFragments.add(InfoPageFragment.newInstance());
+            mFragments.add(OtherInfoPageFragment.newInstance());
         }
         //把要显示的fragment集合传给adapter
         infoFixedPageAdapter.setFragments(mFragments);

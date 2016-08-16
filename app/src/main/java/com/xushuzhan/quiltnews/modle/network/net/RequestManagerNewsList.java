@@ -1,25 +1,32 @@
 package com.xushuzhan.quiltnews.modle.network.net;
 
+import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
+import com.xushuzhan.quiltnews.modle.network.config.API;
+import com.xushuzhan.quiltnews.modle.network.serverce.ApiServerce;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by xushuzhan on 2016/8/10.
  */
-public class RequestManager {
-    public static final String BASE_URL = "https://api.douban.com/v2/movie/";
+public class RequestManagerNewsList {
 
-    private static final int DEFAULT_TIMEOUT = 5;
+
+    private static final int DEFAULT_TIMEOUT = 10;
 
     private Retrofit retrofit;
-   // private MovieService movieService;
 
+    private ApiServerce apiServerce;
     //构造方法私有
-    private RequestManager() {
+    private RequestManagerNewsList() {
         //手动创建一个OkHttpClient并设置超时时间
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
@@ -28,34 +35,35 @@ public class RequestManager {
                 .client(httpClientBuilder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(BASE_URL)
+                .baseUrl(API.NEWS_LIST_BASE_URL)
                 .build();
 
-    //    movieService = retrofit.create(MovieService.class);
+        apiServerce = retrofit.create(ApiServerce.class);
+
     }
 
-    //在访问HttpMethods时创建单例
+    //在访问RequestManagerNewsList时创建单例
     private static class SingletonHolder{
-        private static final RequestManager INSTANCE = new RequestManager();
+        private static final RequestManagerNewsList INSTANCE = new RequestManagerNewsList();
     }
 
     //获取单例
-    public static RequestManager getInstance(){
+    public static RequestManagerNewsList getInstance(){
         return SingletonHolder.INSTANCE;
     }
 
     /**
-     * 用于获取豆瓣电影Top250的数据
-     * @param subscriber 由调用者传过来的观察者对象
-     * @param start 起始位置
-     * @param count 获取长度
+     * 用于获取新闻列表
+     * @param subscriber 调用时传过来的观察者对象
+     * @param type 新闻的类型，如：头条，科技
      */
-   /*
-    public void getTopMovie(Subscriber<MovieEntity> subscriber, int start, int count){
-        movieService.getTopMovie(start, count)
+
+    public void getNewsList(Subscriber<NewsListBeen> subscriber,String type){
+
+        apiServerce.getNewsList(type)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
-    }*/
+    }
 }

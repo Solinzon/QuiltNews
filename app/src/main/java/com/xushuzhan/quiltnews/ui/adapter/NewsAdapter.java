@@ -7,12 +7,16 @@ import android.view.ViewGroup;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.xushuzhan.quiltnews.R;
+import com.xushuzhan.quiltnews.modle.NewsViewHolder;
+import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
+
+import java.util.List;
 
 
 /**
  * Created by xushuzhan on 2016/7/26.
  */
-public class NewsAdapter extends RecyclerArrayAdapter {
+public class NewsAdapter extends RecyclerArrayAdapter<NewsListBeen.ResultBean.DataBean> {
     public NewsAdapter(Context context) {
         super(context);
     }
@@ -22,8 +26,4 @@ public class NewsAdapter extends RecyclerArrayAdapter {
         return new NewsViewHolder(parent, R.layout.item_news_list);
     }
 
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-    }
 }
