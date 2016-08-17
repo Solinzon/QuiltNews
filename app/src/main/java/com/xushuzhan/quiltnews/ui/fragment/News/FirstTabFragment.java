@@ -1,4 +1,4 @@
-package com.xushuzhan.quiltnews.ui.fragment;
+package com.xushuzhan.quiltnews.ui.fragment.News;
 
 import android.content.Intent;
 import android.graphics.Color;

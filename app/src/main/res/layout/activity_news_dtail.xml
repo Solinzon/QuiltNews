@@ -9,43 +9,48 @@
         layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp" />
-    <ScrollView
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/toolbar_include_news_detail"-->
+        <!--&gt;-->
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+            <!--<TextView-->
+                <!--android:id="@+id/tv_news_detail_title"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="我是标题"-->
+                <!--android:textColor="#414142"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:textSize="20sp"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:background="#fff"-->
+
+                <!--/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/tv_news_detail_time"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/tv_news_detail_title"-->
+                <!--android:textSize="10sp"-->
+                <!--android:background="#fff"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingBottom="10dp"-->
+                <!--android:text="2015年6月1日 12:00"/>-->
+            <!--<WebView-->
+                <!--android:id="@+id/web_view_news_dtail"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_below="@+id/tv_news_detail_time"/>-->
+        <!--</RelativeLayout>-->
+    <!--</ScrollView>-->
+    <WebView
+        android:id="@+id/web_view_news_dtail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar_include_news_detail"
-        >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/tv_news_detail_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="我是标题"
-                android:textColor="#414142"
-                android:layout_alignParentTop="true"
-                android:textSize="20sp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:background="#fff"
-
-                />
-            <TextView
-                android:id="@+id/tv_news_detail_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_news_detail_title"
-                android:textSize="10sp"
-                android:background="#fff"
-                android:paddingLeft="10dp"
-                android:paddingBottom="10dp"
-                android:text="2015年6月1日 12:00"/>
-            <WebView
-                android:id="@+id/web_view_news_dtail"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/tv_news_detail_time"/>
-        </RelativeLayout>
-    </ScrollView>
+        android:layout_below="@+id/tv_news_detail_time"/>
 </RelativeLayout>

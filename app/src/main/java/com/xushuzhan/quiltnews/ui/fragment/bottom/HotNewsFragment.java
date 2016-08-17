@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.ui.adapter.InfoFixedPageAdapter;
-import com.xushuzhan.quiltnews.ui.fragment.FirstTabFragment;
-import com.xushuzhan.quiltnews.ui.fragment.OtherInfoPageFragment;
+import com.xushuzhan.quiltnews.ui.fragment.News.FirstTabFragment;
+import com.xushuzhan.quiltnews.ui.fragment.News.OtherInfoPageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +22,12 @@ public class HotNewsFragment extends Fragment {
     public TabLayout mTabLayout;
     public ViewPager mViewPager;
     private InfoFixedPageAdapter infoFixedPageAdapter;
+    String newsTitles[]  = new String[]{"top","shehui","guonei","guoji","yule","tiyu","junshi","keji","caijing","shishang"};
 
     //储存fragment的数组
     private List<Fragment> mFragments;
     //tab选项卡中的标题
-    private String[] titles=new String[]{"头条","标题2","标题2","标题4","标题5","标题6","标题7"};
+    private String[] titles=new String[]{"头条","社会","国内","国际","娱乐","体育","军事"};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class HotNewsFragment extends Fragment {
         mFragments.add(new FirstTabFragment());
         for (int i = 1; i < titles.length; i++) {
             //传入标题和page的id
-            mFragments.add(OtherInfoPageFragment.newInstance());
+            mFragments.add(OtherInfoPageFragment.newInstance(newsTitles[i]));
         }
         //把要显示的fragment集合传给adapter
         infoFixedPageAdapter.setFragments(mFragments);

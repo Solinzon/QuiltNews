@@ -21,6 +21,7 @@ public class NewsViewHolder extends BaseViewHolder<NewsListBeen.ResultBean.DataB
     TextView DisscussCount;
     ImageView Disscuss;
     ImageView NewsListSmallPic;
+
     public NewsViewHolder(ViewGroup parent, @LayoutRes int res) {
         super(parent, res);
         Title = $(R.id.tv_news_list_item_title);
@@ -33,13 +34,15 @@ public class NewsViewHolder extends BaseViewHolder<NewsListBeen.ResultBean.DataB
     @Override
     public void setData(NewsListBeen.ResultBean.DataBean data) {
         super.setData(data);
+
     Title.setText(data.getTitle());
     Resource.setText(data.getAuthor_name());
     //DisscussCount.setText();
         Glide.with(getContext())
                 .load(data.getThumbnail_pic_s())
-                .placeholder(R.drawable.loading)
+                .placeholder(R.drawable.loading_s)
                 .error(R.drawable.error)
                 .into(NewsListSmallPic);
+
     }
 }

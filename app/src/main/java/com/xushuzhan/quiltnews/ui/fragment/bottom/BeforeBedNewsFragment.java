@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.ui.adapter.InfoFixedPageAdapter;
-import com.xushuzhan.quiltnews.ui.fragment.OtherInfoPageFragment;
+import com.xushuzhan.quiltnews.ui.fragment.News.OtherInfoPageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,7 @@ public class BeforeBedNewsFragment extends Fragment {
         mFragments = new ArrayList<>();
         for (int i = 0; i < titles.length; i++) {
             //传入标题和page的id
-            mFragments.add(OtherInfoPageFragment.newInstance());
+            mFragments.add(OtherInfoPageFragment.newInstance("test"));
         }
         //把要显示的fragment集合传给adapter
         infoFixedPageAdapter.setFragments(mFragments);
