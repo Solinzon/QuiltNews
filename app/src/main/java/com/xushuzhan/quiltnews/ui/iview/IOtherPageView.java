@@ -10,5 +10,5 @@ public interface IOtherPageView {
     void addDataToRecyclerView(NewsListBeen newsListBeen);
 
     //跳转到NewsDetailActivity
-    void intentToNewsDetailActivity(String url);
+    void intentToNewsDetailActivity(String url,String title,String picUrl,String uniquekey);
 }

@@ -45,6 +45,11 @@ public class FirstTabFragmentPresenter {
     }
 
     public void showNewsDetail(int position){
-        iFirstTabView.intentToNewsDetailActivity(ListBeen.getResult().getData().get(position).getUrl());
+        iFirstTabView.intentToNewsDetailActivity(
+                ListBeen.getResult().getData().get(position).getUrl(),
+                ListBeen.getResult().getData().get(position).getTitle(),
+                ListBeen.getResult().getData().get(position).getThumbnail_pic_s(),
+                ListBeen.getResult().getData().get(position).getUniquekey()
+        );
     }
 }

@@ -1,5 +1,6 @@
 package com.xushuzhan.quiltnews.ui.fragment.bottom;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,14 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xushuzhan.quiltnews.R;
+import com.xushuzhan.quiltnews.presenter.PersonalCenterPresenter;
+import com.xushuzhan.quiltnews.ui.activity.LoginActivity;
+import com.xushuzhan.quiltnews.ui.iview.IPersonalCenterView;
 
 /**
  * Created by xushuzhan on 2016/8/15.
  */
-public class PersonalCenterFragment extends Fragment implements View.OnClickListener{
+public class PersonalCenterFragment extends Fragment implements View.OnClickListener,IPersonalCenterView{
     View view;
     ImageView userLogin;
     RelativeLayout nightMode;
@@ -25,12 +30,15 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     RelativeLayout download;
     RelativeLayout idea;
     RelativeLayout update;
-
+    RelativeLayout signOut;
+    TextView loginAccount;
+    PersonalCenterPresenter personalCenterPresenter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_personal_certen,container,false);
         initView();
+        personalCenterPresenter = new PersonalCenterPresenter(this);
         return view;
     }
 
@@ -51,6 +59,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         idea.setOnClickListener(this);
         update = (RelativeLayout) view.findViewById(R.id.rl_pc_check_update);
         update.setOnClickListener(this);
+        loginAccount = (TextView) view.findViewById(R.id.personal_certen_login_now);
+        signOut= (RelativeLayout) view.findViewById(R.id.rl_pc_sign_out);
+        signOut.setOnClickListener(this);
     }
 
     @Override
@@ -66,7 +77,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 Toast.makeText(getContext(), "我的评论", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_user_center_login:
-                Toast.makeText(getContext(), "登录", Toast.LENGTH_SHORT).show();
+                personalCenterPresenter.intentToLoginActivity();
+                personalCenterPresenter.setHeadPicture();
                 break;
             case R.id.rl_pc_my_collect:
                 Toast.makeText(getContext(), "收藏", Toast.LENGTH_SHORT).show();
@@ -80,8 +92,35 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             case R.id.rl_pc_check_update:
                 Toast.makeText(getContext(), "更新", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.rl_pc_sign_out:
+                Toast.makeText(getContext(), "退出登录", Toast.LENGTH_SHORT).show();
+                break;
             default:
                 break;
         }
+    }
+
+    @Override
+    public void intentToLogin() {
+        startActivity(new Intent(getContext(), LoginActivity.class));
+    }
+
+    @Override
+    public void showToast(String content) {
+
+    }
+
+    @Override
+    public void setHeadPicture() {
+
+        //if(getUser!=null)
+        userLogin.setImageResource(R.drawable.touxiang);
+        loginAccount.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        personalCenterPresenter = null;
     }
 }

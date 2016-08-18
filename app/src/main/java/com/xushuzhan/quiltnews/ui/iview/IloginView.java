@@ -20,7 +20,6 @@ public interface IloginView {
 
     //登录成功与失败的处理
     void toMainActivity();
-
     void showToast(String content);
 
     //获得EditText

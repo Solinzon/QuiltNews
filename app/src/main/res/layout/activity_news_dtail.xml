@@ -8,7 +8,7 @@
         android:id="@+id/toolbar_include_news_detail"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="50dp" />
     <!--<ScrollView-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
@@ -52,5 +52,87 @@
         android:id="@+id/web_view_news_dtail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_news_detail_time"/>
+        android:layout_above="@+id/iv_news_detail_divider"
+        android:layout_below="@+id/toolbar_include_news_detail" />
+    <ImageView
+        android:id="@+id/iv_news_detail_divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ccc"
+        android:layout_above="@+id/rl_news_detail_discuss" />
+    <RelativeLayout
+        android:id="@+id/rl_news_detail_discuss"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="#F3F5F4"
+
+        >
+        <RelativeLayout
+            android:id="@+id/rl_write_discuss"
+            android:layout_width="wrap_content"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_height="45dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="说点什么吧..."
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:textColor="#ccc"
+                android:id="@+id/textView3"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/write_discuss1"
+                android:layout_alignBottom="@+id/textView3"
+                android:layout_alignRight="@+id/imageView11"
+                android:layout_alignEnd="@+id/imageView11" />
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="0.1dp"
+                android:background="#ccc"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/imageView11"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/bt_news_detail_collect"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/collect"
+            android:layout_alignTop="@+id/_bt_news_detail_discuss"
+            android:layout_toLeftOf="@+id/_bt_news_detail_discuss"
+            android:layout_toStartOf="@+id/_bt_news_detail_discuss"
+            android:layout_marginRight="21dp"
+            android:layout_marginEnd="21dp" />
+        <Button
+            android:id="@+id/_bt_news_detail_discuss"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/discuss"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_news_detail_discuss_count"
+            android:layout_toStartOf="@+id/tv_news_detail_discuss_count" />
+        <TextView
+            android:id="@+id/tv_news_detail_discuss_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="112"
+            android:layout_marginRight="10dp"
+            android:textColor="#ccc"
+            android:textSize="12sp"
+            android:layout_alignTop="@+id/_bt_news_detail_discuss"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
 </RelativeLayout>

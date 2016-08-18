@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,14 +15,24 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_user_center_login"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:src="@drawable/personl_certen_user"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="29dp"
             android:background="?android:attr/selectableItemBackground"
             />
+        <TextView
+            android:id="@+id/personal_certen_login_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击登录"
+            android:textColor="#ecf0f1"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/iv_user_center_login"
+            android:layout_centerHorizontal="true" />
 
 
     </RelativeLayout>
@@ -125,14 +139,17 @@
         android:id="@+id/rl_pc_my_collect"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
         android:clickable="true"
         android:background="?android:attr/selectableItemBackground"
         >
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_margin="10dp"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+
             android:src="@drawable/collect"
             android:id="@+id/i" />
         <TextView
@@ -143,7 +160,7 @@
             android:id="@+id/textView2"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:layout_alignBottom="@+id/imageView7"
+            android:layout_alignTop="@+id/imageView7"
             android:layout_toRightOf="@+id/i"
             android:layout_toEndOf="@+id/i" />
 
@@ -172,14 +189,16 @@
         android:id="@+id/rl_pc_my_down"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+
         android:clickable="true"
         android:background="?android:attr/selectableItemBackground"
         >
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/download"
             android:id="@+id/imageView4" />
         <TextView
@@ -189,19 +208,19 @@
             android:textSize="17sp"
             android:id="@+id/textView4"
             android:layout_marginLeft="10dp"
-            android:layout_alignBottom="@+id/imageView8"
+            android:layout_marginStart="10dp"
+            android:layout_alignTop="@+id/imageView8"
             android:layout_toRightOf="@+id/imageView4"
-            android:layout_toEndOf="@+id/imageView4"
-            android:layout_marginStart="10dp" />
+            android:layout_toEndOf="@+id/imageView4" />
 
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:src="@drawable/go"
+            android:id="@+id/imageView8"
             android:layout_centerVertical="true"
             android:layout_alignRight="@+id/imageView5"
-            android:layout_alignEnd="@+id/imageView5"
-            android:id="@+id/imageView8" />
+            android:layout_alignEnd="@+id/imageView5" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
@@ -217,14 +236,15 @@
         android:id="@+id/rl_pc_idea"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
         android:clickable="true"
         android:background="?android:attr/selectableItemBackground"
         >
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/idea"
             android:id="@+id/imageView6" />
         <TextView
@@ -235,7 +255,7 @@
             android:id="@+id/textView5"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:layout_alignBottom="@+id/imageView10"
+            android:layout_alignTop="@+id/imageView10"
             android:layout_toRightOf="@+id/imageView6"
             android:layout_toEndOf="@+id/imageView6" />
 
@@ -243,10 +263,10 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:src="@drawable/go"
+            android:id="@+id/imageView10"
             android:layout_centerVertical="true"
             android:layout_alignRight="@+id/im"
-            android:layout_alignEnd="@+id/im"
-            android:id="@+id/imageView10" />
+            android:layout_alignEnd="@+id/im" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
@@ -262,14 +282,15 @@
         android:id="@+id/rl_pc_check_update"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
         android:clickable="true"
         android:background="?android:attr/selectableItemBackground"
         >
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/update"
             android:id="@+id/imageView2" />
         <TextView
@@ -280,7 +301,7 @@
             android:id="@+id/textView"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:layout_alignBottom="@+id/imageView9"
+            android:layout_alignTop="@+id/imageView9"
             android:layout_toRightOf="@+id/imageView2"
             android:layout_toEndOf="@+id/imageView2" />
 
@@ -288,10 +309,10 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:src="@drawable/go"
+            android:id="@+id/imageView9"
             android:layout_centerVertical="true"
             android:layout_alignRight="@+id/imageView3"
-            android:layout_alignEnd="@+id/imageView3"
-            android:id="@+id/imageView9" />
+            android:layout_alignEnd="@+id/imageView3" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
@@ -303,4 +324,52 @@
             android:layout_alignParentLeft="true"
             android:id="@+id/imageView3" />
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_pc_sign_out"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+        >
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/sign_out"
+            android:id="@+id/imageView22" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退出登录"
+            android:textSize="17sp"
+            android:id="@+id/textView11"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_alignTop="@+id/imageView99"
+            android:layout_toRightOf="@+id/imageView22"
+            android:layout_toEndOf="@+id/imageView22" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/go"
+            android:id="@+id/imageView99"
+            android:layout_centerVertical="true"
+            android:layout_alignRight="@+id/imageView39"
+            android:layout_alignEnd="@+id/imageView39" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="#ccc"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/imageView39" />
+    </RelativeLayout>
 </LinearLayout>
+
+</ScrollView>

@@ -19,8 +19,21 @@ public class NewsDetailPresenter {
         this.iNewsDetailView = iNewsDetailView;
     }
 
-    public void showNewsDetaile(String url){
+    public void showNewsDetail(String url){
         iNewsDetailView.showNewsDetail(url);
     }
+
+    public void showDiscussWindow(){
+        iNewsDetailView.showPopupWindow();
+    }
+
+    public void sendDiscuss(){
+//        String url = iNewsDetailView.getNewsUrl();
+//        String picUrl = iNewsDetailView.getNewsPicUrl();
+//        String title = iNewsDetailView.getNewsTitle();
+//        String uniqueKey = iNewsDetailView.getNewsUniqueKey();
+        iNewsDetailView.sendDiscussContent();
+    }
+
 
 }

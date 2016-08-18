@@ -43,7 +43,11 @@ public class OtherPageFragemntPresenter {
     }
 
     public void showNewsDetail(int position){
-        iOtherPageView.intentToNewsDetailActivity(ListBeen.getResult().getData().get(position).getUrl()
+        iOtherPageView.intentToNewsDetailActivity(
+                ListBeen.getResult().getData().get(position).getUrl(),
+                ListBeen.getResult().getData().get(position).getTitle(),
+                ListBeen.getResult().getData().get(position).getThumbnail_pic_s(),
+                ListBeen.getResult().getData().get(position).getUniquekey()
         );
     }
 }

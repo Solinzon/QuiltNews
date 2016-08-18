@@ -36,6 +36,7 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.jude:easyrecyclerview:4.0.2'
     compile 'com.jude:rollviewpager:1.3.2'
+    compile 'com.github.razerdp:BasePopup:v1.1.7'
     compile files('libs/avoscloud-sns-v3.14.2.jar')
     compile files('libs/avoscloud-push-v3.14.2.jar')
     compile files('libs/avoscloud-statistics-v3.14.2.jar')

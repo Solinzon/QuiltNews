@@ -107,11 +107,15 @@ public class FirstTabFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     @Override
-    public void intentToNewsDetailActivity(String url) {
+    public void intentToNewsDetailActivity(String url, String title, String picUrl, String uniquekey) {
         Intent intent = new Intent(getContext(),NewsDtailActivity.class);
         intent.putExtra("url",url);
+        intent.putExtra("title",title);
+        intent.putExtra("pic_url",picUrl);
+        intent.putExtra("uniquekey",uniquekey);
         startActivity(intent);
     }
+
 
     @Override
     public void onDestroy() {
