@@ -94,10 +94,9 @@ public class OtherInfoPageFragment extends Fragment implements SwipeRefreshLayou
     }
 
     @Override
-    public void intentToNewsDetailActivity(String url,String picUrl) {
+    public void intentToNewsDetailActivity(String url) {
         Intent intent = new Intent(getContext(), NewsDtailActivity.class);
         intent.putExtra("url",url);
-        intent.putExtra("pic_url",picUrl);
         startActivity(intent);
     }
 

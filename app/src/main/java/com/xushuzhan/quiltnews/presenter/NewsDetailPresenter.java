@@ -20,32 +20,7 @@ public class NewsDetailPresenter {
     }
 
     public void showNewsDetaile(String url){
-//        iNewsDetailView.setTime(newDetailBeen.getShowapi_res_body().getShijian());
-//        iNewsDetailView.setTitle(newDetailBeen.getShowapi_res_body().getTitle());
         iNewsDetailView.showNewsDetail(url);
     }
-//        Subscriber<NewDetailBeen> sb = new Subscriber<NewDetailBeen>() {
-//            @Override
-//            public void onCompleted() {
-//
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//
-//            }
-//
-//            @Override
-//            public void onNext(NewDetailBeen newDetailBeen) {
-//                Log.d(TAG, "onNext: "+newDetailBeen.getShowapi_res_code());
-//
-//                iNewsDetailView.setTime(newDetailBeen.getShowapi_res_body().getShijian());
-//                iNewsDetailView.setTitle(newDetailBeen.getShowapi_res_body().getTitle());
-//                iNewsDetailView.showNewsDetail(newDetailBeen.getShowapi_res_body().getNeirong());
-//
-//            }
-//        };
-//
-//        RequestManagerNewsDtail.getInstance().getNewsDetail(sb,url.replace("mobile","a"));
-//    }
+
 }
