@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.ui.fragment.bottom.BeforeBedNewsFragment;
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup radioGroup;
     FragmentManager fragmentManager;
     ImageButton ReadMode;
+    TextView title;
+    ImageButton back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,5 +75,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,TestActivity.class));
             }
         });
+        ReadMode.setVisibility(View.INVISIBLE);
+
+        back= (ImageButton) findViewById(R.id.ib_toolbar_back);
+        back.setVisibility(View.INVISIBLE);
+
+        title = (TextView) findViewById(R.id.tv_title_toolbar);
+        title.setText("被窝资讯");
     }
 }

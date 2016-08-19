@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
 
 public class SharedPreferenceUtils {
 
-    public static String PREFERENCE_NAME = "account_info";
+    public static String PREFERENCE_NAME = "account";
 
     private SharedPreferenceUtils() {
         throw new AssertionError();

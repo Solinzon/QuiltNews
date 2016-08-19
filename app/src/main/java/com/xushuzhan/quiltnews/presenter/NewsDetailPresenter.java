@@ -1,13 +1,9 @@
 package com.xushuzhan.quiltnews.presenter;
 
-import android.util.Log;
 
-import com.xushuzhan.quiltnews.modle.NewsDetailModle;
-import com.xushuzhan.quiltnews.modle.been.NewDetailBeen;
-import com.xushuzhan.quiltnews.modle.network.net.RequestManagerNewsDtail;
 import com.xushuzhan.quiltnews.ui.iview.INewsDetailView;
 
-import rx.Subscriber;
+
 
 /**
  * Created by xushuzhan on 2016/8/17.
@@ -33,6 +29,11 @@ public class NewsDetailPresenter {
 //        String title = iNewsDetailView.getNewsTitle();
 //        String uniqueKey = iNewsDetailView.getNewsUniqueKey();
         iNewsDetailView.sendDiscussContent();
+    }
+
+    public void intentToAllDiscuss(){
+       iNewsDetailView.intentToAllDiscuss();
+
     }
 
 

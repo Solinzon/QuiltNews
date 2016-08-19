@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.xushuzhan.quiltnews.R;
+import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
 
 
 public class SplashActivity extends Activity {
@@ -22,8 +23,8 @@ public class SplashActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         setContentView(R.layout.activity_splash);
+        UserInfo.tryLogin();
         handler.sendEmptyMessageDelayed(START_ACTIVITY, 2000);
     }
 

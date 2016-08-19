@@ -29,6 +29,7 @@ public class OtherInfoPageFragment extends Fragment implements SwipeRefreshLayou
     public static final String TAG = "OtherInfoPageFragment";
     private static final String PAGER_POSITION = "position";
     private View mView;
+    String title = null;
     private EasyRecyclerView recyclerView;
     private NewsAdapter adapter;
     OtherPageFragemntPresenter  otherPageFragemntPresenter;
@@ -47,7 +48,7 @@ public class OtherInfoPageFragment extends Fragment implements SwipeRefreshLayou
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        String title = null;
+//        String title = null;
         //取出bundle中的值
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -82,7 +83,8 @@ public class OtherInfoPageFragment extends Fragment implements SwipeRefreshLayou
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getContext(), "刷新中", Toast.LENGTH_SHORT).show();
+                otherPageFragemntPresenter.showNewsList(title);
+                Toast.makeText(getContext(), "已经刷新了", Toast.LENGTH_SHORT).show();
                 recyclerView.setRefreshing(false);
             }
         }, 1000);
@@ -101,6 +103,11 @@ public class OtherInfoPageFragment extends Fragment implements SwipeRefreshLayou
         intent.putExtra("pic_url",picUrl);
         intent.putExtra("uniquekey",uniquekey);
         startActivity(intent);
+    }
+
+    @Override
+    public void showToast(String content) {
+        Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
     }
 
 

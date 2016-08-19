@@ -12,4 +12,12 @@ public interface IPersonalCenterView {
 
     //设置头像
     void setHeadPicture();
+
+    //隐藏头像
+    void hintHeadPicture();
+
+    //跳转到我的评论
+    void intentToMyDiscuss();
+
+
 }

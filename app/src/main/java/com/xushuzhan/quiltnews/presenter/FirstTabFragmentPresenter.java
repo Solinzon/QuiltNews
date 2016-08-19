@@ -31,7 +31,7 @@ public class FirstTabFragmentPresenter {
 
                 @Override
                 public void onError(Throwable e) {
-                    Log.d(TAG, "onError: "+e.getMessage());
+                    iFirstTabView.showToast("网络不太流畅哟");
                 }
 
                 @Override
@@ -39,6 +39,7 @@ public class FirstTabFragmentPresenter {
                     //请求完成;
                     iFirstTabView.addDataToRecyclerView(newsListBeen);
                     ListBeen= newsListBeen;
+
                 }
             };
             RequestManagerNewsList.getInstance().getNewsList(subscriber,"top");

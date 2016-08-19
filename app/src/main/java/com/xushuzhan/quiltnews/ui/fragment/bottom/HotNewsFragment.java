@@ -57,6 +57,5 @@ public class HotNewsFragment extends Fragment {
         mViewPager.setAdapter(infoFixedPageAdapter);
         //TabLayout绑定ViewPager
         mTabLayout.setupWithViewPager(mViewPager);
-        Toast.makeText(getActivity(), "每日必读", Toast.LENGTH_SHORT).show();
     }
 }

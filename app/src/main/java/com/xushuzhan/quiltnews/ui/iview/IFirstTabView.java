@@ -12,4 +12,6 @@ public interface IFirstTabView {
 
     //跳转到NewsDetailActivity
     void intentToNewsDetailActivity(String url,String title,String picUrl,String uniquekey);
+
+    void showToast(String content);
 }

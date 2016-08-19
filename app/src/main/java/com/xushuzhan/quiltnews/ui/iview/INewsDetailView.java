@@ -13,6 +13,12 @@ public interface INewsDetailView {
     //获取评论框的内容
     void sendDiscussContent();
 
+    //跳转到评论详情的Activity
+
+    void intentToAllDiscuss();
+
+
+
 //    //获取新闻标题
 //    String getNewsTitle();
 //

@@ -1,5 +1,6 @@
 package com.xushuzhan.quiltnews.ui.activity;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,16 +11,19 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
+import com.xushuzhan.quiltnews.APP;
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.modle.VideoListModle;
 import com.xushuzhan.quiltnews.modle.been.NewDetailBeen;
 import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
 import com.xushuzhan.quiltnews.modle.been.VideoBean;
 import com.xushuzhan.quiltnews.modle.been.VideoBeanTest;
+import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerNewsDtail;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerNewsList;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerVideo;
 import com.xushuzhan.quiltnews.utils.DialogPopup;
+import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
 
 import java.util.List;
 
@@ -33,6 +37,9 @@ public class TestActivity extends AppCompatActivity {
     Button creatObject;
     Button queryUser;
     Button b;
+    
+    Button  bt7;
+    Button BT8;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +88,36 @@ public class TestActivity extends AppCompatActivity {
                 new DialogPopup(TestActivity.this).showPopupWindow();
             }
         });
+        
+        bt7 = (Button) findViewById(R.id.button7);
+        bt7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    saveUser();
+            }
+        });
+        
+        BT8 = (Button) findViewById(R.id.button8);
+        BT8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getUser();
+            }
+        });
+    }
+
+    private void getUser() {
+//        Log.d(TAG, "getUser: NAME>>"+SharedPreferenceUtils.getString(TestActivity.this,"user_name"));
+//        Log.d(TAG, "getUser: PASSWORD>>"+SharedPreferenceUtils.getString(TestActivity.this,"password"));
+      //  Log.d(TAG, "getUser: NAME>>"+SharedPreferenceUtils.getString(APP.getAppContext(),"user_name"));
+        Log.d(TAG, "getUser: "+ UserInfo.isLogin());
+        Log.d(TAG, "getUser:>> "+UserInfo.userName);
+    }
+
+    private void saveUser() {
+//        SharedPreferenceUtils.putString(TestActivity.this,"user_name","Xushuzhan");
+        Log.d(TAG, "saveUser: "+UserInfo.userName);
+//        SharedPreferenceUtils.putString(APP.getAppContext(),"user_name","test");
     }
 
     public void getMovie(){
@@ -214,11 +251,13 @@ public class TestActivity extends AppCompatActivity {
                 for(int i = 0;i<list.size();i++){
                     //Log.d(TAG, "done: >>>>>>>>>>>>>>>>>>>"+list.get(i));
                     Log.d(TAG, "done: ======user+name"+list.get(i).get("user_name"));
-                    Log.d(TAG, "done: ====================news_title:"+list.get(i).get("news_title"));
-                    Log.d(TAG, "done: >>>>>>>>>>>>>>>>>>>>url"+list.get(i).get("url"));
-                    Log.d(TAG, "done: --------------------pic_url"+list.get(i).get("pic_url"));
-                    Log.d(TAG, "done: ====================news_uniquekey"+list.get(i).get("news_uniquekey"));
-                    Log.d(TAG, "done: ++++++++++++++++++++discuss_content"+list.get(i).get("discuss_content"));
+//                    Log.d(TAG, "done: ====================news_title:"+list.get(i).get("news_title"));
+//                    Log.d(TAG, "done: >>>>>>>>>>>>>>>>>>>>url"+list.get(i).get("url"));
+//                    Log.d(TAG, "done: --------------------pic_url"+list.get(i).get("pic_url"));
+//                    Log.d(TAG, "done: ====================news_uniquekey"+list.get(i).get("news_uniquekey"));
+                    Log.d(TAG, "done: ++++++++++++++++++++discuss_content"+ list.get(i).get("discuss_content").toString());
+
+                    Log.d(TAG, "done: ********************discuss——time："+ list.get(i).get("createdAt").toString());
                     if(e!=null)
                         Log.d(TAG, "done: error"+e.getMessage());
                 }

@@ -29,6 +29,8 @@ public class OtherPageFragemntPresenter {
 
             @Override
             public void onError(Throwable e) {
+
+                iOtherPageView.showToast("网络好像不太流畅");
                 Log.d(TAG, "onError: "+e.getMessage());
             }
 

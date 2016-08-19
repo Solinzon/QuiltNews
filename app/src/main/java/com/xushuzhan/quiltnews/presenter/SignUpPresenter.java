@@ -5,7 +5,10 @@ import android.util.Log;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SignUpCallback;
+import com.xushuzhan.quiltnews.APP;
+import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
 import com.xushuzhan.quiltnews.ui.iview.ISignUpView;
+import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
 
 /**
  * Created by xushuzhan on 2016/8/12.
@@ -17,8 +20,8 @@ public class SignUpPresenter {
     }
 
     public void signUp(){
-        String account = iSignUpView.getAccount();
-        String password = iSignUpView.getPassword();
+        final String account = iSignUpView.getAccount();
+        final String password = iSignUpView.getPassword();
         if (account == null ||account.length()==0) {
             iSignUpView.showError(iSignUpView.getEditTextAccount(),"用户名不能为空！");
         } else if (password == null || password.length() < 7) {
@@ -32,6 +35,9 @@ public class SignUpPresenter {
                 public void done(AVException e) {
                     if (e == null) {
                         iSignUpView.showToast("注册成功");
+                        SharedPreferenceUtils.putString(APP.getAppContext(), UserInfo.ACCOUNT,account);
+                        SharedPreferenceUtils.putString(APP.getAppContext(),UserInfo.PASSWORD,password);
+                        UserInfo.userName = account;
                         iSignUpView.moveToMainActivity();
 
                     } else {

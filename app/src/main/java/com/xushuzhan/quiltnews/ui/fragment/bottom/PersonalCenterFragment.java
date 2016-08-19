@@ -13,14 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xushuzhan.quiltnews.R;
+import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
 import com.xushuzhan.quiltnews.presenter.PersonalCenterPresenter;
 import com.xushuzhan.quiltnews.ui.activity.LoginActivity;
+import com.xushuzhan.quiltnews.ui.activity.MyDiscussActivity;
 import com.xushuzhan.quiltnews.ui.iview.IPersonalCenterView;
 
 /**
  * Created by xushuzhan on 2016/8/15.
  */
-public class PersonalCenterFragment extends Fragment implements View.OnClickListener,IPersonalCenterView{
+public class PersonalCenterFragment extends Fragment implements View.OnClickListener, IPersonalCenterView {
     View view;
     ImageView userLogin;
     RelativeLayout nightMode;
@@ -33,12 +35,14 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     RelativeLayout signOut;
     TextView loginAccount;
     PersonalCenterPresenter personalCenterPresenter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_personal_certen,container,false);
+        view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_personal_certen, container, false);
         initView();
         personalCenterPresenter = new PersonalCenterPresenter(this);
+        personalCenterPresenter.setHeadPicture();
         return view;
     }
 
@@ -60,13 +64,13 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         update = (RelativeLayout) view.findViewById(R.id.rl_pc_check_update);
         update.setOnClickListener(this);
         loginAccount = (TextView) view.findViewById(R.id.personal_certen_login_now);
-        signOut= (RelativeLayout) view.findViewById(R.id.rl_pc_sign_out);
+        signOut = (RelativeLayout) view.findViewById(R.id.rl_pc_sign_out);
         signOut.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.rl_personal_center_night_mode:
                 Toast.makeText(getContext(), "夜间模式", Toast.LENGTH_SHORT).show();
                 break;
@@ -74,11 +78,11 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 Toast.makeText(getContext(), "文字模式", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_personal_center_my_discuss:
-                Toast.makeText(getContext(), "我的评论", Toast.LENGTH_SHORT).show();
+                personalCenterPresenter.intentToMyDiscuss();
                 break;
             case R.id.iv_user_center_login:
+            case R.id.personal_certen_login_now:
                 personalCenterPresenter.intentToLoginActivity();
-                personalCenterPresenter.setHeadPicture();
                 break;
             case R.id.rl_pc_my_collect:
                 Toast.makeText(getContext(), "收藏", Toast.LENGTH_SHORT).show();
@@ -93,7 +97,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 Toast.makeText(getContext(), "更新", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_pc_sign_out:
-                Toast.makeText(getContext(), "退出登录", Toast.LENGTH_SHORT).show();
+                personalCenterPresenter.hintHeadPicture();
+                personalCenterPresenter.signOut();
                 break;
             default:
                 break;
@@ -112,10 +117,27 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
     @Override
     public void setHeadPicture() {
+        if (UserInfo.userName != null) {
+            userLogin.setImageResource(R.drawable.touxiang);
+            userLogin.setClickable(false);
+            loginAccount.setClickable(false);
+            loginAccount.setText(UserInfo.userName);
+        }
 
-        //if(getUser!=null)
-        userLogin.setImageResource(R.drawable.touxiang);
-        loginAccount.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void hintHeadPicture() {
+        userLogin.setImageResource(R.drawable.personl_certen_user);
+        userLogin.setClickable(true);
+        loginAccount.setClickable(true);
+        loginAccount.setText("请先登录");
+
+    }
+
+    @Override
+    public void intentToMyDiscuss() {
+        startActivity(new Intent(getContext(), MyDiscussActivity.class));
     }
 
     @Override

@@ -95,7 +95,8 @@ public class FirstTabFragment extends Fragment implements SwipeRefreshLayout.OnR
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getContext(), "刷新中", Toast.LENGTH_SHORT).show();
+                firstTabFragmentPresenter.showNewsList();
+                Toast.makeText(getContext(), "已经刷新了", Toast.LENGTH_SHORT).show();
                 recyclerView.setRefreshing(false);
             }
         }, 1000);
@@ -114,6 +115,11 @@ public class FirstTabFragment extends Fragment implements SwipeRefreshLayout.OnR
         intent.putExtra("pic_url",picUrl);
         intent.putExtra("uniquekey",uniquekey);
         startActivity(intent);
+    }
+
+    @Override
+    public void showToast(String content) {
+        Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
     }
 
 
