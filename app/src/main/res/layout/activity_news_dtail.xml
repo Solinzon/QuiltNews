@@ -106,14 +106,14 @@
 
         <Button
             android:id="@+id/bt_news_detail_collect"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@drawable/collect"
-            android:layout_alignTop="@+id/bt_news_detail_discuss"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/collect_off"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_alignBottom="@+id/bt_news_detail_discuss"
             android:layout_toLeftOf="@+id/bt_news_detail_discuss"
-            android:layout_toStartOf="@+id/bt_news_detail_discuss"
-            android:layout_marginRight="21dp"
-            android:layout_marginEnd="21dp" />
+            android:layout_toStartOf="@+id/bt_news_detail_discuss" />
         <Button
             android:id="@+id/bt_news_detail_discuss"
             android:layout_width="20dp"
@@ -127,7 +127,8 @@
             android:id="@+id/tv_news_detail_discuss_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="112"
+            android:text="0"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:textColor="#ccc"
             android:textSize="12sp"

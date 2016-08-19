@@ -68,7 +68,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="保存用户名密码"
+        android:text="获取睡前资讯"
         android:id="@+id/button7"
         android:layout_below="@+id/button6"
         android:layout_centerHorizontal="true" />

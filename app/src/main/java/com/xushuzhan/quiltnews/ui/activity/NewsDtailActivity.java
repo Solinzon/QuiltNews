@@ -37,7 +37,6 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
     ImageButton back;
     TextView titleToolbar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +98,9 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
 
         titleToolbar = (TextView) findViewById(R.id.tv_title_toolbar);
         titleToolbar.setVisibility(View.INVISIBLE);
+
+
+        newsDetailPresenter.showDiscussCount();
     }
 
     @Override
@@ -149,25 +151,16 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
         startActivity(intent);
     }
 
-//    @Override
-//    public String getNewsTitle() {
-//        return title;
-//    }
-//
-//    @Override
-//    public String getNewsPicUrl() {
-//        return picUrl;
-//    }
-//
-//    @Override
-//    public String getNewsUniqueKey() {
-//        return uniqueKey;
-//    }
-//
-//    @Override
-//    public String getNewsUrl() {
-//        return url;
-//    }
+    @Override
+    public void setDiscussCount(String count) {
+        allNewsCount.setText(count);
+
+    }
+
+    @Override
+    public String getNewsUniqueKey() {
+        return uniqueKey;
+    }
 
 
     @Override

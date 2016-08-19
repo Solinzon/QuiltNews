@@ -17,7 +17,8 @@ public interface INewsDetailView {
 
     void intentToAllDiscuss();
 
-
+    //设置评论条数
+    void setDiscussCount(String count);
 
 //    //获取新闻标题
 //    String getNewsTitle();
@@ -25,8 +26,8 @@ public interface INewsDetailView {
 //    //获取新闻图片的链接
 //    String getNewsPicUrl();
 //
-//    //获取新闻唯一码
-//    String getNewsUniqueKey();
+    //获取新闻唯一码
+    String getNewsUniqueKey();
 //
 //    String getNewsUrl();
 

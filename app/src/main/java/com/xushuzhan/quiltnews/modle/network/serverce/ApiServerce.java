@@ -1,6 +1,6 @@
 package com.xushuzhan.quiltnews.modle.network.serverce;
 
-import com.avos.avoscloud.S3Uploader;
+import com.xushuzhan.quiltnews.modle.been.BedNewsListBeen;
 import com.xushuzhan.quiltnews.modle.been.NewDetailBeen;
 import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
 import com.xushuzhan.quiltnews.modle.been.VideoBean;
@@ -13,8 +13,6 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
-import retrofit2.http.Url;
 import rx.Observable;
 
 /**
@@ -41,6 +39,11 @@ public interface ApiServerce {
     @POST("644-1")
     Observable<NewDetailBeen> getNewsDetail(@Field("showapi_appid") String appId,@Field("showapi_sign") String apiSign,@Field("url") String url);
 
+
+    @FormUrlEncoded
+    @POST("1071-1")
+    Observable<NewDetailBeen> getGoodNightNewsList(@Field("showapi_appid") String appId,@Field("showapi_sign") String sign);
+
     @FormUrlEncoded
     @POST("v2/videos/by_category.json")
     Observable<VideoListBean> getVideoList(@Field("client_id") String clientId,@Field("category") String category,
@@ -56,5 +59,7 @@ public interface ApiServerce {
     @POST("dmxy/truevideourl/truevideourl")
     Observable<VideoBeanTest> getVideaoURLT(@Field("key")String key, @Field("playurl") String url);
 
+    @GET("songshuxiansheng/news/news")
+    Observable<BedNewsListBeen> getBeforeBedNewsList(@Header("apikey") String apiKey);
 
 }

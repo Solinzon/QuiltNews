@@ -17,19 +17,20 @@
             android:id="@+id/iv_icon_splash_activity"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="#999999"
+            android:background="@drawable/icon"
             android:layout_marginLeft="35dp"
             />
         <TextView
             android:id="@+id/iv_name_splash_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="晚安资讯"
+            android:text="被窝资讯"
             android:layout_marginLeft="10dp"
             android:textColor="#666666"
             android:textSize="30sp"
             android:layout_alignTop="@+id/iv_icon_splash_activity"
-            android:layout_toEndOf="@+id/iv_icon_splash_activity" />
+            android:layout_toEndOf="@+id/iv_icon_splash_activity"
+            android:layout_toRightOf="@+id/iv_icon_splash_activity" />
         <TextView
             android:id="@+id/iv_name_eglish_splash_activity"
             android:layout_width="wrap_content"
@@ -39,7 +40,8 @@
             android:textSize="11sp"
             android:layout_marginTop="5sp"
             android:layout_alignBottom="@+id/iv_icon_splash_activity"
-            android:layout_alignStart="@+id/iv_name_splash_activity" />
+            android:layout_alignStart="@+id/iv_name_splash_activity"
+            android:layout_alignLeft="@+id/iv_name_splash_activity" />
 
     </RelativeLayout>
 

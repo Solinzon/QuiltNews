@@ -1,6 +1,5 @@
 package com.xushuzhan.quiltnews.ui.activity;
 
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,19 +10,16 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
-import com.xushuzhan.quiltnews.APP;
 import com.xushuzhan.quiltnews.R;
-import com.xushuzhan.quiltnews.modle.VideoListModle;
+import com.xushuzhan.quiltnews.modle.been.BedNewsListBeen;
 import com.xushuzhan.quiltnews.modle.been.NewDetailBeen;
 import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
 import com.xushuzhan.quiltnews.modle.been.VideoBean;
-import com.xushuzhan.quiltnews.modle.been.VideoBeanTest;
-import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
+import com.xushuzhan.quiltnews.modle.network.net.RequestManagerBedNewsList;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerNewsDtail;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerNewsList;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerVideo;
 import com.xushuzhan.quiltnews.utils.DialogPopup;
-import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
 
 import java.util.List;
 
@@ -93,7 +89,7 @@ public class TestActivity extends AppCompatActivity {
         bt7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    saveUser();
+                    getBedNews();
             }
         });
         
@@ -106,19 +102,36 @@ public class TestActivity extends AppCompatActivity {
         });
     }
 
-    private void getUser() {
-//        Log.d(TAG, "getUser: NAME>>"+SharedPreferenceUtils.getString(TestActivity.this,"user_name"));
-//        Log.d(TAG, "getUser: PASSWORD>>"+SharedPreferenceUtils.getString(TestActivity.this,"password"));
-      //  Log.d(TAG, "getUser: NAME>>"+SharedPreferenceUtils.getString(APP.getAppContext(),"user_name"));
-        Log.d(TAG, "getUser: "+ UserInfo.isLogin());
-        Log.d(TAG, "getUser:>> "+UserInfo.userName);
+    private void getBedNews() {
+        Subscriber<BedNewsListBeen> subscriber = new Subscriber<BedNewsListBeen>() {
+
+            @Override
+            public void onCompleted() {
+                //请求完成，换句话说，所有的newslistBean都仍到list里面去了
+                //然后就可以执行把arrayList给recyclerView的adapter之类的操作了
+                Log.d(TAG, "onCompleted: 请求完成了");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "onError: "+e.getMessage());
+            }
+
+            @Override
+            public void onNext(BedNewsListBeen newsListBeen) {
+                Log.d(TAG, "onNext: "+newsListBeen.getRetData().get(0).getTitle());
+                Log.d(TAG, "onNext: "+newsListBeen.getRetData().get(0).getImage_url());
+                Log.d(TAG, "onNext: "+newsListBeen.getRetData().get(0).getAbstractX());
+            }
+        };
+
+        RequestManagerBedNewsList.getInstance().getNewsList(subscriber);
     }
 
-    private void saveUser() {
-//        SharedPreferenceUtils.putString(TestActivity.this,"user_name","Xushuzhan");
-        Log.d(TAG, "saveUser: "+UserInfo.userName);
-//        SharedPreferenceUtils.putString(APP.getAppContext(),"user_name","test");
+    private void getUser() {
     }
+
+
 
     public void getMovie(){
         Subscriber<NewsListBeen> subscriber = new Subscriber<NewsListBeen>() {

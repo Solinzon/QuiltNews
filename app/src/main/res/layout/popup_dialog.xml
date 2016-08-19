@@ -15,7 +15,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textColor="#e67e22"
+            android:textColor="@color/colorAccent"
             android:text="请输入评论的内容"
             android:gravity="left|center_vertical"
             android:textSize="18sp"
@@ -25,24 +25,11 @@
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#e67e22"
+            android:background="@color/colorAccent"
             android:layout_below="@id/title"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"/>
-        <!--<TextView-->
-            <!--android:id="@+id/content"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/line"-->
-            <!--android:paddingTop="20dp"-->
-            <!--android:paddingLeft="15dp"-->
-            <!--android:paddingRight="15dp"-->
-            <!--android:paddingBottom="15dp"-->
-            <!--android:textSize="14sp"-->
-            <!--android:textColor="#1a1a1a"-->
-            <!--android:lineSpacingMultiplier="1.2"-->
-            <!--android:text="Warning:nuclear silo detected.\nWarning:nuclear silo detected.\nWarning:nuclear silo detected."-->
-            <!--/>-->
+
         <EditText
             android:id="@+id/content"
             android:layout_marginLeft="10dp"
@@ -52,39 +39,20 @@
             android:scrollbars="vertical"
             android:inputType="textMultiLine"
             android:layout_below="@+id/line" />
-        <!--<View-->
-            <!--android:id="@+id/line2"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="0.5dp"-->
-            <!--android:layout_below="@id/content"-->
-            <!--android:layout_marginLeft="15dp"-->
-            <!--android:layout_marginRight="15dp"-->
-            <!--android:background="#ccc"-->
-            <!--android:layout_marginTop="15dp"/>-->
+
         <TextView
             android:id="@+id/send_discuss"
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:gravity="center"
             android:padding="3dp"
-            android:textColor="#e67e22"
+            android:textColor="@color/colorAccent"
             android:textSize="14sp"
             android:layout_below="@id/content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
             android:text="发送"/>
-        <!--<TextView-->
-            <!--android:id="@+id/ok"-->
-            <!--android:layout_width="60dp"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:gravity="center"-->
-            <!--android:padding="3dp"-->
-            <!--android:textColor="#3dd1a5"-->
-            <!--android:textSize="14sp"-->
-            <!--android:layout_below="@id/content"-->
-            <!--android:layout_toLeftOf="@id/cancel"-->
-            <!--android:layout_marginRight="15dp"-->
-            <!--android:text="OK"/>-->
+
 
     </RelativeLayout>
 </RelativeLayout>
