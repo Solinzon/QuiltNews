@@ -45,6 +45,12 @@ public class ViedoListViewHolder extends BaseViewHolder<FinalVideoListBean> {
         jcVideoPlayerStandard.setUp(data.getUrl()
                 , JCVideoPlayerStandard.SCREEN_LAYOUT_LIST, data.getTitle());
 
+        Glide.with(getContext())
+                .load(data.getThumbnail_pic_s())
+                .error(R.drawable.touxiang)
+                .into(jcVideoPlayerStandard.thumbImageView);
+
+
     }
 
 

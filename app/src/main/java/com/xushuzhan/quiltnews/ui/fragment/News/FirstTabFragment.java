@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.jude.rollviewpager.OnItemClickListener;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
 import com.xushuzhan.quiltnews.R;
@@ -34,6 +35,7 @@ import com.xushuzhan.quiltnews.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.http.Header;
 import rx.Subscriber;
 
 /**
@@ -61,13 +63,33 @@ public class FirstTabFragment extends Fragment implements SwipeRefreshLayout.OnR
         recyclerView.setAdapterWithProgress(adapter = new NewsAdapter(getContext()));
         adapter.addHeader(new RecyclerArrayAdapter.ItemView() {
             @Override
-            public View onCreateView(ViewGroup parent) {
+            public View onCreateView(final ViewGroup parent) {
                 RollPagerView header = new RollPagerView(getContext());
+                ViewPagerAdapter viewPagerAdapter =  new ViewPagerAdapter((getContext()));
                 header.setHintView(new ColorPointHintView(getContext(), Color.YELLOW, Color.GRAY));
                 header.setHintPadding(0, 0, 0, (int) Utils.convertDpToPixel(8, (getContext())));
-                header.setPlayDelay(2000);
+                header.setPlayDelay(4000);
                 header.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) Utils.convertDpToPixel(190,(getContext()))));
-                header.setAdapter(new ViewPagerAdapter((getContext())));
+                header.setAdapter(viewPagerAdapter);
+                header.setOnItemClickListener(new OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        Intent intent = new Intent(getContext(), NewsDtailActivity.class);
+                        intent.putExtra("url",ViewPagerAdapter.viewPagerContent.getData().getArticle().get(position).getUrl());
+                        intent.putExtra("title",ViewPagerAdapter.viewPagerContent.getData().getArticle().get(position).getTitle());
+                        intent.putExtra("pic_url",ViewPagerAdapter.viewPagerContent.getData().getArticle().get(position).getImg());
+                        intent.putExtra("uniquekey",ViewPagerAdapter.viewPagerContent.getData().getArticle().get(position).getTime());
+
+//                        intent.putExtra("url",ViewPagerAdapter.mViewPagerContent.get(position).getUrl());
+//                        intent.putExtra("title",ViewPagerAdapter.mViewPagerContent.get(position).getTitle());
+//                        intent.putExtra("pic_url",ViewPagerAdapter.mViewPagerContent.get(position).getImg());
+//                        intent.putExtra("uniquekey",ViewPagerAdapter.mViewPagerContent.get(position).getTime());
+//                        ViewPagerAdapter.mViewPagerContent = null ;
+                        startActivity(intent);
+                        Toast.makeText(getContext(), "你点了"+position, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 return header;
             }
 
@@ -95,8 +117,9 @@ public class FirstTabFragment extends Fragment implements SwipeRefreshLayout.OnR
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                Toast.makeText(getContext(), "努力刷新中...", Toast.LENGTH_SHORT).show();
                 firstTabFragmentPresenter.showNewsList();
-                Toast.makeText(getContext(), "已经刷新了", Toast.LENGTH_SHORT).show();
+
                 recyclerView.setRefreshing(false);
             }
         }, 1000);
@@ -126,6 +149,12 @@ public class FirstTabFragment extends Fragment implements SwipeRefreshLayout.OnR
     @Override
     public void onDestroy() {
         super.onDestroy();
+        firstTabFragmentPresenter = null;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
         firstTabFragmentPresenter = null;
     }
 }

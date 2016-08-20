@@ -83,8 +83,9 @@ public class OtherInfoPageFragment extends Fragment implements SwipeRefreshLayou
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                Toast.makeText(getContext(), "努力刷新中...", Toast.LENGTH_SHORT).show();
                 otherPageFragemntPresenter.showNewsList(title);
-                Toast.makeText(getContext(), "已经刷新了", Toast.LENGTH_SHORT).show();
+
                 recyclerView.setRefreshing(false);
             }
         }, 1000);
@@ -115,5 +116,12 @@ public class OtherInfoPageFragment extends Fragment implements SwipeRefreshLayou
     public void onDestroy() {
         super.onDestroy();
         otherPageFragemntPresenter = null;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        otherPageFragemntPresenter = null;
+        Log.d(TAG, "onDestroyView: ");
     }
 }

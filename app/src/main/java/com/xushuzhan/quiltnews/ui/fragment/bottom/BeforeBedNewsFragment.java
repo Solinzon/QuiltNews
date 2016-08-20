@@ -7,9 +7,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
@@ -17,6 +19,7 @@ import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.xushuzhan.quiltnews.APP;
 import com.xushuzhan.quiltnews.R;
+import com.xushuzhan.quiltnews.modle.network.config.ReadInfo;
 import com.xushuzhan.quiltnews.presenter.BedNewsListPresenter;
 import com.xushuzhan.quiltnews.ui.activity.BedNewsDetailActivity;
 import com.xushuzhan.quiltnews.ui.adapter.BedNewsListAdapter;
@@ -28,41 +31,33 @@ import com.xushuzhan.quiltnews.utils.DownTimer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BeforeBedNewsFragment extends Fragment implements IBedNewsListView,SwipeRefreshLayout.OnRefreshListener  {
+public class BeforeBedNewsFragment extends Fragment implements IBedNewsListView, SwipeRefreshLayout.OnRefreshListener {
     BedNewsListPresenter bedNewsListPresenter;
     EasyRecyclerView easyRecyclerView;
     BedNewsListAdapter adapter;
+    LinearLayout linearLayout;
     View view;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_before_bed_news, container, false);
         initView();
-        initTimer();
-        bedNewsListPresenter = new BedNewsListPresenter(this,adapter);
-        bedNewsListPresenter.guideUser();
-        //bedNewsListPresenter.showBedNewsList();
+        bedNewsListPresenter = new BedNewsListPresenter(this, adapter);
+            if (!ReadInfo.isSleepTime) {
+                bedNewsListPresenter.guideUser();
+                bedNewsListPresenter.initTimer();
+                bedNewsListPresenter.showBedNewsList();
+            } else if (ReadInfo.isSleepTime) {
+                linearLayout.setBackgroundResource(R.drawable.good_night_now);
+            }
         return view;
     }
 
-    private void initTimer() {
-        DownTimer timer = new DownTimer();//实例化
-        timer.setTotalTime(60*1000);//设置毫秒数
-        timer.setIntervalTime(5*1000);//设置间隔数
-        timer.setTimerLiener(new DownTimer.TimeListener() {
-            @Override
-            public void onFinish() {
-                Toast.makeText(APP.getAppContext(), "完成倒计时", Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onInterval(long remainTime) {
-                Toast.makeText(APP.getAppContext(), "剩余时间"+remainTime, Toast.LENGTH_SHORT).show();
-            }
-        });
-        timer.start();
-    }
 
-    private void initView(){
+    private void initView() {
+        linearLayout = (LinearLayout) view.findViewById(R.id.ll_bed_news);
         easyRecyclerView = (EasyRecyclerView) view.findViewById(R.id.recyclerview_bed_news);
         easyRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         easyRecyclerView.setRefreshListener(this);
@@ -77,13 +72,17 @@ public class BeforeBedNewsFragment extends Fragment implements IBedNewsListView,
     }
 
 
-
-
     @Override
     public void onRefresh() {
         adapter.clear();
-        bedNewsListPresenter.showBedNewsList();
-        easyRecyclerView.setRefreshing(false);
+        if (!ReadInfo.isSleepTime) {
+            bedNewsListPresenter.showBedNewsList();
+            easyRecyclerView.setRefreshing(false);
+        } else {
+            easyRecyclerView.setRefreshing(false);
+            linearLayout.setBackgroundResource(R.drawable.good_night_now);
+            Toast.makeText(getContext(), "该睡觉了，亲", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -95,7 +94,7 @@ public class BeforeBedNewsFragment extends Fragment implements IBedNewsListView,
     @Override
     public void intentToBenNewsDtail(String url) {
         Intent intent = new Intent(getContext(), BedNewsDetailActivity.class);
-        intent.putExtra("url",url);
+        intent.putExtra("url", url);
         startActivity(intent);
     }
 

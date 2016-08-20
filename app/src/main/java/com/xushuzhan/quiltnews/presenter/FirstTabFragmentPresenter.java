@@ -32,6 +32,7 @@ public class FirstTabFragmentPresenter {
                 @Override
                 public void onError(Throwable e) {
                     iFirstTabView.showToast("网络不太流畅哟");
+                    Log.d(TAG, "onError: "+e.getMessage());
                 }
 
                 @Override

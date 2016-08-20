@@ -72,10 +72,10 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rl_personal_center_night_mode:
-                Toast.makeText(getContext(), "夜间模式", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "夜间模式—暂未开放", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_personal_center_font_mode:
-                Toast.makeText(getContext(), "文字模式", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "文字模式-暂未开放", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_personal_center_my_discuss:
                 personalCenterPresenter.intentToMyDiscuss();
@@ -85,13 +85,13 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 personalCenterPresenter.intentToLoginActivity();
                 break;
             case R.id.rl_pc_my_collect:
-                Toast.makeText(getContext(), "收藏", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "收藏-暂未开放", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_pc_my_down:
-                Toast.makeText(getContext(), "下载", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "下载-暂未开放", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_pc_idea:
-                Toast.makeText(getContext(), "意见", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "意见-暂未开放", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_pc_check_update:
                 Toast.makeText(getContext(), "更新", Toast.LENGTH_SHORT).show();

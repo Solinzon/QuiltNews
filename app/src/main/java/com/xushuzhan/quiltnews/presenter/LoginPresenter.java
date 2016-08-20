@@ -37,7 +37,7 @@ public class LoginPresenter {
                         UserInfo.userName = account;
                         iloginView.toMainActivity();
                     } else {
-                        iloginView.showToast("用户名或面错误，请重试");
+                        iloginView.showToast("用户名或密码错误，请重试");
                     }
                 }
             });

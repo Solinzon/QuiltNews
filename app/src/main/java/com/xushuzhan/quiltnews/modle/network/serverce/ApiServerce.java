@@ -6,6 +6,7 @@ import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
 import com.xushuzhan.quiltnews.modle.been.VideoBean;
 import com.xushuzhan.quiltnews.modle.been.VideoBeanTest;
 import com.xushuzhan.quiltnews.modle.been.VideoListBean;
+import com.xushuzhan.quiltnews.modle.been.ViewPagerBeen;
 
 
 import retrofit2.http.Field;
@@ -22,11 +23,12 @@ public interface ApiServerce {
     /**
      * top(头条，默认) shehui(社会) guonei(国内) guoji(国际) yule(娱乐) tiyu(体育) junshi(军事) keji(科技) caijing(财经) shishang(时尚)
      * @param type
+     * @param appKey
      * @return
      */
     @FormUrlEncoded
-    @POST("index?key=723940fe36afd7c744e1ac16773d99e7")
-    Observable<NewsListBeen> getNewsList(@Field("type") String type);
+    @POST("index")
+    Observable<NewsListBeen> getNewsList(@Field("type") String type,@Field("key") String appKey);
 
     /**
      * 抽取新闻页面的图片和内容
@@ -62,4 +64,14 @@ public interface ApiServerce {
     @GET("songshuxiansheng/news/news")
     Observable<BedNewsListBeen> getBeforeBedNewsList(@Header("apikey") String apiKey);
 
+    /**
+     * 首页的ViewPager
+     * @param apiKey
+     * @param id
+     * @param page
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("3023/news/channel")
+    Observable<ViewPagerBeen> getViewPagerContent(@Header("apikey") String apiKey,@Field("id") String id,@Field("page") String page);
 }

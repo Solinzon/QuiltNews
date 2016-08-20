@@ -20,7 +20,7 @@ import rx.schedulers.Schedulers;
 public class RequestManagerNewsList {
 
 
-    private static final int DEFAULT_TIMEOUT = 10;
+    private static final int DEFAULT_TIMEOUT = 5;
 
     private Retrofit retrofit;
 
@@ -60,7 +60,7 @@ public class RequestManagerNewsList {
 
     public void getNewsList(Subscriber<NewsListBeen> subscriber,String type){
 
-        apiServerce.getNewsList(type)
+        apiServerce.getNewsList(type,API.JU_HE_API_KEY)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

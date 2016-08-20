@@ -1,11 +1,16 @@
 package com.xushuzhan.quiltnews.presenter;
 
 import android.util.Log;
+import android.widget.Toast;
 
+import com.xushuzhan.quiltnews.APP;
 import com.xushuzhan.quiltnews.modle.been.BedNewsListBeen;
+import com.xushuzhan.quiltnews.modle.network.config.ReadInfo;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerBedNewsList;
 import com.xushuzhan.quiltnews.ui.adapter.BedNewsListAdapter;
+import com.xushuzhan.quiltnews.ui.fragment.bottom.BeforeBedNewsFragment;
 import com.xushuzhan.quiltnews.ui.iview.IBedNewsListView;
+import com.xushuzhan.quiltnews.utils.DownTimer;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -59,5 +64,30 @@ public class BedNewsListPresenter {
     public void intentToBedNewsDetail(int position){
         Log.d(TAG, "intentToBedNewsDetail: +"+newsList.getRetData().get(position).getUrl());
         iBedNewsListView.intentToBenNewsDtail(newsList.getRetData().get(position).getUrl());
+    }
+
+
+    public void initTimer() {
+        try {
+            final DownTimer timer = new DownTimer();//实例化
+            timer.setTotalTime(30*60* 1000);//设置毫秒数
+            timer.setIntervalTime(30* 1000);//设置间隔数
+            timer.setTimerLiener(new DownTimer.TimeListener() {
+                @Override
+                public void onFinish() {
+                    ReadInfo.isSleepTime = true;
+                    Toast.makeText(APP.getAppContext(), "半小时飘走了，该休息了 (●'◡'●)", Toast.LENGTH_LONG).show();
+                    timer.cancel();
+                }
+
+                @Override
+                public void onInterval(long remainTime) {
+                   // Toast.makeText(APP.getAppContext(), "亲，注意阅读时间哦", Toast.LENGTH_SHORT).show();
+                }
+            });
+            timer.start();
+        }catch (Exception e){
+            Log.d("123", "initTimer: "+e.getMessage());
+        }
     }
 }

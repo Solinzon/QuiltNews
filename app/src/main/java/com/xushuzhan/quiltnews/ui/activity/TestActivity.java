@@ -25,6 +25,9 @@ import java.util.List;
 
 import rx.Subscriber;
 
+/**
+ * 用于测试各项功能的Activity
+ */
 public class TestActivity extends AppCompatActivity {
     public static final String TAG = "TestActivityTAG";
     Button button;
@@ -103,7 +106,7 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private void getBedNews() {
-        Subscriber<BedNewsListBeen> subscriber = new Subscriber<BedNewsListBeen>() {
+        Subscriber<NewsListBeen> subscriber = new Subscriber<NewsListBeen>() {
 
             @Override
             public void onCompleted() {
@@ -118,14 +121,14 @@ public class TestActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(BedNewsListBeen newsListBeen) {
-                Log.d(TAG, "onNext: "+newsListBeen.getRetData().get(0).getTitle());
-                Log.d(TAG, "onNext: "+newsListBeen.getRetData().get(0).getImage_url());
-                Log.d(TAG, "onNext: "+newsListBeen.getRetData().get(0).getAbstractX());
-            }
+            public void onNext(NewsListBeen newsListBeen) {
+                Log.d(TAG, "onNext: "+newsListBeen.getReason());
+                Log.d(TAG, "onNext: "+newsListBeen.getError_code());
+                Log.d(TAG, "onNext: "+newsListBeen.getResult().getData().get(0).getTitle());
+                }
         };
 
-        RequestManagerBedNewsList.getInstance().getNewsList(subscriber);
+        RequestManagerNewsList.getInstance().getNewsList(subscriber,"top");
     }
 
     private void getUser() {
