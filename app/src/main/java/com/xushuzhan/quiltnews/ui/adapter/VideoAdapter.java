@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.xushuzhan.quiltnews.R;
-import com.xushuzhan.quiltnews.modle.ViedoListViewHolder;
+import com.xushuzhan.quiltnews.modle.viewholder.ViedoListViewHolder;
 import com.xushuzhan.quiltnews.modle.been.FinalVideoListBean;
-import com.xushuzhan.quiltnews.modle.been.VideoBeanTest;
-import com.xushuzhan.quiltnews.modle.been.VideoListBean;
 
 /**
  * Created by xushuzhan on 2016/8/17.

@@ -1,4 +1,4 @@
-package com.xushuzhan.quiltnews.modle;
+package com.xushuzhan.quiltnews.modle.impl;
 
 import android.util.Log;
 

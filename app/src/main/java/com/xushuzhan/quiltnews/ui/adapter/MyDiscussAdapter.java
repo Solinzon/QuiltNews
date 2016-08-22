@@ -6,9 +6,8 @@ import android.view.ViewGroup;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.xushuzhan.quiltnews.R;
-import com.xushuzhan.quiltnews.modle.MyDiscussViewHolder;
+import com.xushuzhan.quiltnews.modle.viewholder.MyDiscussViewHolder;
 import com.xushuzhan.quiltnews.modle.been.MyDiscussBeen;
-import com.xushuzhan.quiltnews.modle.been.NewsDiscussBeen;
 
 /**
  * Created by xushuzhan on 2016/8/19.

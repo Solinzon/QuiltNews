@@ -84,7 +84,7 @@ public class TestActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DialogPopup(TestActivity.this).showPopupWindow();
+                new DialogPopup(TestActivity.this,"请输入评论内容","发送").showPopupWindow();
             }
         });
         

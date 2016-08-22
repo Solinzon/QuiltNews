@@ -29,12 +29,13 @@ public class MyDiscussPresenter {
     }
 
 
-    //显示评论新闻你的列表
+    //显示m某个用户的新闻评论列表
     public void showNewsDiscussList() {
-        if (UserInfo.userName != null) {
+        if (UserInfo.isNormalLogin  || UserInfo.isQQLogin ) {
             //查询用户评论的所有新闻
             AVQuery<AVObject> query = new AVQuery<>("comment");
             query.whereEqualTo("user_name", UserInfo.userName);   //查询小明在某条新闻的评论
+            Log.d(TAG, "showNewsDiscussList: "+UserInfo.userName);
             query.findInBackground(new FindCallback<AVObject>() {
                 @Override
                 public void done(List<AVObject> list, AVException e) {
@@ -45,7 +46,7 @@ public class MyDiscussPresenter {
                         for (int i = 0; i < list.size(); i++) {
 
                             MyDiscussBeen myDiscussBeen = new MyDiscussBeen();
-                            myDiscussBeen.setUserName(UserInfo.userName);
+                            myDiscussBeen.setUserName(UserInfo.nickName);
                             myDiscussBeen.setDiscussTime(list.get(i).get("createdAt").toString());
                             myDiscussBeen.setContent(list.get(i).get("discuss_content").toString());
                             myDiscussBeen.setNewsTitle(list.get(i).get("news_title").toString());

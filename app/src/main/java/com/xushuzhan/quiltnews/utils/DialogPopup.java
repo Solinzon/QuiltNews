@@ -20,6 +20,7 @@ import razerdp.basepopup.BasePopupWindow;
  */
 public class DialogPopup extends BasePopupWindow implements View.OnClickListener{
     private TextView sendDiscuss;
+    private TextView titlePopup;
     EditText discussContent;
     //1.定义一个接口
     public static interface OnSendButtonClickListener {
@@ -33,10 +34,14 @@ public class DialogPopup extends BasePopupWindow implements View.OnClickListener
     }
 
 
-    public DialogPopup(Activity context) {
+    public DialogPopup(Activity context,String title,String cofirmButton) {
         super(context);
         sendDiscuss= (TextView) findViewById(R.id.send_discuss);
         discussContent = (EditText) findViewById(R.id.content);
+        titlePopup = (TextView) findViewById(R.id.popup_title);
+        titlePopup.setText(title);
+        sendDiscuss.setText(cofirmButton);
+
         setViewClickListener(this,sendDiscuss);
     }
 

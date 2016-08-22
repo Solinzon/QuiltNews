@@ -36,13 +36,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#666666"
-            android:text="GoodNightNews"
+            android:text="QuiltNews"
             android:textSize="11sp"
-            android:layout_marginTop="5sp"
             android:layout_alignBottom="@+id/iv_icon_splash_activity"
-            android:layout_alignStart="@+id/iv_name_splash_activity"
-            android:layout_alignLeft="@+id/iv_name_splash_activity" />
-
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 
@@ -51,9 +48,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#666666"
-        android:text="Copyright @2016 ZCYS"
+        android:text="Copyright @2016 SuperBigHead"
         android:textSize="13sp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="11dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

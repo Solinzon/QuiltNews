@@ -1,6 +1,7 @@
 package com.xushuzhan.quiltnews.presenter;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
@@ -9,25 +10,27 @@ import com.xushuzhan.quiltnews.APP;
 import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
 import com.xushuzhan.quiltnews.ui.iview.ISignUpView;
 import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
+import com.xushuzhan.quiltnews.utils.TextUtil;
 
 /**
  * Created by xushuzhan on 2016/8/12.
  */
 public class SignUpPresenter {
     ISignUpView iSignUpView;
-    public SignUpPresenter(ISignUpView iSignUpView){
+
+    public SignUpPresenter(ISignUpView iSignUpView) {
         this.iSignUpView = iSignUpView;
     }
 
-    public void signUp(){
+    public void signUp() {
         final String account = iSignUpView.getAccount();
         final String password = iSignUpView.getPassword();
-        if (account == null ||account.length()==0) {
-            iSignUpView.showError(iSignUpView.getEditTextAccount(),"用户名不能为空！");
+        if (!TextUtil.isEmail(account)) {
+            iSignUpView.setError(iSignUpView.getEditTextAccount(), "请输入正确的邮箱");
         } else if (password == null || password.length() < 7) {
-            iSignUpView.showError(iSignUpView.getEditTextPassword(),"密码不能小于了7位！");
+            iSignUpView.showError(iSignUpView.getEditTextPassword(), "密码不能小于了7位！");
         } else {
-            AVUser user = new AVUser();
+            final AVUser user = new AVUser();
             user.setUsername(account);
             user.setPassword(password);
             user.signUpInBackground(new SignUpCallback() {
@@ -35,14 +38,22 @@ public class SignUpPresenter {
                 public void done(AVException e) {
                     if (e == null) {
                         iSignUpView.showToast("注册成功");
-                        SharedPreferenceUtils.putString(APP.getAppContext(), UserInfo.ACCOUNT,account);
-                        SharedPreferenceUtils.putString(APP.getAppContext(),UserInfo.PASSWORD,password);
+                        SharedPreferenceUtils.putString(APP.getAppContext(), UserInfo.ACCOUNT, account);
+                        SharedPreferenceUtils.putString(APP.getAppContext(), UserInfo.PASSWORD, password);
+                        SharedPreferenceUtils.putString(APP.getAppContext(),"object_id",user.getObjectId());
+                        SharedPreferenceUtils.putString(APP.getAppContext(),"nick_name","匿名用户");
                         UserInfo.userName = account;
+                        UserInfo.nickName = "匿名用户";
+                        UserInfo.isNormalLogin = true;
                         iSignUpView.moveToMainActivity();
 
                     } else {
-                        iSignUpView.showToast("注册失败，请检查你的网络连接！");
-
+                        Log.d("789789", "done: " + e.getCode());
+                        if (e.getCode() == 202) {
+                            Toast.makeText(APP.getAppContext(), "用户已存在", Toast.LENGTH_SHORT).show();
+                        } else {
+                            iSignUpView.showToast("注册失败，请检查你的网络连接！");
+                        }
                     }
                 }
             });

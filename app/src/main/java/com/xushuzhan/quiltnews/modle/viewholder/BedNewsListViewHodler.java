@@ -1,4 +1,4 @@
-package com.xushuzhan.quiltnews.modle;
+package com.xushuzhan.quiltnews.modle.viewholder;
 
 import android.support.annotation.LayoutRes;
 import android.view.ViewGroup;
@@ -6,11 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.modle.been.BedNewsListBeen;
-import com.xushuzhan.quiltnews.modle.been.MyDiscussBeen;
 
 /**
  * Created by xushuzhan on 2016/8/19.

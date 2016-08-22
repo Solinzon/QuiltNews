@@ -1,9 +1,11 @@
 package com.xushuzhan.quiltnews.ui.fragment.bottom;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +14,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.xushuzhan.quiltnews.APP;
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
 import com.xushuzhan.quiltnews.presenter.PersonalCenterPresenter;
 import com.xushuzhan.quiltnews.ui.activity.LoginActivity;
 import com.xushuzhan.quiltnews.ui.activity.MyDiscussActivity;
 import com.xushuzhan.quiltnews.ui.iview.IPersonalCenterView;
+import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
 
 /**
  * Created by xushuzhan on 2016/8/15.
@@ -33,7 +37,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     RelativeLayout idea;
     RelativeLayout update;
     RelativeLayout signOut;
-    TextView loginAccount;
+    ImageView editNickName;
+    TextView nickName;
     PersonalCenterPresenter personalCenterPresenter;
 
     @Nullable
@@ -41,8 +46,11 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_personal_certen, container, false);
         initView();
+
         personalCenterPresenter = new PersonalCenterPresenter(this);
         personalCenterPresenter.setHeadPicture();
+
+
         return view;
     }
 
@@ -63,9 +71,15 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         idea.setOnClickListener(this);
         update = (RelativeLayout) view.findViewById(R.id.rl_pc_check_update);
         update.setOnClickListener(this);
-        loginAccount = (TextView) view.findViewById(R.id.personal_certen_login_now);
+        nickName = (TextView) view.findViewById(R.id.personal_certen_login_now);
         signOut = (RelativeLayout) view.findViewById(R.id.rl_pc_sign_out);
         signOut.setOnClickListener(this);
+        editNickName = (ImageView) view.findViewById(R.id.iv_edit_nick_name);
+        if (!UserInfo.isQQLogin || !UserInfo.isNormalLogin) {
+            editNickName.setVisibility(View.INVISIBLE);
+        } else {
+            editNickName.setOnClickListener(this);
+        }
     }
 
     @Override
@@ -73,6 +87,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         switch (v.getId()) {
             case R.id.rl_personal_center_night_mode:
                 Toast.makeText(getContext(), "夜间模式—暂未开放", Toast.LENGTH_SHORT).show();
+
                 break;
             case R.id.rl_personal_center_font_mode:
                 Toast.makeText(getContext(), "文字模式-暂未开放", Toast.LENGTH_SHORT).show();
@@ -100,6 +115,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 personalCenterPresenter.hintHeadPicture();
                 personalCenterPresenter.signOut();
                 break;
+
+            case R.id.iv_edit_nick_name:
+                personalCenterPresenter.editNickName();
             default:
                 break;
         }
@@ -117,11 +135,12 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
     @Override
     public void setHeadPicture() {
-        if (UserInfo.userName != null) {
+        if (UserInfo.isQQLogin || UserInfo.isNormalLogin) {
             userLogin.setImageResource(R.drawable.touxiang);
             userLogin.setClickable(false);
-            loginAccount.setClickable(false);
-            loginAccount.setText(UserInfo.userName);
+            nickName.setClickable(false);
+            nickName.setText(UserInfo.nickName);
+
         }
 
     }
@@ -130,14 +149,25 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public void hintHeadPicture() {
         userLogin.setImageResource(R.drawable.personl_certen_user);
         userLogin.setClickable(true);
-        loginAccount.setClickable(true);
-        loginAccount.setText("请先登录");
+        nickName.setClickable(true);
+        nickName.setText("请先登录");
 
     }
 
     @Override
     public void intentToMyDiscuss() {
         startActivity(new Intent(getContext(), MyDiscussActivity.class));
+    }
+
+    @Override
+    public Activity getMyActivity() {
+        return PersonalCenterFragment.this.getActivity();
+    }
+
+
+    @Override
+    public void hintEditNickButton() {
+        editNickName.setVisibility(View.INVISIBLE);
     }
 
     @Override

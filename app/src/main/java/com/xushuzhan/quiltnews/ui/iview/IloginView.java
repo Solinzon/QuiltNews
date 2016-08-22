@@ -1,5 +1,6 @@
 package com.xushuzhan.quiltnews.ui.iview;
 
+import android.app.Activity;
 import android.widget.EditText;
 
 /**
@@ -35,4 +36,7 @@ public interface IloginView {
 
     void toSignUpActivity();
 
+
+    //获取当前的Activity
+    Activity getActivity();
 }

@@ -1,5 +1,7 @@
 package com.xushuzhan.quiltnews.ui.iview;
 
+import android.app.Activity;
+
 /**
  * Created by xushuzhan on 2016/8/18.
  */
@@ -19,5 +21,11 @@ public interface IPersonalCenterView {
     //跳转到我的评论
     void intentToMyDiscuss();
 
+    //获取当前界面的Activity
+    Activity getMyActivity();
+
+
+    //隐藏设置昵称的按钮
+    void hintEditNickButton();
 
 }

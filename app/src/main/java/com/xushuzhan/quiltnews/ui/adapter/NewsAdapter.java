@@ -1,16 +1,13 @@
 package com.xushuzhan.quiltnews.ui.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.xushuzhan.quiltnews.R;
-import com.xushuzhan.quiltnews.modle.NewsViewHolder;
+import com.xushuzhan.quiltnews.modle.viewholder.NewsViewHolder;
 import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
-
-import java.util.List;
 
 
 /**

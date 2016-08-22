@@ -1,4 +1,4 @@
-package com.xushuzhan.quiltnews.modle;
+package com.xushuzhan.quiltnews.modle.viewholder;
 
 import android.support.annotation.LayoutRes;
 import android.view.ViewGroup;
@@ -9,10 +9,6 @@ import com.bumptech.glide.Glide;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.modle.been.FinalVideoListBean;
-import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
-import com.xushuzhan.quiltnews.modle.been.VideoBean;
-import com.xushuzhan.quiltnews.modle.been.VideoBeanTest;
-import com.xushuzhan.quiltnews.modle.been.VideoListBean;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 

@@ -15,11 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVObject;
+import com.xushuzhan.quiltnews.APP;
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
 import com.xushuzhan.quiltnews.presenter.NewsDetailPresenter;
 import com.xushuzhan.quiltnews.ui.iview.INewsDetailView;
 import com.xushuzhan.quiltnews.utils.DialogPopup;
+import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
 
 public class NewsDtailActivity extends AppCompatActivity implements INewsDetailView, View.OnClickListener {
     public static final String TAG = "NewsDtailActivity";
@@ -110,13 +112,13 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
 
     @Override
     public void showPopupWindow() {
-        dialogPopup = new DialogPopup(NewsDtailActivity.this);
+        dialogPopup = new DialogPopup(NewsDtailActivity.this,"请输入评论的内容","发送");
         dialogPopup.showPopupWindow();
     }
 
     @Override
     public void sendDiscussContent() {
-        if (UserInfo.userName != null) {
+        if (UserInfo.isQQLogin  ||UserInfo.isNormalLogin ) {
             dialogPopup.setOnItemClickListener(new DialogPopup.OnSendButtonClickListener() {
                 @Override
                 public void onSendClick(View view, String content) {
@@ -124,6 +126,7 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
                     if (content != null) {
                         AVObject news = new AVObject("comment");// 构建对象
                         news.put("user_name", UserInfo.userName);
+                        news.put("nick_name",UserInfo.nickName);
                         news.put("news_uniquekey", uniqueKey);
                         news.put("discuss_content", content);
                         news.put("news_title", title);
@@ -137,7 +140,7 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
                 }
             });
         } else {
-            Toast.makeText(NewsDtailActivity.this, "请先登录！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(NewsDtailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
         }
     }
 

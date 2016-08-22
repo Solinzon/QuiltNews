@@ -25,6 +25,7 @@ public class SplashActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
         UserInfo.tryLogin();
+        UserInfo.tryQQlogin();
         handler.sendEmptyMessageDelayed(START_ACTIVITY, 2000);
     }
 

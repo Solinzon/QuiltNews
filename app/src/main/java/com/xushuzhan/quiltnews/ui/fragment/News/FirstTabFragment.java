@@ -86,7 +86,6 @@ public class FirstTabFragment extends Fragment implements SwipeRefreshLayout.OnR
 //                        intent.putExtra("uniquekey",ViewPagerAdapter.mViewPagerContent.get(position).getTime());
 //                        ViewPagerAdapter.mViewPagerContent = null ;
                         startActivity(intent);
-                        Toast.makeText(getContext(), "你点了"+position, Toast.LENGTH_SHORT).show();
                     }
                 });
 

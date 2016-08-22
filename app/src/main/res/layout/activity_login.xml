@@ -76,6 +76,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="密码"
+                        android:inputType="textPassword"
                         android:singleLine="true"
                         />
                 </android.support.design.widget.TextInputLayout>
@@ -138,6 +139,7 @@
 
             >
             <RelativeLayout
+                android:id="@+id/qq_login"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:clickable="true"

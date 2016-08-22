@@ -3,9 +3,11 @@ package com.xushuzhan.quiltnews.ui.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,7 +25,7 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
     EditText password;
     SignUpPresenter signUpPresenter;
     RelativeLayout signUp;
-
+    ImageButton ReadMode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,7 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
         Title.setText("注册");
 
         account = (EditText) findViewById(R.id.sign_up_account);
+        //account.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         password = (EditText) findViewById(R.id.sign_up_password);
 
         signUp = (RelativeLayout) findViewById(R.id.sign_up_now);
@@ -56,6 +59,9 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
                 Log.d("987654321", "onClick: ");
             }
         });
+
+        ReadMode = (ImageButton) findViewById(R.id.ib_toobar_read_mode);
+        ReadMode.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -93,6 +99,11 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
     @Override
     public EditText getEditTextPassword(){
         return password;
+    }
+
+    @Override
+    public void setError(EditText editText, String content) {
+        editText.setError(content);
     }
 
     @Override

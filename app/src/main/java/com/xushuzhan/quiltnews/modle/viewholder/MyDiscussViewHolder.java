@@ -1,8 +1,7 @@
-package com.xushuzhan.quiltnews.modle;
+package com.xushuzhan.quiltnews.modle.viewholder;
 
 import android.support.annotation.LayoutRes;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;

@@ -23,4 +23,8 @@ public interface ISignUpView {
     //获得EditText的实例
     EditText getEditTextAccount();
     EditText getEditTextPassword();
+
+    //设置错误信息
+
+    void setError(EditText editText,String content);
 }

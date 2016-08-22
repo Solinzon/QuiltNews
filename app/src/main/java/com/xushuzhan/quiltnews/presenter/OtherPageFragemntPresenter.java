@@ -49,7 +49,7 @@ public class OtherPageFragemntPresenter {
                 ListBeen.getResult().getData().get(position).getUrl(),
                 ListBeen.getResult().getData().get(position).getTitle(),
                 ListBeen.getResult().getData().get(position).getThumbnail_pic_s(),
-                ListBeen.getResult().getData().get(position).getUniquekey()
+                ListBeen.getResult().getData().get(position).getDate()
         );
     }
 }

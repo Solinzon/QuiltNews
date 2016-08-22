@@ -53,7 +53,7 @@ public class AllDiscussPresenter {
 
                     for (int i = 0; i < list.size(); i++) {
                         NewsDiscussBeen newsDiscussBeen = new NewsDiscussBeen();
-                        newsDiscussBeen.setUserName(list.get(i).get("user_name").toString());
+                        newsDiscussBeen.setUserName(list.get(i).get("nick_name").toString());
                         newsDiscussBeen.setDiscussTime(list.get(i).get("createdAt").toString());
                         newsDiscussBeen.setDiscussContent(list.get(i).get("discuss_content").toString());
                         Log.d(TAG, "done: >>>>>" + list.get(i).get("discuss_content").toString());
@@ -67,6 +67,7 @@ public class AllDiscussPresenter {
                     newsDiscussAdapter.addAll(allNewsDiscuss);
                 }catch (Exception ee){
                     iAllDiscussView.showToast("糟糕，网络不太顺畅");
+                    Log.d(TAG, "done: ee>>"+ee.getMessage());
                 }
                 if (e != null)
                     Log.d(TAG, "done: error" + e.getMessage());
@@ -79,12 +80,12 @@ public class AllDiscussPresenter {
     //发表评论
     public void sendDiscuss() {
 
-        if (UserInfo.userName != null) {
+        if (UserInfo.isNormalLogin||UserInfo.isQQLogin) {
             url = iAllDiscussView.getNewsUrl();
             title = iAllDiscussView.getNewsTitle();
             picUrl = iAllDiscussView.getNewsPicUrl();
             uniqueKey = iAllDiscussView.getNewaUniqueKey();
-            dialogPopup = new DialogPopup(activity);
+            dialogPopup = new DialogPopup(activity,"请输入评论内容","发送");
             dialogPopup.showPopupWindow();
             dialogPopup.setOnItemClickListener(new DialogPopup.OnSendButtonClickListener() {
                 @Override
@@ -93,15 +94,15 @@ public class AllDiscussPresenter {
                     if (content != null) {
                         AVObject news = new AVObject("comment");// 构建对象
                         news.put("user_name", UserInfo.userName);
+                        news.put("nick_name",UserInfo.nickName);
                         news.put("news_uniquekey", uniqueKey);
                         news.put("discuss_content", content);
                         news.put("news_title", title);
                         news.put("url", url);
                         news.put("pic_url", picUrl);
                         news.saveInBackground();// 保存到服务端
-
                         NewsDiscussBeen newsDiscussBeen = new NewsDiscussBeen();
-                        newsDiscussBeen.setUserName(UserInfo.userName);
+                        newsDiscussBeen.setUserName(UserInfo.nickName);
                         newsDiscussBeen.setDiscussTime("刚刚");
                         newsDiscussBeen.setDiscussContent(content);
                         newsDiscussAdapter.add(newsDiscussBeen);

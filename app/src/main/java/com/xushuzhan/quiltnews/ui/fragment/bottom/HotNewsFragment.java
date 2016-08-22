@@ -22,12 +22,12 @@ public class HotNewsFragment extends Fragment {
     public TabLayout mTabLayout;
     public ViewPager mViewPager;
     private InfoFixedPageAdapter infoFixedPageAdapter;
-    String newsTitles[]  = new String[]{"top","shehui","guonei","guoji","yule","tiyu","junshi","keji","caijing","shishang"};
+    String newsTitles[]  = new String[]{"top","keji","caijing","shehui","guonei","guoji","yule","tiyu","junshi","shishang"};
 
     //储存fragment的数组
     private List<Fragment> mFragments;
     //tab选项卡中的标题
-    private String[] titles=new String[]{"头条","社会","国内","国际","娱乐","体育","军事"};
+    private String[] titles=new String[]{"头条","科技","财经","社会","国内","国际","娱乐","体育","军事","时尚"};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
