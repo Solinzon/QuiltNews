@@ -176,7 +176,6 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
     @Override
     public void setColectButton() {
         collect.setChecked(true);
-        //collect.setButtonDrawable(R.drawable.collection_on);
     }
 
 
