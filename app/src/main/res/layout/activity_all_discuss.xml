@@ -15,8 +15,26 @@
         android:layout_below="@+id/tool_bar_include_all_discuss"
         android:layout_above="@+id/iv_all_discuss_divider"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"></com.jude.easyrecyclerview.EasyRecyclerView>
 
+        android:layout_alignParentEnd="true"></com.jude.easyrecyclerview.EasyRecyclerView>
+    <ImageView
+        android:id="@+id/iv_fist_discuss"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="invisible"
+        android:src="@drawable/first_discuss"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/tv_first_discuss"
+        android:text="暂无评论，快来抢沙发吧！"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        android:textColor="#ccc"
+        android:layout_below="@+id/iv_fist_discuss"
+        android:layout_centerHorizontal="true" />
     <ImageView
         android:id="@+id/iv_all_discuss_divider"
         android:layout_width="match_parent"

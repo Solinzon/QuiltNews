@@ -143,5 +143,9 @@ public class LoginActivity extends AppCompatActivity implements IloginView,View.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Tencent.onActivityResultData(requestCode, resultCode, data,loginPresenter.getIUilistener());
+        finish();
+        loginPresenter.intentToMainActivity(LoginActivity.this);
+
     }
+
 }

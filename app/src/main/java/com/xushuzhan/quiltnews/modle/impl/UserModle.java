@@ -1,6 +1,8 @@
 package com.xushuzhan.quiltnews.modle.impl;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.xushuzhan.quiltnews.APP;
@@ -15,9 +17,16 @@ public class UserModle {
     IUiListener baseUiListener;
     //QQ登录
     public void loginByQQ(Activity activity){
+        ProgressDialog progressDialog = new ProgressDialog
+                (activity);
+        progressDialog.setTitle("提示：");
+        progressDialog.setMessage("正在跳转，请稍等...");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
         baseUiListener = new QQBaseUiListener();
         mTencent = Tencent.createInstance("1105625820", APP.getAppContext());
         mTencent.login(activity, "all",baseUiListener);
+
     }
 
     public IUiListener getIUiListener(){

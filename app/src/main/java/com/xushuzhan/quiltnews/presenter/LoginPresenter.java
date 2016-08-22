@@ -1,5 +1,7 @@
 package com.xushuzhan.quiltnews.presenter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.avos.avoscloud.AVException;
@@ -9,6 +11,7 @@ import com.tencent.tauth.IUiListener;
 import com.xushuzhan.quiltnews.APP;
 import com.xushuzhan.quiltnews.modle.impl.UserModle;
 import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
+import com.xushuzhan.quiltnews.ui.activity.MainActivity;
 import com.xushuzhan.quiltnews.ui.iview.IloginView;
 import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
 import com.xushuzhan.quiltnews.utils.TextUtil;
@@ -68,5 +71,7 @@ public class LoginPresenter {
         return userModle.getIUiListener();
     }
 
-
+    public void intentToMainActivity(Context context){
+        context.startActivity(new Intent(context,MainActivity.class));
+    }
 }

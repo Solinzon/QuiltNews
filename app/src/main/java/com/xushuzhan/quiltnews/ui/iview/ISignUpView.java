@@ -1,5 +1,6 @@
 package com.xushuzhan.quiltnews.ui.iview;
 
+import android.app.Activity;
 import android.widget.EditText;
 
 /**
@@ -27,4 +28,6 @@ public interface ISignUpView {
     //设置错误信息
 
     void setError(EditText editText,String content);
+
+    Activity getActivity();
 }

@@ -17,4 +17,7 @@ public interface IAllDiscussView {
     String getNewsUrl();
 
     void showToast(String content);
+
+    //显示沙发
+    void setSofaPic(boolean isShow);
 }

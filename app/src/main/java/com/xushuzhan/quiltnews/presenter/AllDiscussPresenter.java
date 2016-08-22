@@ -58,11 +58,12 @@ public class AllDiscussPresenter {
                         newsDiscussBeen.setDiscussContent(list.get(i).get("discuss_content").toString());
                         Log.d(TAG, "done: >>>>>" + list.get(i).get("discuss_content").toString());
                         allNewsDiscuss.add(newsDiscussBeen);
-
+                        iAllDiscussView.setSofaPic(false);
                     }
 
                     if (list.size()==0){
-                        iAllDiscussView.showToast("快来抢沙发");
+                        iAllDiscussView.setSofaPic(true);
+                        //iAllDiscussView.showToast("快来抢沙发");
                     }
                     newsDiscussAdapter.addAll(allNewsDiscuss);
                 }catch (Exception ee){
@@ -106,6 +107,7 @@ public class AllDiscussPresenter {
                         newsDiscussBeen.setDiscussTime("刚刚");
                         newsDiscussBeen.setDiscussContent(content);
                         newsDiscussAdapter.add(newsDiscussBeen);
+                        iAllDiscussView.setSofaPic(false);
                         dialogPopup.dismiss();
                         activity = null;
                         newsDiscussAdapter = null;

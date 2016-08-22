@@ -1,15 +1,18 @@
 package com.xushuzhan.quiltnews.ui.activity;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.ui.fragment.bottom.BeforeBedNewsFragment;
@@ -86,6 +89,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    private long exitTime = 0;// 退出时间
 
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            // 判断间隔时间 大于2秒就退出应用
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                Toast.makeText(MainActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+                // 计算两次返回键按下的时间差
+                exitTime = System.currentTimeMillis();
+            } else {
+                // 关闭应用程序
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

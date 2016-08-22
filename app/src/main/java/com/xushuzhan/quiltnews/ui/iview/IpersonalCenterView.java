@@ -28,4 +28,6 @@ public interface IPersonalCenterView {
     //隐藏设置昵称的按钮
     void hintEditNickButton();
 
+    //设置昵称
+    void setNickName(String content);
 }

@@ -1,13 +1,18 @@
 package com.xushuzhan.quiltnews.presenter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SignUpCallback;
+import com.tencent.tauth.IUiListener;
 import com.xushuzhan.quiltnews.APP;
+import com.xushuzhan.quiltnews.modle.impl.UserModle;
 import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
+import com.xushuzhan.quiltnews.ui.activity.MainActivity;
 import com.xushuzhan.quiltnews.ui.iview.ISignUpView;
 import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
 import com.xushuzhan.quiltnews.utils.TextUtil;
@@ -17,9 +22,10 @@ import com.xushuzhan.quiltnews.utils.TextUtil;
  */
 public class SignUpPresenter {
     ISignUpView iSignUpView;
-
+    UserModle userModle;
     public SignUpPresenter(ISignUpView iSignUpView) {
         this.iSignUpView = iSignUpView;
+        userModle = new UserModle();
     }
 
     public void signUp() {
@@ -58,5 +64,16 @@ public class SignUpPresenter {
                 }
             });
         }
+    }
+
+    public void loginByQQ(){
+        userModle.loginByQQ(iSignUpView.getActivity());
+    }
+    public IUiListener getIUilistener(){
+        return userModle.getIUiListener();
+    }
+
+    public void intentToMainActivity(Context context){
+        context.startActivity(new Intent(context,MainActivity.class));
     }
 }

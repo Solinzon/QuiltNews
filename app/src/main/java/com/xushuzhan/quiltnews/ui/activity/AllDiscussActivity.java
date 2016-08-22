@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,9 @@ public class AllDiscussActivity extends AppCompatActivity implements IAllDiscuss
     AllDiscussPresenter allDiscussPresenter;
     RelativeLayout sendDiscuss;
 
+    ImageView firstDiscussPic;
+    TextView firstDiscuss;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +56,6 @@ public class AllDiscussActivity extends AppCompatActivity implements IAllDiscuss
         allDiscussPresenter.showAllDiscuss();
 
 
-
     }
 
     private void initView() {
@@ -67,7 +70,7 @@ public class AllDiscussActivity extends AppCompatActivity implements IAllDiscuss
         ReadMode = (ImageButton) findViewById(R.id.ib_toobar_read_mode);
         ReadMode.setVisibility(View.INVISIBLE);
 
-        back= (ImageButton) findViewById(R.id.ib_toolbar_back);
+        back = (ImageButton) findViewById(R.id.ib_toolbar_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +80,9 @@ public class AllDiscussActivity extends AppCompatActivity implements IAllDiscuss
 
         titleToolbar = (TextView) findViewById(R.id.tv_title_toolbar);
         titleToolbar.setVisibility(View.INVISIBLE);
+
+        firstDiscuss = (TextView) findViewById(R.id.tv_first_discuss);
+        firstDiscussPic = (ImageView) findViewById(R.id.iv_fist_discuss);
     }
 
     private void initData() {
@@ -114,8 +120,17 @@ public class AllDiscussActivity extends AppCompatActivity implements IAllDiscuss
     }
 
     @Override
+    public void setSofaPic(boolean isShow) {
+        if (isShow) {
+            firstDiscuss.setVisibility(View.VISIBLE);
+            firstDiscussPic.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         allDiscussPresenter = null;
     }
+
 }

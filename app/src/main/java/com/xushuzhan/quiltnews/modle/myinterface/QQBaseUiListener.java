@@ -35,8 +35,10 @@ public class QQBaseUiListener implements IUiListener {
 
                 SharedPreferenceUtils.putString(APP.getAppContext(),"open_id",openId);
                 SharedPreferenceUtils.putString(APP.getAppContext(),"token",token);
-
-
+                SharedPreferenceUtils.putString(APP.getAppContext(),UserInfo.NICKNAME,"匿名用户");
+                UserInfo.isQQLogin = true;
+                UserInfo.nickName = "匿名用户";
+                UserInfo.userName = openId;
                 final AVUser user = new AVUser();
                 user.setUsername(openId);
                 user.setPassword(token);
@@ -45,9 +47,7 @@ public class QQBaseUiListener implements IUiListener {
                     public void done(AVException e) {
                         if (e == null) {
                             SharedPreferenceUtils.putString(APP.getAppContext(),"object_id",user.getObjectId());
-                            UserInfo.nickName = "匿名用户";
-                            UserInfo.userName = openId;
-                            UserInfo.isQQLogin = true;
+
                         } else {
 
                         }
@@ -68,4 +68,6 @@ public class QQBaseUiListener implements IUiListener {
     public void onCancel() {
 
     }
+
+
 }

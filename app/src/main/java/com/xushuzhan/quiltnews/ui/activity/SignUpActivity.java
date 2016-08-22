@@ -1,5 +1,6 @@
 package com.xushuzhan.quiltnews.ui.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,11 +14,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tencent.tauth.Tencent;
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.presenter.SignUpPresenter;
 import com.xushuzhan.quiltnews.ui.iview.ISignUpView;
 
-public class SignUpActivity extends AppCompatActivity implements ISignUpView {
+public class SignUpActivity extends AppCompatActivity implements ISignUpView, View.OnClickListener {
     public static final String TAG = "SignUpActivity";
     ImageView Back;
     TextView Title;
@@ -26,6 +28,8 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
     SignUpPresenter signUpPresenter;
     RelativeLayout signUp;
     ImageButton ReadMode;
+    RelativeLayout qqLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
     }
 
     private void initView() {
-        Back= (ImageView) findViewById(R.id.ib_toolbar_back);
+        Back = (ImageView) findViewById(R.id.ib_toolbar_back);
         Back.setImageResource(R.drawable.back);
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +52,7 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
         Title.setText("注册");
 
         account = (EditText) findViewById(R.id.sign_up_account);
-        //account.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+
         password = (EditText) findViewById(R.id.sign_up_password);
 
         signUp = (RelativeLayout) findViewById(R.id.sign_up_now);
@@ -62,11 +66,14 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
 
         ReadMode = (ImageButton) findViewById(R.id.ib_toobar_read_mode);
         ReadMode.setVisibility(View.INVISIBLE);
+
+        qqLogin = (RelativeLayout) findViewById(R.id.rl_qq_login_sign_up);
+        qqLogin.setOnClickListener(this);
     }
 
     @Override
     public String getAccount() {
-        return  account.getText().toString();
+        return account.getText().toString();
     }
 
     @Override
@@ -81,23 +88,26 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
 
     @Override
     public void moveToMainActivity() {
-        startActivity(new Intent(SignUpActivity.this,MainActivity.class));
+        startActivity(new Intent(SignUpActivity.this, MainActivity.class));
     }
 
     @Override
     public void showToast(String content) {
         Toast.makeText(SignUpActivity.this, content, Toast.LENGTH_SHORT).show();
     }
+
     @Override
-    public void showError(EditText editText, String content){
+    public void showError(EditText editText, String content) {
         editText.setError(content);
     }
+
     @Override
-    public EditText getEditTextAccount(){
+    public EditText getEditTextAccount() {
         return account;
     }
+
     @Override
-    public EditText getEditTextPassword(){
+    public EditText getEditTextPassword() {
         return password;
     }
 
@@ -107,8 +117,38 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView {
     }
 
     @Override
+    public Activity getActivity() {
+        return SignUpActivity.this;
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         signUpPresenter = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ib_toolbar_back:
+                finish();
+                break;
+            case R.id.sign_up_now:
+                signUpPresenter.signUp();
+                break;
+            case R.id.rl_qq_login_sign_up:
+                signUpPresenter.loginByQQ();
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Tencent.onActivityResultData(requestCode, resultCode, data,signUpPresenter.getIUilistener());
+        finish();
+        signUpPresenter.intentToMainActivity(SignUpActivity.this);
+
     }
 }

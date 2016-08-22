@@ -17,7 +17,7 @@ public class NewsViewHolder extends BaseViewHolder<NewsListBeen.ResultBean.DataB
     public static final String TAG = "NewsViewHolder";
     TextView Title;
     TextView Resource;
-    TextView DisscussCount;
+    TextView time;
     ImageView Disscuss;
     ImageView NewsListSmallPic;
 
@@ -25,8 +25,7 @@ public class NewsViewHolder extends BaseViewHolder<NewsListBeen.ResultBean.DataB
         super(parent, res);
         Title = $(R.id.tv_news_list_item_title);
         Resource = $(R.id.tv_news_list_item_resource);
-        DisscussCount = $(R.id.tv_news_list_discuss_count);
-        Disscuss = $(R.id.iv_news_list_item_discuss);
+        time = $(R.id.tv_news_list_time);
         NewsListSmallPic = $(R.id.iv_news_small_pic);
     }
 
@@ -36,7 +35,7 @@ public class NewsViewHolder extends BaseViewHolder<NewsListBeen.ResultBean.DataB
 
     Title.setText(data.getTitle());
     Resource.setText(data.getAuthor_name());
-    //DisscussCount.setText();
+    time.setText(data.getDate());
         Glide.with(getContext())
                 .load(data.getThumbnail_pic_s())
                 .placeholder(R.drawable.loading_s)

@@ -8,11 +8,7 @@ import android.os.SystemClock;
  */
 
 /**
- * DownTimer
- * @category 倒计时工具类
- * @content
- *  <b>1.实例化后必须设置倒计时的总时间（totalTime）和每隔多久时间（intervalTime）回调</b><br>
- *  <b>2.有start()、 cancel()、 pause()、resume() 四个方法看方法就知道它的意思了 </b>
+ *倒计时
  */
 public class DownTimer {
     private long totalTime = -1;
@@ -45,7 +41,7 @@ public class DownTimer {
 
     public void start() {
         if (totalTime <= 0 && intervalTime <= 0) {
-            throw new RuntimeException("you must set the totalTime > 0 or intervalTime >0");
+            throw new RuntimeException("时间必须大于0");
         }
 
         systemAddTotalTime = SystemClock.elapsedRealtime() + totalTime;

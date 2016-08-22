@@ -34,33 +34,33 @@
         android:text="来源：娱乐潘多拉"
         android:textSize="13sp"
         android:id="@+id/tv_news_list_item_resource"
-        android:layout_alignBaseline="@+id/tv_news_list_discuss_count"
-        android:layout_alignBottom="@+id/tv_news_list_discuss_count"
+        android:layout_alignBaseline="@+id/tv_news_list_time"
+        android:layout_alignBottom="@+id/tv_news_list_time"
         android:layout_alignLeft="@+id/iv_news_item_divider"
         android:layout_alignStart="@+id/iv_news_item_divider" />
 
 
-        <ImageView
-            android:id="@+id/iv_news_list_item_discuss"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_marginRight="2dp"
-            android:src="@drawable/discuss"
-            android:layout_alignTop="@+id/tv_news_list_discuss_count"
-            android:layout_toLeftOf="@+id/tv_news_list_discuss_count"
-            android:layout_toStartOf="@+id/tv_news_list_discuss_count" />
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_news_list_item_discuss"-->
+            <!--android:layout_width="10dp"-->
+            <!--android:layout_height="10dp"-->
+            <!--android:layout_marginRight="2dp"-->
+            <!--android:src="@drawable/discuss"-->
+            <!--android:layout_alignTop="@+id/tv_news_list_discuss_count"-->
+            <!--android:layout_toLeftOf="@+id/tv_news_list_discuss_count"-->
+            <!--android:layout_toStartOf="@+id/tv_news_list_discuss_count" />-->
 
         <TextView
-            android:id="@+id/tv_news_list_discuss_count"
+            android:id="@+id/tv_news_list_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1.5万"
+            android:text="2016-08-22 16:15"
             android:textColor="#a9b7b7"
-            android:textSize="8sp"
-            android:layout_marginRight="10dp"
+            android:textSize="9sp"
+            android:layout_marginRight="11dp"
             android:layout_alignBottom="@+id/iv_news_small_pic"
-            android:layout_toLeftOf="@+id/iv_news_small_pic"
-            android:layout_toStartOf="@+id/iv_news_small_pic" />
+            android:layout_alignRight="@+id/tv_news_list_item_title"
+            android:layout_alignEnd="@+id/tv_news_list_item_title" />
     <ImageView
         android:id="@+id/iv_news_item_divider"
         android:layout_width="match_parent"

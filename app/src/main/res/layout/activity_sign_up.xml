@@ -139,6 +139,7 @@
 
             >
             <RelativeLayout
+                android:id="@+id/rl_qq_login_sign_up"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:clickable="true"

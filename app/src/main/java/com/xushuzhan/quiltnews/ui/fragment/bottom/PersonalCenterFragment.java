@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatDelegate;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
  * Created by xushuzhan on 2016/8/15.
  */
 public class PersonalCenterFragment extends Fragment implements View.OnClickListener, IPersonalCenterView {
+    public static final String TAG = "PersonalCenterFragment";
     View view;
     ImageView userLogin;
     RelativeLayout nightMode;
@@ -49,7 +51,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
         personalCenterPresenter = new PersonalCenterPresenter(this);
         personalCenterPresenter.setHeadPicture();
-
 
         return view;
     }
@@ -75,10 +76,12 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         signOut = (RelativeLayout) view.findViewById(R.id.rl_pc_sign_out);
         signOut.setOnClickListener(this);
         editNickName = (ImageView) view.findViewById(R.id.iv_edit_nick_name);
-        if (!UserInfo.isQQLogin || !UserInfo.isNormalLogin) {
+        if ((UserInfo.isQQLogin || UserInfo.isNormalLogin)&&(!UserInfo.nickName.equals("匿名用户"))) {
             editNickName.setVisibility(View.INVISIBLE);
+            Log.d(TAG, "initView: "+UserInfo.nickName);
         } else {
             editNickName.setOnClickListener(this);
+            Log.d(TAG, "initView: ");
         }
     }
 
@@ -140,7 +143,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             userLogin.setClickable(false);
             nickName.setClickable(false);
             nickName.setText(UserInfo.nickName);
-
         }
 
     }
@@ -168,6 +170,11 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     @Override
     public void hintEditNickButton() {
         editNickName.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void setNickName(String content) {
+        nickName.setText(content);
     }
 
     @Override

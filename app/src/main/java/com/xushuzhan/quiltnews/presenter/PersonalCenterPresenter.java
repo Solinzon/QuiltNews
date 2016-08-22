@@ -58,6 +58,7 @@ public class PersonalCenterPresenter {
                 dialogPopup.dismiss();
                 iPersonalCenterView.hintEditNickButton();
                 UserInfo.nickName = content;
+                iPersonalCenterView.setNickName(content);
                 SharedPreferenceUtils.putString(APP.getAppContext(), "nick_name", content);
                 AVObject user = AVObject.createWithoutData("_User", SharedPreferenceUtils.getString(APP.getAppContext(), "object_id"));
                 // 修改 nick_name
