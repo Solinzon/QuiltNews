@@ -53,6 +53,7 @@ public class MyDiscussPresenter {
                             myDiscussBeen.setNewsTitle(list.get(i).get("news_title").toString());
                             myDiscussBeen.setPicURL(list.get(i).get("pic_url").toString());
                             myDiscussBeen.setNewsUrl(list.get(i).get("url").toString());
+                            myDiscussBeen.setUniqueKey(list.get(i).get("news_uniquekey").toString());
                             newsList.add(myDiscussBeen);
                         }
                         myDiscussAdapter.addAll(newsList);
@@ -67,5 +68,14 @@ public class MyDiscussPresenter {
         } else {
             iMyDiscussView.showToast("请先登录！");
         }
+    }
+
+    public void intentToNewsDetail(int position){
+        iMyDiscussView.intentToNewsDetail(
+                newsList.get(position).getNewsTitle(),
+                newsList.get(position).getNewsUrl(),
+                newsList.get(position).getPicURL(),
+                newsList.get(position).getUniqueKey()
+        );
     }
 }

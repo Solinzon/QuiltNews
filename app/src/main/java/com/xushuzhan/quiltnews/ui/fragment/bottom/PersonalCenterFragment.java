@@ -107,13 +107,13 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 startActivity(new Intent(getContext(), MyCollectionActivity.class));
                 break;
             case R.id.rl_pc_my_down:
-                Toast.makeText(getContext(), "下载-暂未开放", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "抱歉-这个功能正在开发", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_pc_idea:
-                Toast.makeText(getContext(), "意见-暂未开放", Toast.LENGTH_SHORT).show();
+               personalCenterPresenter.showIdead();
                 break;
             case R.id.rl_pc_check_update:
-                Toast.makeText(getContext(), "更新", Toast.LENGTH_SHORT).show();
+                personalCenterPresenter.checkUpdate();
                 break;
             case R.id.rl_pc_sign_out:
                 personalCenterPresenter.hintHeadPicture();
@@ -134,7 +134,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
     @Override
     public void showToast(String content) {
-
+        Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
     }
 
     @Override

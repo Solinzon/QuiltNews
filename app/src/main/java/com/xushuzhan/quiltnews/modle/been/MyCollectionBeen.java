@@ -10,6 +10,15 @@ public class MyCollectionBeen {
     private String uniqueKey;
     private String picUrl;
     private String collectionTime;
+    private String uniquekey;
+
+    public String getUniquekey() {
+        return uniquekey;
+    }
+
+    public void setUniquekey(String uniquekey) {
+        this.uniquekey = uniquekey;
+    }
 
     public String getNewsUrl() {
         return newsUrl;

@@ -1,5 +1,6 @@
 package com.xushuzhan.quiltnews.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,7 +40,7 @@ EasyRecyclerView easyRecyclerView;
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(MyCollectionActivity.this, "啦啦啦", Toast.LENGTH_SHORT).show();
+                myCollectionPresenter.intentToNewsDetail(position);
             }
         });
 
@@ -55,12 +56,27 @@ EasyRecyclerView easyRecyclerView;
         });
 
         titleToolbar = (TextView) findViewById(R.id.tv_title_toolbar);
-        titleToolbar.setText("我的收藏" +
-                "");
+        titleToolbar.setText("我的收藏");
     }
 
     @Override
     public void showToast(String content) {
         Toast.makeText(MyCollectionActivity.this, content, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void intentToNewsDetail(String newsTitle, String newsUrl, String picUrl, String uniqueKey) {
+        Intent intent = new Intent(MyCollectionActivity.this,NewsDtailActivity.class);
+        intent.putExtra("uniquekey", uniqueKey);
+        intent.putExtra("url", newsUrl);
+        intent.putExtra("title", newsTitle);
+        intent.putExtra("pic_url", picUrl);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        myCollectionPresenter = null;
     }
 }

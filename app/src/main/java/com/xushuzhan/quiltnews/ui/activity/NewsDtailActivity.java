@@ -37,7 +37,6 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
     WebView webView;
     NewsDetailPresenter newsDetailPresenter;
     RelativeLayout rlNewsDetailDiscuss;
-    DialogPopup dialogPopup;
     Button allNews;
     TextView allNewsCount;
     ImageButton ReadMode;

@@ -30,4 +30,5 @@ public interface IPersonalCenterView {
 
     //设置昵称
     void setNickName(String content);
+
 }

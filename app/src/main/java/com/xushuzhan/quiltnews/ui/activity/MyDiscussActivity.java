@@ -1,5 +1,6 @@
 package com.xushuzhan.quiltnews.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -59,7 +60,7 @@ public class MyDiscussActivity extends AppCompatActivity implements IMyDiscussVi
         myDiscussAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(MyDiscussActivity.this, "抱歉，暂时不能跳转", Toast.LENGTH_SHORT).show();
+                myDiscussPresenter.intentToNewsDetail(position);
             }
         });
     }
@@ -67,5 +68,15 @@ public class MyDiscussActivity extends AppCompatActivity implements IMyDiscussVi
     @Override
     public void showToast(String content) {
         Toast.makeText(MyDiscussActivity.this, content, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void intentToNewsDetail(String newsTitle, String newsUrl, String picUrl, String uniqueKey) {
+        Intent intent = new Intent(MyDiscussActivity.this,NewsDtailActivity.class);
+        intent.putExtra("uniquekey", uniqueKey);
+        intent.putExtra("url", newsUrl);
+        intent.putExtra("title", newsTitle);
+        intent.putExtra("pic_url", picUrl);
+        startActivity(intent);
     }
 }

@@ -53,6 +53,7 @@ public class MyCollectionPresenter {
                             myCollectionBeen.setNewsTitle(list.get(i).get("news_title").toString());
                             myCollectionBeen.setPicUrl(list.get(i).get("pic_url").toString());
                             myCollectionBeen.setNewsUrl(list.get(i).get("url").toString());
+                            myCollectionBeen.setUniqueKey(list.get(i).get("news_uniquekey").toString());
                             newsList.add(myCollectionBeen);
                         }
                        myCollectionAdapter .addAll(newsList);
@@ -68,5 +69,12 @@ public class MyCollectionPresenter {
             iMyCollectionView.showToast("请先登录！");
         }
     }
-
+    public void intentToNewsDetail(int position){
+        iMyCollectionView.intentToNewsDetail(
+                newsList.get(position).getNewsTitle(),
+                newsList.get(position).getNewsUrl(),
+                newsList.get(position).getPicUrl(),
+                newsList.get(position).getUniqueKey()
+        );
+    }
 }

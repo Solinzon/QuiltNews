@@ -12,6 +12,16 @@ public class MyDiscussBeen {
     private String newsTitle;
     private String newsUrl;
 
+    public String getUniqueKey() {
+        return uniqueKey;
+    }
+
+    public void setUniqueKey(String uniqueKey) {
+        this.uniqueKey = uniqueKey;
+    }
+
+    private String uniqueKey;
+
     public String getNewsUrl() {
         return newsUrl;
     }
