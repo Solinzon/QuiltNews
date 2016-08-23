@@ -8,7 +8,6 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 import com.xushuzhan.quiltnews.modle.been.FinalVideoListBean;
 import com.xushuzhan.quiltnews.modle.been.VideoBean;
-import com.xushuzhan.quiltnews.modle.been.VideoBeanTest;
 import com.xushuzhan.quiltnews.modle.been.VideoListBean;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerVideo;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerVideoList;
@@ -50,6 +49,11 @@ public class VideoListModle {
             public void onNext(VideoListBean videoListBean) {
                 Log.d(TAG, "onNext:>>>>> " + category);
                 //请求完成;
+                Log.d(TAG, "onNext: "+videoListBean.getVideos().get(0).getLink());
+                Log.d(TAG, "onNext: "+videoListBean.getVideos().get(1).getLink());
+                Log.d(TAG, "onNext: "+videoListBean.getVideos().get(2).getLink());
+                Log.d(TAG, "onNext: "+videoListBean.getVideos().get(3).getLink());
+                Log.d(TAG, "onNext: "+videoListBean.getVideos().get(4).getLink());
                 findUsefulUrlById(videoListBean);
             }
         };

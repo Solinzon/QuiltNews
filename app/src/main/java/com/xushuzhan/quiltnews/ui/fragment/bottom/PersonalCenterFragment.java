@@ -29,7 +29,7 @@ import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
  * Created by xushuzhan on 2016/8/15.
  */
 public class PersonalCenterFragment extends Fragment implements View.OnClickListener, IPersonalCenterView {
-    public static final String TAG = "PersonalCenterFragment";
+    public static final String TAG = "PersonalCenterTAG";
     View view;
     ImageView userLogin;
     RelativeLayout nightMode;
@@ -77,13 +77,19 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         signOut = (RelativeLayout) view.findViewById(R.id.rl_pc_sign_out);
         signOut.setOnClickListener(this);
         editNickName = (ImageView) view.findViewById(R.id.iv_edit_nick_name);
-        if ((UserInfo.isQQLogin || UserInfo.isNormalLogin)&&(!UserInfo.nickName.equals("匿名用户"))) {
+        if ((UserInfo.isQQLogin || UserInfo.isNormalLogin)) {
+            if (!UserInfo.nickName.equals("匿名用户")) {
+                editNickName.setVisibility(View.INVISIBLE);
+            }else {
+                editNickName.setOnClickListener(this);
+            }
+
+        } else if(!UserInfo.isQQLogin || !UserInfo.isNormalLogin) {
             editNickName.setVisibility(View.INVISIBLE);
-            Log.d(TAG, "initView: "+UserInfo.nickName);
         } else {
             editNickName.setOnClickListener(this);
-            Log.d(TAG, "initView: ");
         }
+        Log.d(TAG, "initView: " + UserInfo.nickName);
     }
 
     @Override
@@ -110,7 +116,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 Toast.makeText(getContext(), "抱歉-这个功能正在开发", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.rl_pc_idea:
-               personalCenterPresenter.showIdead();
+                personalCenterPresenter.showIdead();
                 break;
             case R.id.rl_pc_check_update:
                 personalCenterPresenter.checkUpdate();
