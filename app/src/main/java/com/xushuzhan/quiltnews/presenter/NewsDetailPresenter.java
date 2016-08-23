@@ -140,6 +140,8 @@ public class NewsDetailPresenter {
                         NewsInfo.isCollect = true;
                         iNewsDetailView.setColectButton();
                         Log.d(TAG, "done: ");
+                    }else if(list.size()==0){
+                        NewsInfo.isCollect = false;
                     }
                 }
             }

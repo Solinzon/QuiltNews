@@ -28,7 +28,7 @@ import com.xushuzhan.quiltnews.ui.iview.INewsDetailView;
 import com.xushuzhan.quiltnews.utils.DialogPopup;
 import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
 
-public class NewsDtailActivity extends AppCompatActivity implements INewsDetailView, View.OnClickListener,CompoundButton.OnCheckedChangeListener {
+public class NewsDtailActivity extends AppCompatActivity implements INewsDetailView, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     public static final String TAG = "NewsDtailActivity";
     String url;
     String title;
@@ -46,6 +46,7 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
     TextView discussCount;
 
     CheckBox collect;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
 
         Log.d(TAG, "onCreate: " + title + ">>>" + picUrl + ">>>" + uniqueKey);
         newsDetailPresenter = new NewsDetailPresenter(this);
-       // newsDetailPresenter.setCollect();
+        newsDetailPresenter.setCollect();
         initView();
         initData();
     }
@@ -98,7 +99,7 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
 
         ReadMode.setVisibility(View.INVISIBLE);
 
-        back= (ImageButton) findViewById(R.id.ib_toolbar_back);
+        back = (ImageButton) findViewById(R.id.ib_toolbar_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,7 +171,7 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
 
     @Override
     public void addDiscussCount() {
-        discussCount.setText((Integer.parseInt(discussCount.getText().toString())+1)+"");
+        discussCount.setText((Integer.parseInt(discussCount.getText().toString()) + 1) + "");
     }
 
     @Override
@@ -204,12 +205,14 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(isChecked && !NewsInfo.isCollect){
-            newsDetailPresenter.collect();
+        if (isChecked) {
+            if (!NewsInfo.isCollect) {
+                newsDetailPresenter.collect();
+            }
             NewsInfo.isCollect = false;
-            Log.d(TAG, "onCheckedChanged: "+NewsInfo.isCollect);
-        }else if(!isChecked){
+        } else if (!isChecked) {
             newsDetailPresenter.unCollect();
+            NewsInfo.isCollect = false;
         }
     }
 }

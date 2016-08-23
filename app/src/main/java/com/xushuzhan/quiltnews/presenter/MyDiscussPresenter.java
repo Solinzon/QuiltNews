@@ -23,13 +23,14 @@ public class MyDiscussPresenter {
     MyDiscussAdapter myDiscussAdapter;
     ArrayList<MyDiscussBeen> newsList;
 
-    public MyDiscussPresenter(MyDiscussAdapter myDiscussAdapter) {
+    public MyDiscussPresenter(MyDiscussAdapter myDiscussAdapter, IMyDiscussView iMyDiscussView) {
         this.myDiscussAdapter = myDiscussAdapter;
+        this.iMyDiscussView = iMyDiscussView;
         newsList = new ArrayList<>();
     }
 
 
-    //显示m某个用户的新闻评论列表
+    //显示某个用户的新闻评论列表
     public void showNewsDiscussList() {
         if (UserInfo.isNormalLogin  || UserInfo.isQQLogin ) {
             //查询用户评论的所有新闻
@@ -57,6 +58,7 @@ public class MyDiscussPresenter {
                         myDiscussAdapter.addAll(newsList);
 
                     } catch (Exception ee) {
+                        Log.d(TAG, "done: "+ee.toString());
                         iMyDiscussView.showToast("糟糕，网络不太顺畅");
                     }
 

@@ -28,7 +28,7 @@ public class MyDiscussActivity extends AppCompatActivity implements IMyDiscussVi
         setContentView(R.layout.activity_my_discuss);
         initView();
         initData();
-        myDiscussPresenter = new MyDiscussPresenter(myDiscussAdapter);
+        myDiscussPresenter = new MyDiscussPresenter(myDiscussAdapter,this);
         myDiscussPresenter.showNewsDiscussList();
     }
 
@@ -48,7 +48,7 @@ public class MyDiscussActivity extends AppCompatActivity implements IMyDiscussVi
         });
 
         titleToolbar = (TextView) findViewById(R.id.tv_title_toolbar);
-        titleToolbar.setVisibility(View.INVISIBLE);
+        titleToolbar.setText("我的评论");
     }
 
     private void initData() {

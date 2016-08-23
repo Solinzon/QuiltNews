@@ -26,7 +26,7 @@
         <activity android:name=".ui.activity.NewsDtailActivity" />
         <activity android:name=".ui.activity.AllDiscussActivity" />
         <activity android:name=".ui.activity.MyDiscussActivity" />
-        <activity android:name=".ui.activity.BedNewsDetailActivity"/>
+        <activity android:name=".ui.activity.BedNewsDetailActivity" />
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
@@ -40,10 +40,11 @@
                 <data android:scheme="1105625820" />
             </intent-filter>
         </activity>
-        <activity android:name="com.tencent.connect.common.AssistActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".ui.activity.MyCollectionActivity"></activity>
     </application>
 
 </manifest>

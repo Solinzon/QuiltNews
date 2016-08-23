@@ -12,5 +12,5 @@ public class NewsInfo {
     public static final String NEWS_PIC_URL = "pic_url";
     public static final String NEWS_TITLE = "news_title";
 
-    public static boolean isCollect = false;
+    public static boolean isCollect = true;
 }

@@ -20,6 +20,7 @@ import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
 import com.xushuzhan.quiltnews.presenter.PersonalCenterPresenter;
 import com.xushuzhan.quiltnews.ui.activity.LoginActivity;
+import com.xushuzhan.quiltnews.ui.activity.MyCollectionActivity;
 import com.xushuzhan.quiltnews.ui.activity.MyDiscussActivity;
 import com.xushuzhan.quiltnews.ui.iview.IPersonalCenterView;
 import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
@@ -103,7 +104,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 personalCenterPresenter.intentToLoginActivity();
                 break;
             case R.id.rl_pc_my_collect:
-                Toast.makeText(getContext(), "收藏-暂未开放", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), MyCollectionActivity.class));
                 break;
             case R.id.rl_pc_my_down:
                 Toast.makeText(getContext(), "下载-暂未开放", Toast.LENGTH_SHORT).show();
