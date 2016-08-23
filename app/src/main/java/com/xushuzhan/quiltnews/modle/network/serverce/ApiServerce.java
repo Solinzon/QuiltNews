@@ -6,7 +6,7 @@ import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
 import com.xushuzhan.quiltnews.modle.been.VideoBean;
 import com.xushuzhan.quiltnews.modle.been.VideoBeanTest;
 import com.xushuzhan.quiltnews.modle.been.VideoListBean;
-import com.xushuzhan.quiltnews.modle.been.ViewPagerBeen;
+import com.xushuzhan.quiltnews.modle.been.ViewPagersBeen;
 
 
 import retrofit2.http.Field;
@@ -67,11 +67,13 @@ public interface ApiServerce {
     /**
      * 首页的ViewPager
      * @param apiKey
-     * @param id
-     * @param page
      * @return
      */
-    @FormUrlEncoded
-    @POST("3023/news/channel")
-    Observable<ViewPagerBeen> getViewPagerContent(@Header("apikey") String apiKey,@Field("id") String id,@Field("page") String page);
+//    @FormUrlEncoded
+//    @POST("3023/news/channel")
+//    Observable<ViewPagerBeen> getViewPagerContent(@Header("apikey") String apiKey,@Field("id") String id,@Field("page") String page);
+
+    @GET("txapi/keji/keji?num=6&page=1")
+    Observable<ViewPagersBeen> getViewPagersContent(@Header("apikey") String apiKey);
+
 }

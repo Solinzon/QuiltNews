@@ -13,4 +13,6 @@ public class NewsInfo {
     public static final String NEWS_TITLE = "news_title";
 
     public static boolean isCollect = true;
+
+    public static boolean FROM_VIEW_PAGE = false;
 }

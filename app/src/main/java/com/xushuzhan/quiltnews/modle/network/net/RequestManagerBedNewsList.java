@@ -1,7 +1,7 @@
 package com.xushuzhan.quiltnews.modle.network.net;
 
 import com.xushuzhan.quiltnews.modle.been.BedNewsListBeen;
-import com.xushuzhan.quiltnews.modle.been.ViewPagerBeen;
+import com.xushuzhan.quiltnews.modle.been.ViewPagersBeen;
 import com.xushuzhan.quiltnews.modle.network.config.API;
 import com.xushuzhan.quiltnews.modle.network.serverce.ApiServerce;
 
@@ -67,9 +67,17 @@ public class RequestManagerBedNewsList {
                 .subscribe(subscriber);
     }
 
-    public void getViewPager(Subscriber<ViewPagerBeen> subscriber) {
+//    public void getViewPager(Subscriber<ViewPagerBeen> subscriber) {
+//
+//        apiServerce.getViewPagerContent(API.BAIDU_API_APP_KEY,"popular","2")
+//                .subscribeOn(Schedulers.io())
+//                .unsubscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(subscriber);
+//    }
 
-        apiServerce.getViewPagerContent(API.BAIDU_API_APP_KEY,"popular","2")
+    public void getViewPagers(Subscriber<ViewPagersBeen> subscriber){
+        apiServerce.getViewPagersContent(API.BAIDU_API_APP_KEY)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

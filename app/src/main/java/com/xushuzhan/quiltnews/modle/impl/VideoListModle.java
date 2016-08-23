@@ -56,6 +56,7 @@ public class VideoListModle {
         RequestManagerVideoList.getInstance().getVideoList(subscriber, category, count, page);
     }
 
+
     //从服务器上获取
     public void findUsefulUrlById(final VideoListBean videoListBean) {
         //根据ID查视频
@@ -73,7 +74,7 @@ public class VideoListModle {
         AVQuery<AVObject> query = AVQuery.or(Arrays.asList(query1, query2, query3, query4, query5));
         query.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.setMaxCacheAge(24 * 3600); //设置缓存有效期
-        query.orderByDescending("createdAt");
+        query.orderByAscending("createdAt");
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
@@ -103,6 +104,8 @@ public class VideoListModle {
                             fvl.setTitle(list.get(i).get("title").toString());
                             fvl.setThumbnail_pic_s(list.get(i).get("pic_url").toString());
                             fvl.setUrl(list.get(i).get("real_url").toString());
+                            fvl.setPlayCount(list.get(i).get("view_count").toString());
+                            fvl.setPublishTime(list.get(i).get("publish_time").toString());
                             Log.d(TAG, "所有视频的真实链接》》来自服务器: " + list.get(i).get("real_url").toString());
                             videoList.add(fvl);
                             adapter.add(fvl);
@@ -151,6 +154,8 @@ public class VideoListModle {
                 fvl.setTitle(title);
                 fvl.setThumbnail_pic_s(picUrl);
                 fvl.setUrl(videoBean.getMp4());
+                fvl.setPlayCount(viewCount);
+                fvl.setPublishTime(publishTime);
                 Log.d(TAG, "所有视频的真是链接》》来自接口: " + videoBean.getMp4());
                 adapter.add(fvl);
                 Log.d(TAG, "添加到Recyclerview完成》》来自接口 ");
@@ -162,6 +167,7 @@ public class VideoListModle {
                 video.put("view_count", viewCount);
                 video.put("publish_time", publishTime);
                 video.put("title", title);
+                video.put("publish_time",publishTime);
                 video.saveInBackground();// 保存到服务端
             }
         };

@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
-import com.xushuzhan.quiltnews.modle.been.ViewPagerBeen;
+import com.xushuzhan.quiltnews.modle.been.ViewPagersBeen;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerBedNewsList;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerNewsList;
 import com.xushuzhan.quiltnews.ui.activity.NewsDtailActivity;
@@ -25,8 +25,8 @@ import rx.Subscriber;
  * Created by xushuzhan on 2016/7/25.
  */
 public class ViewPagerAdapter extends StaticPagerAdapter {
-        public static ViewPagerBeen viewPagerContent;
-    public static ArrayList<ViewPagerBeen.DataBean.ArticleBean> mviewPagerContent;
+    public static ViewPagersBeen viewPagersContent;
+    public static ArrayList<ViewPagersBeen.NewslistBean> mviewPagerContent;
     public static final String TAG = "ViewPagerAdapter";
     private Context ctx;
 
@@ -37,7 +37,7 @@ public class ViewPagerAdapter extends StaticPagerAdapter {
     @Override
     public View getView(ViewGroup container, final int position) {
         final ImageView view = new ImageView(container.getContext());
-        Subscriber<ViewPagerBeen> subscriber = new Subscriber<ViewPagerBeen>() {
+        Subscriber<ViewPagersBeen> subscriber = new Subscriber<ViewPagersBeen>() {
             @Override
             public void onCompleted() {
 
@@ -49,17 +49,17 @@ public class ViewPagerAdapter extends StaticPagerAdapter {
             }
 
             @Override
-            public void onNext(ViewPagerBeen viewPagerBeen) {
-                viewPagerContent = viewPagerBeen;
+            public void onNext(ViewPagersBeen viewPagersBeen) {
+                viewPagersContent = viewPagersBeen;
                 Glide.with(ctx)
-                        .load(viewPagerBeen.getData().getArticle().get(position).getImg())
+                        .load(viewPagersBeen.getNewslist().get(position).getPicUrl())
                         .error(R.drawable.no_picture)
                         .into(view);
 
             }
         };
 
-        RequestManagerBedNewsList.getInstance().getViewPager(subscriber);
+        RequestManagerBedNewsList.getInstance().getViewPagers(subscriber);
         view.setScaleType(ImageView.ScaleType.CENTER_CROP);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 

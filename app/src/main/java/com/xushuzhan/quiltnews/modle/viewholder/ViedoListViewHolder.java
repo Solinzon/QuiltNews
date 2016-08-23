@@ -18,14 +18,14 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 public class ViedoListViewHolder extends BaseViewHolder<FinalVideoListBean> {
     TextView playCount;
     Button discuss;
-    TextView discussCount;
+    TextView publishTime;
     Button share;
     JCVideoPlayerStandard jcVideoPlayerStandard;
     public ViedoListViewHolder(ViewGroup parent, @LayoutRes int res) {
         super(parent, res);
-//        playCount = $(R.id.tv_video_play_count);
+        playCount = $(R.id.tv_video_play_count);
 //        discuss = $(R.id.bt_discuss_eyeshot_video);
-//        discussCount = $(R.id.tv_video_discuss_count);
+        publishTime = $(R.id.tv_video_publish_time);
 //        share = $(R.id.bt_video_share);
         jcVideoPlayerStandard = $(R.id.custom_videoplayer_standard);
     }
@@ -34,8 +34,8 @@ public class ViedoListViewHolder extends BaseViewHolder<FinalVideoListBean> {
     public void setData(FinalVideoListBean data) {
         super.setData(data);
 
-     //   playCount.setText(data.getView_count());
-//        discussCount.setText(data.getComment_count());
+        playCount.setText(data.getPlayCount()+"次播放");
+        publishTime.setText(data.getPublishTime());
 //        jcVideoPlayerStandard.thumbImageView.set
 
         jcVideoPlayerStandard.setUp(data.getUrl()

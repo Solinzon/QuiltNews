@@ -11,6 +11,7 @@ import com.xushuzhan.quiltnews.ui.adapter.BedNewsListAdapter;
 import com.xushuzhan.quiltnews.ui.fragment.bottom.BeforeBedNewsFragment;
 import com.xushuzhan.quiltnews.ui.iview.IBedNewsListView;
 import com.xushuzhan.quiltnews.utils.DownTimer;
+import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -58,7 +59,10 @@ public class BedNewsListPresenter {
     }
 
     public void guideUser(){
-        iBedNewsListView.showToast("每次下拉都可以更新新闻哟");
+        if (SharedPreferenceUtils.getString(APP.getAppContext(),"useTime")==null){
+            iBedNewsListView.showToast("每次下拉都可以更新新闻哟");
+        }
+        SharedPreferenceUtils.putString(APP.getAppContext(),"useTime","1");
     }
 
     public void intentToBedNewsDetail(int position){

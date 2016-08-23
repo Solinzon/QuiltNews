@@ -24,6 +24,7 @@ import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
+import com.xushuzhan.quiltnews.modle.network.config.NewsInfo;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerNewsList;
 import com.xushuzhan.quiltnews.presenter.FirstTabFragmentPresenter;
 import com.xushuzhan.quiltnews.ui.activity.NewsDtailActivity;
@@ -42,6 +43,7 @@ import rx.Subscriber;
  * Created by xushuzhan on 2016/8/16.
  */
 public class FirstTabFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener,IFirstTabView{
+    public static final int VIEW_PAGER = 0;
     View mView;
     private EasyRecyclerView recyclerView;
     private NewsAdapter adapter;
@@ -74,11 +76,12 @@ public class FirstTabFragment extends Fragment implements SwipeRefreshLayout.OnR
                 header.setOnItemClickListener(new OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
+                        NewsInfo.FROM_VIEW_PAGE = true;
                         Intent intent = new Intent(getContext(), NewsDtailActivity.class);
-                        intent.putExtra("url",ViewPagerAdapter.viewPagerContent.getData().getArticle().get(position).getUrl());
-                        intent.putExtra("title",ViewPagerAdapter.viewPagerContent.getData().getArticle().get(position).getTitle());
-                        intent.putExtra("pic_url",ViewPagerAdapter.viewPagerContent.getData().getArticle().get(position).getImg());
-                        intent.putExtra("uniquekey",ViewPagerAdapter.viewPagerContent.getData().getArticle().get(position).getTime());
+                        intent.putExtra("url",ViewPagerAdapter.viewPagersContent.getNewslist().get(position).getUrl());
+                        intent.putExtra("title",ViewPagerAdapter.viewPagersContent.getNewslist().get(position).getTitle());
+                        intent.putExtra("pic_url",ViewPagerAdapter.viewPagersContent.getNewslist().get(position).getPicUrl());
+                        intent.putExtra("uniquekey",ViewPagerAdapter.viewPagersContent.getNewslist().get(position).getCtime());
                         startActivity(intent);
                     }
                 });

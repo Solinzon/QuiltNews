@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,TestActivity.class));
             }
         });
-        //ReadMode.setVisibility(View.INVISIBLE);
+        ReadMode.setVisibility(View.INVISIBLE);
         back= (ImageButton) findViewById(R.id.ib_toolbar_back);
         back.setVisibility(View.INVISIBLE);
 
