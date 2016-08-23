@@ -76,8 +76,8 @@ public class VideoInfoPageFragment extends Fragment implements SwipeRefreshLayou
     @Override
     public void onRefresh() {
         adapter.clear();
-        Page+=1;
-        videoListModle.getVedioList(getArguments().getString(PAGER_POSITION),"5",String.valueOf(Page));
+        JCVideoPlayer.releaseAllVideos();
+        videoListModle.getVedioList(getArguments().getString(PAGER_POSITION),"5",String.valueOf(++Page));
         recyclerView.setRefreshing(false);
     }
 

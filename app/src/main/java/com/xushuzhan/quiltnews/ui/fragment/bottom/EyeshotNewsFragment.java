@@ -23,12 +23,12 @@ public class EyeshotNewsFragment extends Fragment{
     public TabLayout mTabLayout;
     public ViewPager mViewPager;
     private InfoFixedPageAdapter infoFixedPageAdapter;
-    String newsTitles[]  = new String[]{"资讯","科技","搞笑","娱乐","游戏","生活","时尚"};
+    String newsTitles[]  = new String[]{"搞笑","科技","娱乐","微电影","体育","汽车","旅游","游戏"};
 
     //储存fragment的数组
     private List<Fragment> mFragments;
     //tab选项卡中的标题
-    private String[] titles=new String[]{"推荐","科技","搞笑","娱乐","游戏","生活","时尚"};
+    private String[] titles=new String[]{"搞笑","科技","娱乐","微电影","体育","汽车","旅游","游戏"};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,7 +45,6 @@ public class EyeshotNewsFragment extends Fragment{
         infoFixedPageAdapter.setTitles(titles);//标题
         mFragments = new ArrayList<>();
         for (int i = 0; i < titles.length; i++) {
-            //传入标题和page的id
             mFragments.add(VideoInfoPageFragment.newInstance(newsTitles[i]));
         }
         //把要显示的fragment集合传给adapter
@@ -57,6 +56,5 @@ public class EyeshotNewsFragment extends Fragment{
         mViewPager.setAdapter(infoFixedPageAdapter);
         //TabLayout绑定ViewPager
         mTabLayout.setupWithViewPager(mViewPager);
-        Toast.makeText(getActivity(), "视界", Toast.LENGTH_SHORT).show();
     }
 }

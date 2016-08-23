@@ -35,7 +35,10 @@ public class MyDiscussPresenter {
         if (UserInfo.isNormalLogin  || UserInfo.isQQLogin ) {
             //查询用户评论的所有新闻
             AVQuery<AVObject> query = new AVQuery<>("comment");
+            query.orderByDescending("createdAt");
             query.whereEqualTo("user_name", UserInfo.userName);   //查询小明在某条新闻的评论
+            query.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
+            query.setMaxCacheAge(24 * 3600); //设置缓存有效期
             Log.d(TAG, "showNewsDiscussList: "+UserInfo.userName);
             query.findInBackground(new FindCallback<AVObject>() {
                 @Override

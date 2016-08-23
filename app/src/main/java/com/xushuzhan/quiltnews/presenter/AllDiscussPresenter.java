@@ -45,7 +45,10 @@ public class AllDiscussPresenter {
     public void showAllDiscuss() {
         allNewsDiscuss = new ArrayList<>();
         AVQuery<AVObject> query = new AVQuery<>("comment");
+        query.orderByDescending("createdAt");
         query.whereEqualTo("news_uniquekey", iAllDiscussView.getNewaUniqueKey());   //查询某条新闻的所有评论
+        query.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.setMaxCacheAge(24 * 3600); //设置缓存有效期
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {

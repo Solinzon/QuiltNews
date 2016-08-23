@@ -32,13 +32,16 @@ public class MyCollectionPresenter {
         newsList = new ArrayList<>();
     }
 
-    //显示某个用户的新闻评论列表
+    //显示某个用户的新闻收藏列表
     public void showNewsCollectionList() {
         if (UserInfo.isNormalLogin  || UserInfo.isQQLogin ) {
             //查询用户评论的所有新闻
             AVQuery<AVObject> query = new AVQuery<>("collection");
-            query.whereEqualTo("user_name", UserInfo.userName);   //查询小明在某条新闻的评论
+            query.orderByDescending("createdAt");
+            query.whereEqualTo("user_name", UserInfo.userName);
             Log.d(TAG, "showNewsDiscussList: "+UserInfo.userName);
+            query.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
+            query.setMaxCacheAge(24 * 3600); //设置缓存有效期
             query.findInBackground(new FindCallback<AVObject>() {
                 @Override
                 public void done(List<AVObject> list, AVException e) {

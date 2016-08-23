@@ -79,12 +79,6 @@ public class FirstTabFragment extends Fragment implements SwipeRefreshLayout.OnR
                         intent.putExtra("title",ViewPagerAdapter.viewPagerContent.getData().getArticle().get(position).getTitle());
                         intent.putExtra("pic_url",ViewPagerAdapter.viewPagerContent.getData().getArticle().get(position).getImg());
                         intent.putExtra("uniquekey",ViewPagerAdapter.viewPagerContent.getData().getArticle().get(position).getTime());
-
-//                        intent.putExtra("url",ViewPagerAdapter.mViewPagerContent.get(position).getUrl());
-//                        intent.putExtra("title",ViewPagerAdapter.mViewPagerContent.get(position).getTitle());
-//                        intent.putExtra("pic_url",ViewPagerAdapter.mViewPagerContent.get(position).getImg());
-//                        intent.putExtra("uniquekey",ViewPagerAdapter.mViewPagerContent.get(position).getTime());
-//                        ViewPagerAdapter.mViewPagerContent = null ;
                         startActivity(intent);
                     }
                 });

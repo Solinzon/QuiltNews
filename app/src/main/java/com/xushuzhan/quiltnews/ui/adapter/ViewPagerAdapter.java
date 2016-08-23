@@ -25,7 +25,7 @@ import rx.Subscriber;
  * Created by xushuzhan on 2016/7/25.
  */
 public class ViewPagerAdapter extends StaticPagerAdapter {
-    public static ViewPagerBeen viewPagerContent;
+        public static ViewPagerBeen viewPagerContent;
     public static ArrayList<ViewPagerBeen.DataBean.ArticleBean> mviewPagerContent;
     public static final String TAG = "ViewPagerAdapter";
     private Context ctx;

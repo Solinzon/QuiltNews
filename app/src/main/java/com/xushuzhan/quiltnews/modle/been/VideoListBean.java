@@ -85,7 +85,7 @@ public class VideoListBean {
         private int duration;
         private String category;
         private String state;
-        private int view_count;
+        private String view_count;
         private int favorite_count;
         private int comment_count;
         private int up_count;
@@ -176,11 +176,11 @@ public class VideoListBean {
             this.state = state;
         }
 
-        public int getView_count() {
+        public String getView_count() {
             return view_count;
         }
 
-        public void setView_count(int view_count) {
+        public void setView_count(String view_count) {
             this.view_count = view_count;
         }
 

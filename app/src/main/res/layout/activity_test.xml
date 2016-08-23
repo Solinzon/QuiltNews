@@ -12,7 +12,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="请求数据！"
+        android:text="根据ID查询视频！"
         android:id="@+id/button2"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/button4"
@@ -21,7 +21,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="请求内容！"
+        android:text="根据ID更新视频！"
         android:id="@+id/button3"
         android:layout_below="@+id/button2"
         android:layout_alignLeft="@+id/button2"
@@ -51,7 +51,8 @@
         android:layout_height="wrap_content"
         android:text="查询新闻用户"
         android:id="@+id/button5"
-        android:layout_alignTop="@+id/button"
+        android:layout_alignBaseline="@+id/button6"
+        android:layout_alignBottom="@+id/button6"
         android:layout_alignLeft="@+id/button3"
         android:layout_alignStart="@+id/button3" />
 
