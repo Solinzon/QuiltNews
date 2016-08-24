@@ -2,26 +2,39 @@ package com.xushuzhan.quiltnews.presenter;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.GetCallback;
 import com.xushuzhan.quiltnews.APP;
 import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
 import com.xushuzhan.quiltnews.ui.activity.MainActivity;
+import com.xushuzhan.quiltnews.ui.fragment.bottom.PersonalCenterFragment;
 import com.xushuzhan.quiltnews.ui.iview.IPersonalCenterView;
 import com.xushuzhan.quiltnews.utils.DialogPopup;
 import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by xushuzhan on 2016/8/18.
  */
 public class PersonalCenterPresenter {
+    public static final String TAG = "PersonalCenterTAG";
     public static final int NO_UPDATE = 0;
     ProgressDialog progressDialog;
     DialogPopup dialogPopup;
     IPersonalCenterView iPersonalCenterView;
+    public Uri imageUri;
 
     public PersonalCenterPresenter(IPersonalCenterView iPersonalCenterView) {
         this.iPersonalCenterView = iPersonalCenterView;
@@ -48,9 +61,9 @@ public class PersonalCenterPresenter {
             SharedPreferenceUtils.putString(APP.getAppContext(), UserInfo.ACCOUNT, null);
             SharedPreferenceUtils.putString(APP.getAppContext(), UserInfo.PASSWORD, null);
             SharedPreferenceUtils.putString(APP.getAppContext(), UserInfo.NICKNAME, null);
-        }else if(UserInfo.isQQLogin==true){
-            SharedPreferenceUtils.putString(APP.getAppContext(),"open_id",null);
-        }else {
+        } else if (UserInfo.isQQLogin == true) {
+            SharedPreferenceUtils.putString(APP.getAppContext(), "open_id", null);
+        } else {
             iPersonalCenterView.showToast("请登录后再试");
         }
     }
@@ -77,7 +90,7 @@ public class PersonalCenterPresenter {
         });
     }
 
-    public void showIdead(){
+    public void showIdead() {
         dialogPopup = new DialogPopup(iPersonalCenterView.getMyActivity(), "快把宝贵的意见告诉我们吧！", "发送");
         dialogPopup.showPopupWindow();
 
@@ -92,34 +105,34 @@ public class PersonalCenterPresenter {
         });
     }
 
-    public void checkUpdate(){
+    public void checkUpdate() {
         progressDialog = new ProgressDialog
                 (iPersonalCenterView.getMyActivity());
-        //progressDialog.setTitle("提示：");
         progressDialog.setMessage("正在检查更新...");
         progressDialog.setCancelable(true);
         progressDialog.show();
-        handler.sendEmptyMessageDelayed(NO_UPDATE, 2000);
 
-    }
-
-    public void intentToNewsDetail(){
-
-    }
-
-
-
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case NO_UPDATE:
+        AVQuery<AVObject> avQuery = new AVQuery<>("update");
+        avQuery.getInBackground("57bcf2ae1532bc006582b9de", new GetCallback<AVObject>() {
+            @Override
+            public void done(AVObject avObject, AVException e) {
+                try {
+                    if (avObject.get("version").toString().equals(SharedPreferenceUtils.getString(APP.getAppContext(), "version"))) {
+                        iPersonalCenterView.showToast("已经是最新版了");
+                    } else {
+                        iPersonalCenterView.showToast("发现新版本，快去市场更新吧");
+                    }
                     progressDialog.dismiss();
-                    iPersonalCenterView.showToast("已经是最新版了");
-                    break;
+                } catch (Exception ee) {
+                    Log.d(TAG, "done: ee" + e.getMessage());
+                }
             }
-        }
-    };
+        });
+
+    }
+
+    public void intentToNewsDetail() {
+
+    }
 
 }

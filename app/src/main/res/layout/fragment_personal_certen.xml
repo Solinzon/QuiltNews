@@ -90,7 +90,7 @@
             android:clickable="true">
 
             <ImageView
-                android:id="@+id/we_bo_p"
+                android:id="@+id/iv_font_mode"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentTop="true"
@@ -100,11 +100,11 @@
                 android:src="@drawable/font_mode" />
 
             <TextView
-                android:id="@+id/qwe_bo_t"
+                android:id="@+id/tv_font_mode"
                 style="@style/Text_Content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/we_bo_p"
+                android:layout_below="@+id/iv_font_mode"
                 android:layout_marginTop="5dp"
                 android:layout_centerHorizontal="true"
                 android:text="文字模式" />

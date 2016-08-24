@@ -49,11 +49,11 @@ public class VideoListModle {
             public void onNext(VideoListBean videoListBean) {
                 Log.d(TAG, "onNext:>>>>> " + category);
                 //请求完成;
-                Log.d(TAG, "onNext: "+videoListBean.getVideos().get(0).getLink());
-                Log.d(TAG, "onNext: "+videoListBean.getVideos().get(1).getLink());
-                Log.d(TAG, "onNext: "+videoListBean.getVideos().get(2).getLink());
-                Log.d(TAG, "onNext: "+videoListBean.getVideos().get(3).getLink());
-                Log.d(TAG, "onNext: "+videoListBean.getVideos().get(4).getLink());
+                Log.d(TAG, "onNext: " + videoListBean.getVideos().get(0).getLink());
+                Log.d(TAG, "onNext: " + videoListBean.getVideos().get(1).getLink());
+                Log.d(TAG, "onNext: " + videoListBean.getVideos().get(2).getLink());
+                Log.d(TAG, "onNext: " + videoListBean.getVideos().get(3).getLink());
+                Log.d(TAG, "onNext: " + videoListBean.getVideos().get(4).getLink());
                 findUsefulUrlById(videoListBean);
             }
         };
@@ -76,64 +76,73 @@ public class VideoListModle {
         query5.whereEqualTo("video_id", videoListBean.getVideos().get(4).getId());
 
         AVQuery<AVObject> query = AVQuery.or(Arrays.asList(query1, query2, query3, query4, query5));
-        query.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
-        query.setMaxCacheAge(24 * 3600); //设置缓存有效期
+//        query.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
+//        query.setMaxCacheAge(24 * 3600); //设置缓存有效期
         query.orderByAscending("createdAt");
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
-                //返回符合条件的视频信息
-                if ( list.size()>0&&list.size() < 5) {
-                    Log.d(TAG, "尴尬，视频部分更新了 ：" + list.size() );
-                    for (int i = 0; i < 5; i++) {
-                        for (int j = 0; j < list.size(); j++) {
-                            if (!videoListBean.getVideos().get(i).getId().equals(list.get(j).get("video_id"))) {
-                                findUrlUsefulByAPI(
-                                        videoListBean.getVideos().get(i).getLink(),
-                                        videoListBean.getVideos().get(i).getTitle(),
-                                        videoListBean.getVideos().get(i).getThumbnail(),
-                                        videoListBean.getVideos().get(i).getId(),
-                                        videoListBean.getVideos().get(i).getView_count(),
-                                        videoListBean.getVideos().get(i).getPublished()
-                                );
-                            }
-
-                        }
-                    }
+                if (e != null) {
+                    Log.d(TAG, "done: 请求服务器的时候出错了>" + e.getMessage());
                 }
-                if (list.size() == 5) {
-                    try {
+                try {
+                    Log.d(TAG, "请求服务器完成，返回的插数据总大小是： " + list.size());
+                    //返回符合条件的视频信息
+                    if (list.size() > 0 && list.size() < 5) {
+                        Log.d(TAG, "尴尬，视频部分更新了 ：" + list.size());
                         for (int i = 0; i < 5; i++) {
-                            FinalVideoListBean fvl = new FinalVideoListBean();
-                            fvl.setTitle(list.get(i).get("title").toString());
-                            fvl.setThumbnail_pic_s(list.get(i).get("pic_url").toString());
-                            fvl.setUrl(list.get(i).get("real_url").toString());
-                            fvl.setPlayCount(list.get(i).get("view_count").toString());
-                            fvl.setPublishTime(list.get(i).get("publish_time").toString());
-                            Log.d(TAG, "所有视频的真实链接》》来自服务器: " + list.get(i).get("real_url").toString());
-                            videoList.add(fvl);
-                            adapter.add(fvl);
-                            Log.d(TAG, "添加到Recyclerview完成》》来自服务器 ");
+                            for (int j = 0; j < list.size(); j++) {
+                                if (!videoListBean.getVideos().get(i).getId().equals(list.get(j).get("video_id"))) {
+                                    findUrlUsefulByAPI(
+                                            videoListBean.getVideos().get(i).getLink(),
+                                            videoListBean.getVideos().get(i).getTitle(),
+                                            videoListBean.getVideos().get(i).getThumbnail(),
+                                            videoListBean.getVideos().get(i).getId(),
+                                            videoListBean.getVideos().get(i).getView_count(),
+                                            videoListBean.getVideos().get(i).getPublished()
+                                    );
+                                }
+
+                            }
                         }
-                    } catch (Exception ee) {
-                        Log.d(TAG, "来服务器的错误"+ee.getMessage());
                     }
+                    if (list.size() >= 5) {
+                        try {
+                            for (int i = 0; i < 5; i++) {
+                                FinalVideoListBean fvl = new FinalVideoListBean();
+                                fvl.setTitle(list.get(i).get("title").toString());
+                                fvl.setThumbnail_pic_s(list.get(i).get("pic_url").toString());
+                                fvl.setUrl(list.get(i).get("real_url").toString());
+                                fvl.setPlayCount(list.get(i).get("view_count").toString());
+                                fvl.setPublishTime(list.get(i).get("publish_time").toString());
+                                Log.d(TAG, "所有视频的真实链接》》来自服务器: " + list.get(i).get("real_url").toString());
+                                videoList.add(fvl);
+                                adapter.add(fvl);
+                                Log.d(TAG, "添加到Recyclerview完成》》来自服务器 ");
+                            }
+                        } catch (Exception ee) {
+                            Log.d(TAG, "来服务器的错误" + ee.getMessage());
+                        }
 
-                }
-                if (list.size() == 0) {
-                    for (int j = 0; j < videoListBean.getVideos().size(); j++) {
-                        findUrlUsefulByAPI(videoListBean.getVideos().get(j).getLink(),
-                                videoListBean.getVideos().get(j).getTitle(),
-                                videoListBean.getVideos().get(j).getThumbnail(),
-                                videoListBean.getVideos().get(j).getId(),
-                                videoListBean.getVideos().get(j).getView_count(),
-                                videoListBean.getVideos().get(j).getPublished()
-                        );
                     }
+                    if (list.size() == 0) {
+                        for (int j = 0; j < videoListBean.getVideos().size(); j++) {
+                            findUrlUsefulByAPI(videoListBean.getVideos().get(j).getLink(),
+                                    videoListBean.getVideos().get(j).getTitle(),
+                                    videoListBean.getVideos().get(j).getThumbnail(),
+                                    videoListBean.getVideos().get(j).getId(),
+                                    videoListBean.getVideos().get(j).getView_count(),
+                                    videoListBean.getVideos().get(j).getPublished()
+                            );
+                        }
 
-                    Log.d(TAG, "done: 没有查到任何数据");
+                        Log.d(TAG, "done: 没有查到任何数据");
+                    }
+                } catch (Exception ee) {
                 }
             }
+
+
         });
     }
 
@@ -171,7 +180,7 @@ public class VideoListModle {
                 video.put("view_count", viewCount);
                 video.put("publish_time", publishTime);
                 video.put("title", title);
-                video.put("publish_time",publishTime);
+                video.put("publish_time", publishTime);
                 video.saveInBackground();// 保存到服务端
             }
         };

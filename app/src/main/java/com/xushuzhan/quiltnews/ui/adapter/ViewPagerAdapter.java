@@ -13,6 +13,7 @@ import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
 import com.xushuzhan.quiltnews.modle.been.ViewPagersBeen;
+import com.xushuzhan.quiltnews.modle.network.config.NewsInfo;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerBedNewsList;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerNewsList;
 import com.xushuzhan.quiltnews.ui.activity.NewsDtailActivity;
@@ -51,11 +52,14 @@ public class ViewPagerAdapter extends StaticPagerAdapter {
             @Override
             public void onNext(ViewPagersBeen viewPagersBeen) {
                 viewPagersContent = viewPagersBeen;
-                Glide.with(ctx)
-                        .load(viewPagersBeen.getNewslist().get(position).getPicUrl())
-                        .error(R.drawable.no_picture)
-                        .into(view);
-
+                if(NewsInfo.isShowPic) {
+                    Glide.with(ctx)
+                            .load(viewPagersBeen.getNewslist().get(position).getPicUrl())
+                            .error(R.drawable.no_picture)
+                            .into(view);
+                }else {
+                    view.setImageResource(R.drawable.loading_s);
+                }
             }
         };
 

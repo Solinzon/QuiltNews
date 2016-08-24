@@ -4,7 +4,6 @@ import com.xushuzhan.quiltnews.modle.been.BedNewsListBeen;
 import com.xushuzhan.quiltnews.modle.been.NewDetailBeen;
 import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
 import com.xushuzhan.quiltnews.modle.been.VideoBean;
-import com.xushuzhan.quiltnews.modle.been.VideoBeanTest;
 import com.xushuzhan.quiltnews.modle.been.VideoListBean;
 import com.xushuzhan.quiltnews.modle.been.ViewPagersBeen;
 
@@ -56,10 +55,6 @@ public interface ApiServerce {
     @POST("dmxy/truevideourl/truevideourl")
     Observable<VideoBean> getVideaoURL(@Header("apikey") String videoApiKey, @Field("url") String url);
 
-
-    @FormUrlEncoded
-    @POST("dmxy/truevideourl/truevideourl")
-    Observable<VideoBeanTest> getVideaoURLT(@Field("key")String key, @Field("playurl") String url);
 
     @GET("songshuxiansheng/news/news")
     Observable<BedNewsListBeen> getBeforeBedNewsList(@Header("apikey") String apiKey);

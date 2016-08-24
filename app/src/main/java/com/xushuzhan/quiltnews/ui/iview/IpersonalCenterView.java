@@ -2,6 +2,8 @@ package com.xushuzhan.quiltnews.ui.iview;
 
 import android.app.Activity;
 
+import java.net.URI;
+
 /**
  * Created by xushuzhan on 2016/8/18.
  */

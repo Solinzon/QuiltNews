@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -43,7 +44,6 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
     ImageButton back;
     TextView titleToolbar;
     TextView discussCount;
-
     CheckBox collect;
 
     @Override
@@ -72,23 +72,23 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
     }
 
     private void initView() {
+        webView = (WebView) findViewById(R.id.web_view_news_dtail);
+        WebSettings settings = webView.getSettings();
+        if(!NewsInfo.isShowPic){
+            settings.setLoadsImagesAutomatically(false);  //不支持自动加载图片
+        }
         if(NewsInfo.FROM_VIEW_PAGE) {
-            webView = (WebView) findViewById(R.id.web_view_news_dtail);
-            webView.getSettings().setJavaScriptEnabled(true);
+            settings.setJavaScriptEnabled(true);
             webView.setWebViewClient(new WebViewClient() {
                 @Override
                 public boolean shouldOverrideUrlLoading(WebView view, String
                         url) {
-                    view.loadUrl(url); // 根据传入的参数再去加载新的网页
-                    return false; // 表示当前WebView可以处理打开新网页的请求，不用借助系统浏览器
+                    return false; // 不允许打开新的网页
                 }
             });
-
             NewsInfo.FROM_VIEW_PAGE = false;
         }else {
-            webView = (WebView) findViewById(R.id.web_view_news_dtail);
-            webView.getSettings().setJavaScriptEnabled(false);
-            //webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
+            settings.setJavaScriptEnabled(false);
             webView.setWebViewClient(new WebViewClient() {
                 @Override
                 public boolean shouldOverrideUrlLoading(WebView view, String
@@ -97,16 +97,8 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
                     return true; // 表示当前WebView可以处理打开新网页的请求，不用借助系统浏览器
                 }
             });
-            WebSettings settings = webView.getSettings();
             settings.setTextZoom(100);
         }
-
-
-
-
-
-
-
         rlNewsDetailDiscuss = (RelativeLayout) findViewById(R.id.rl_write_discuss);
         rlNewsDetailDiscuss.setOnClickListener(this);
         allNews = (Button) findViewById(R.id.bt_news_detail_discuss);
@@ -232,5 +224,11 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
             newsDetailPresenter.unCollect();
             NewsInfo.isCollect = false;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        webView.destroy();
     }
 }

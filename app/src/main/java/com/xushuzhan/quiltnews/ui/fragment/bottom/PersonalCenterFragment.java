@@ -2,7 +2,10 @@ package com.xushuzhan.quiltnews.ui.fragment.bottom;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatDelegate;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 
 import com.xushuzhan.quiltnews.APP;
 import com.xushuzhan.quiltnews.R;
+import com.xushuzhan.quiltnews.modle.network.config.NewsInfo;
 import com.xushuzhan.quiltnews.modle.network.config.UserInfo;
 import com.xushuzhan.quiltnews.presenter.PersonalCenterPresenter;
 import com.xushuzhan.quiltnews.ui.activity.LoginActivity;
@@ -25,6 +29,8 @@ import com.xushuzhan.quiltnews.ui.activity.MyDiscussActivity;
 import com.xushuzhan.quiltnews.ui.iview.IPersonalCenterView;
 import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
 
+import java.io.FileNotFoundException;
+
 /**
  * Created by xushuzhan on 2016/8/15.
  */
@@ -32,6 +38,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public static final String TAG = "PersonalCenterTAG";
     View view;
     ImageView userLogin;
+    ImageView ViewModeIV;
     RelativeLayout nightMode;
     RelativeLayout fontMode;
     RelativeLayout myDiscuss;
@@ -42,6 +49,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     RelativeLayout signOut;
     ImageView editNickName;
     TextView nickName;
+    TextView  ViewModeTV;
     PersonalCenterPresenter personalCenterPresenter;
 
     @Nullable
@@ -49,14 +57,14 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_personal_certen, container, false);
         initView();
-
         personalCenterPresenter = new PersonalCenterPresenter(this);
         personalCenterPresenter.setHeadPicture();
-
         return view;
     }
 
     private void initView() {
+        ViewModeIV = (ImageView) view.findViewById(R.id.iv_font_mode);
+        ViewModeTV = (TextView) view.findViewById(R.id.tv_font_mode);
         nightMode = (RelativeLayout) view.findViewById(R.id.rl_personal_center_night_mode);
         nightMode.setOnClickListener(this);
         fontMode = (RelativeLayout) view.findViewById(R.id.rl_personal_center_font_mode);
@@ -77,37 +85,37 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         signOut = (RelativeLayout) view.findViewById(R.id.rl_pc_sign_out);
         signOut.setOnClickListener(this);
         editNickName = (ImageView) view.findViewById(R.id.iv_edit_nick_name);
-        if ((UserInfo.isQQLogin || UserInfo.isNormalLogin)) {
-            if (!UserInfo.nickName.equals("匿名用户")) {
-                editNickName.setVisibility(View.INVISIBLE);
-            }else {
-                editNickName.setOnClickListener(this);
-            }
-
-        } else if(!UserInfo.isQQLogin || !UserInfo.isNormalLogin) {
-            editNickName.setVisibility(View.INVISIBLE);
-        } else {
-            editNickName.setOnClickListener(this);
-        }
-        Log.d(TAG, "initView: " + UserInfo.nickName);
+        checkInfo();
     }
+
+
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rl_personal_center_night_mode:
                 Toast.makeText(getContext(), "夜间模式—暂未开放", Toast.LENGTH_SHORT).show();
-
                 break;
             case R.id.rl_personal_center_font_mode:
-                Toast.makeText(getContext(), "文字模式-暂未开放", Toast.LENGTH_SHORT).show();
+                if (!NewsInfo.isChecked){
+                    NewsInfo.isShowPic = false;
+                    NewsInfo.isChecked = true;
+                    ViewModeTV.setText("图片模式");
+                    ViewModeIV.setImageResource(R.drawable.picture_mode);
+
+                }else {
+                    NewsInfo.isShowPic = true;
+                    NewsInfo.isChecked = false;
+                    ViewModeTV.setText("文字模式");
+                    ViewModeIV.setImageResource(R.drawable.font_mode);
+                }
                 break;
             case R.id.rl_personal_center_my_discuss:
                 personalCenterPresenter.intentToMyDiscuss();
                 break;
             case R.id.iv_user_center_login:
             case R.id.personal_certen_login_now:
-                personalCenterPresenter.intentToLoginActivity();
+                    personalCenterPresenter.intentToLoginActivity();
                 break;
             case R.id.rl_pc_my_collect:
                 startActivity(new Intent(getContext(), MyCollectionActivity.class));
@@ -147,9 +155,10 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public void setHeadPicture() {
         if (UserInfo.isQQLogin || UserInfo.isNormalLogin) {
             userLogin.setImageResource(R.drawable.touxiang);
-            userLogin.setClickable(false);
+            userLogin.setClickable(true);
             nickName.setClickable(false);
             nickName.setText(UserInfo.nickName);
+
         }
 
     }
@@ -188,5 +197,26 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     public void onDestroy() {
         super.onDestroy();
         personalCenterPresenter = null;
+    }
+    private void checkInfo() {
+        if ((UserInfo.isQQLogin || UserInfo.isNormalLogin)) {
+            if (!UserInfo.nickName.equals("匿名用户")) {
+                editNickName.setVisibility(View.INVISIBLE);
+            } else {
+                editNickName.setOnClickListener(this);
+            }
+
+        } else if (!UserInfo.isQQLogin || !UserInfo.isNormalLogin) {
+            editNickName.setVisibility(View.INVISIBLE);
+        } else {
+            editNickName.setOnClickListener(this);
+        }
+        if (!NewsInfo.isChecked){
+            ViewModeTV.setText("文字模式");
+            ViewModeIV.setImageResource(R.drawable.font_mode);
+        }else {
+            ViewModeTV.setText("图片模式");
+            ViewModeIV.setImageResource(R.drawable.picture_mode);
+        }
     }
 }

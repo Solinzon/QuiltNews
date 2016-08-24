@@ -2,7 +2,7 @@ package com.xushuzhan.quiltnews.modle.network.net;
 
 import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
 import com.xushuzhan.quiltnews.modle.been.VideoBean;
-import com.xushuzhan.quiltnews.modle.been.VideoBeanTest;
+
 import com.xushuzhan.quiltnews.modle.network.config.API;
 import com.xushuzhan.quiltnews.modle.network.serverce.ApiServerce;
 

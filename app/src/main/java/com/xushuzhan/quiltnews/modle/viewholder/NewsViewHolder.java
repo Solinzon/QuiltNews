@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.modle.been.NewsListBeen;
+import com.xushuzhan.quiltnews.modle.network.config.NewsInfo;
 
 /**
  * Created by xushuzhan on 2016/7/26.
@@ -36,11 +37,12 @@ public class NewsViewHolder extends BaseViewHolder<NewsListBeen.ResultBean.DataB
     Title.setText(data.getTitle());
     Resource.setText(data.getAuthor_name());
     time.setText(data.getDate());
-        Glide.with(getContext())
-                .load(data.getThumbnail_pic_s())
-                .placeholder(R.drawable.loading_s)
-                .error(R.drawable.error)
-                .into(NewsListSmallPic);
-
+        if (NewsInfo.isShowPic) {
+            Glide.with(getContext())
+                    .load(data.getThumbnail_pic_s())
+                    .placeholder(R.drawable.loading_s)
+                    .error(R.drawable.error)
+                    .into(NewsListSmallPic);
+        }
     }
 }

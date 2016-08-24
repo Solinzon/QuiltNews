@@ -15,4 +15,8 @@ public class NewsInfo {
     public static boolean isCollect = true;
 
     public static boolean FROM_VIEW_PAGE = false;
+
+    public static boolean isShowPic = true;
+
+    public static boolean isChecked = false; //按钮有没有被选中
 }

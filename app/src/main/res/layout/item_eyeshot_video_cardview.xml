@@ -14,26 +14,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"/>
             <ImageView
-                android:layout_width="14.5dp"
-                android:layout_height="14.5dp"
-                android:layout_marginBottom="9dp"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginBottom="11dp"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/view_count"
                 android:id="@+id/imageView12"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="10dp" />
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:text="5000次播放"
-                android:layout_marginLeft="2dp"
+                style="@style/Text_Content"
                 android:id="@+id/tv_video_play_count"
-                android:layout_alignTop="@+id/imageView12"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="2dp"
                 android:layout_toRightOf="@+id/imageView12"
-                android:layout_toEndOf="@+id/imageView12" />
+                android:layout_alignParentBottom="true"
+                />
 
             <TextView
                 android:id="@+id/tv_video_publish_time"
@@ -41,26 +40,30 @@
                 android:layout_height="wrap_content"
                 android:text="2016-08-23 07:14:45"
                 style="@style/Text_Content"
-                android:layout_marginRight="10dp"
-                android:layout_alignBottom="@+id/tv_video_play_count"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+
+
+                />
 
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginRight="2dp"
                 android:src="@drawable/time"
-                android:layout_alignTop="@+id/tv_video_publish_time"
+                android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
                 android:layout_toLeftOf="@+id/tv_video_publish_time"
-                android:layout_toStartOf="@+id/tv_video_publish_time" />
+ />
 
             <ImageView
                 android:id="@+id/iv_news_item_divider"
                 android:layout_width="match_parent"
                 android:layout_height="0.1dp"
                 android:background="#ccc"
-
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true" />
