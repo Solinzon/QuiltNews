@@ -19,4 +19,6 @@ public class NewsInfo {
     public static boolean isShowPic = true;
 
     public static boolean isChecked = false; //按钮有没有被选中
+
+    public static boolean isNightMode = false;//是否为夜间模式
 }

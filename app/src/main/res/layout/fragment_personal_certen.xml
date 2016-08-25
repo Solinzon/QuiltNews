@@ -2,386 +2,394 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <RelativeLayout
+    android:background="@color/personal_center"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="@color/colorPrimary">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_user_center_login"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/personl_certen_user"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="29dp"
-            android:clickable="true"
-            android:background="?android:attr/selectableItemBackground"
-            />
-        <TextView
-            android:id="@+id/personal_certen_login_now"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="点击登录"
-            android:singleLine="true"
-            android:maxLength="10"
-            android:ellipsize="end"
-            android:clickable="true"
-            android:textColor="#ecf0f1"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/iv_user_center_login"
-            android:layout_centerHorizontal="true" />
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@color/colorPrimary">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_user_center_login"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/personl_certen_user"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="29dp"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground"
+                />
+            <TextView
+                android:id="@+id/personal_certen_login_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击登录"
+                android:singleLine="true"
+                android:maxLength="10"
+                android:ellipsize="end"
+                android:clickable="true"
+                android:textColor="@color/login_now"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/iv_user_center_login"
+                android:layout_centerHorizontal="true" />
+            <ImageView
+                android:id="@+id/iv_edit_nick_name"
+                android:layout_width="18sp"
+                android:layout_height="18sp"
+                android:src="@drawable/write_discuss1"
+                android:layout_alignBottom="@+id/personal_certen_login_now"
+                android:layout_toRightOf="@+id/personal_certen_login_now"
+                android:layout_toEndOf="@+id/iv_user_center_login" />
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentBottom="true"
+            >
+            <RelativeLayout
+                android:id="@+id/rl_personal_center_night_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true">
+
+                <ImageView
+                    android:id="@+id/iv_read_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/night_mode" />
+
+                <TextView
+                    android:id="@+id/tv_read_mode"
+                    style="@style/Text_Content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_read_mode"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="夜间模式" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_personal_center_font_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true">
+
+                <ImageView
+                    android:id="@+id/iv_font_mode"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/font_mode" />
+
+                <TextView
+                    android:id="@+id/tv_font_mode"
+                    style="@style/Text_Content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_font_mode"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="文字模式" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_personal_center_my_discuss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true">
+
+                <ImageView
+                    android:id="@+id/we_chat_p"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/my_discuss" />
+
+                <TextView
+                    android:id="@+id/we_chat_t"
+                    style="@style/Text_Content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/we_chat_p"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="我的评论" />
+            </RelativeLayout>
+        </LinearLayout>
         <ImageView
-            android:id="@+id/iv_edit_nick_name"
-            android:layout_width="18sp"
-            android:layout_height="18sp"
-            android:src="@drawable/write_discuss1"
-            android:layout_alignBottom="@+id/personal_certen_login_now"
-            android:layout_toRightOf="@+id/personal_certen_login_now"
-            android:layout_toEndOf="@+id/iv_user_center_login" />
+            android:id="@+id/iv_news_item_divider"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/divider"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true" />
 
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentBottom="true">
         <RelativeLayout
-            android:id="@+id/rl_personal_center_night_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:id="@+id/rl_pc_my_collect"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:clickable="true"
             android:background="?android:attr/selectableItemBackground"
-            android:clickable="true">
-
+            >
             <ImageView
-                android:id="@+id/qq_p"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/night_mode" />
+                android:layout_width="25dp"
+                android:layout_height="25dp"
 
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/collect"
+                android:id="@+id/i" />
             <TextView
-                android:id="@+id/qq_t"
-                style="@style/Text_Content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/qq_p"
-                android:layout_marginTop="5dp"
-                android:layout_centerHorizontal="true"
-                android:text="夜间模式" />
+                android:text="我的收藏"
+                android:textColor="@color/defaut"
+                android:textSize="17sp"
+                android:id="@+id/textView2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_alignTop="@+id/imageView7"
+                android:layout_toRightOf="@+id/i"
+                android:layout_toEndOf="@+id/i" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/go"
+                android:id="@+id/imageView7"
+                android:layout_centerVertical="true"
+                android:layout_alignRight="@+id/ima"
+                android:layout_alignEnd="@+id/ima" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/divider"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/ima" />
         </RelativeLayout>
 
+
+        <!--<RelativeLayout-->
+        <!--android:id="@+id/rl_pc_my_down"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+
+        <!--android:clickable="true"-->
+        <!--android:background="?android:attr/selectableItemBackground"-->
+        <!--&gt;-->
+        <!--<ImageView-->
+        <!--android:layout_width="25dp"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:src="@drawable/download"-->
+        <!--android:id="@+id/imageView4" />-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="离线下载"-->
+        <!--android:textSize="17sp"-->
+        <!--android:id="@+id/textView4"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginStart="10dp"-->
+        <!--android:layout_alignTop="@+id/imageView8"-->
+        <!--android:layout_toRightOf="@+id/imageView4"-->
+        <!--android:layout_toEndOf="@+id/imageView4" />-->
+
+        <!--<ImageView-->
+        <!--android:layout_width="15dp"-->
+        <!--android:layout_height="15dp"-->
+        <!--android:src="@drawable/go"-->
+        <!--android:id="@+id/imageView8"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_alignRight="@+id/imageView5"-->
+        <!--android:layout_alignEnd="@+id/imageView5" />-->
+        <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0.1dp"-->
+        <!--android:background="#ccc"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:id="@+id/imageView5" />-->
+        <!--</RelativeLayout>-->
         <RelativeLayout
-            android:id="@+id/rl_personal_center_font_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:id="@+id/rl_pc_idea"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:clickable="true"
             android:background="?android:attr/selectableItemBackground"
-            android:clickable="true">
-
+            >
             <ImageView
-                android:id="@+id/iv_font_mode"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-
-                android:scaleType="fitCenter"
-                android:src="@drawable/font_mode" />
-
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/idea"
+                android:id="@+id/imageView6" />
             <TextView
-                android:id="@+id/tv_font_mode"
-                style="@style/Text_Content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_font_mode"
-                android:layout_marginTop="5dp"
-                android:layout_centerHorizontal="true"
-                android:text="文字模式" />
+                android:text="意见反馈"
+                android:textColor="@color/defaut"
+                android:textSize="17sp"
+                android:id="@+id/textView5"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_alignTop="@+id/imageView10"
+                android:layout_toRightOf="@+id/imageView6"
+                android:layout_toEndOf="@+id/imageView6" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/go"
+                android:id="@+id/imageView10"
+                android:layout_centerVertical="true"
+                android:layout_alignRight="@+id/im"
+                android:layout_alignEnd="@+id/im" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/divider"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/im" />
         </RelativeLayout>
-
         <RelativeLayout
-            android:id="@+id/rl_personal_center_my_discuss"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:id="@+id/rl_pc_check_update"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:clickable="true"
             android:background="?android:attr/selectableItemBackground"
-            android:clickable="true">
-
+            >
             <ImageView
-                android:id="@+id/we_chat_p"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/my_discuss" />
-
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/update"
+                android:id="@+id/imageView2" />
             <TextView
-                android:id="@+id/we_chat_t"
-                style="@style/Text_Content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/we_chat_p"
-                android:layout_marginTop="5dp"
-                android:layout_centerHorizontal="true"
-                android:text="我的评论" />
+                android:text="检查更新"
+                android:textColor="@color/defaut"
+                android:textSize="17sp"
+                android:id="@+id/textView"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_alignTop="@+id/imageView9"
+                android:layout_toRightOf="@+id/imageView2"
+                android:layout_toEndOf="@+id/imageView2" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/go"
+                android:id="@+id/imageView9"
+                android:layout_centerVertical="true"
+                android:layout_alignRight="@+id/imageView3"
+                android:layout_alignEnd="@+id/imageView3" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/divider"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/imageView3" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_pc_sign_out"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            >
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/sign_out"
+                android:id="@+id/imageView22" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="退出登录"
+                android:textColor="@color/defaut"
+                android:textSize="17sp"
+                android:id="@+id/textView11"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_alignTop="@+id/imageView99"
+                android:layout_toRightOf="@+id/imageView22"
+                android:layout_toEndOf="@+id/imageView22" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/go"
+                android:id="@+id/imageView99"
+                android:layout_centerVertical="true"
+                android:layout_alignRight="@+id/imageView39"
+                android:layout_alignEnd="@+id/imageView39" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@color/divider"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/imageView39" />
         </RelativeLayout>
     </LinearLayout>
-    <ImageView
-        android:id="@+id/iv_news_item_divider"
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="#ccc"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true" />
-
-    <RelativeLayout
-        android:id="@+id/rl_pc_my_collect"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground"
-        >
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp"
-
-            android:src="@drawable/collect"
-            android:id="@+id/i" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="我的收藏"
-            android:textSize="17sp"
-            android:id="@+id/textView2"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_alignTop="@+id/imageView7"
-            android:layout_toRightOf="@+id/i"
-            android:layout_toEndOf="@+id/i" />
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/go"
-            android:id="@+id/imageView7"
-            android:layout_centerVertical="true"
-            android:layout_alignRight="@+id/ima"
-            android:layout_alignEnd="@+id/ima" />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="#ccc"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:id="@+id/ima" />
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/rl_pc_my_down"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground"
-        >
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/download"
-            android:id="@+id/imageView4" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="离线下载"
-            android:textSize="17sp"
-            android:id="@+id/textView4"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_alignTop="@+id/imageView8"
-            android:layout_toRightOf="@+id/imageView4"
-            android:layout_toEndOf="@+id/imageView4" />
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/go"
-            android:id="@+id/imageView8"
-            android:layout_centerVertical="true"
-            android:layout_alignRight="@+id/imageView5"
-            android:layout_alignEnd="@+id/imageView5" />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="#ccc"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:id="@+id/imageView5" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rl_pc_idea"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground"
-        >
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/idea"
-            android:id="@+id/imageView6" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="意见反馈"
-            android:textSize="17sp"
-            android:id="@+id/textView5"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_alignTop="@+id/imageView10"
-            android:layout_toRightOf="@+id/imageView6"
-            android:layout_toEndOf="@+id/imageView6" />
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/go"
-            android:id="@+id/imageView10"
-            android:layout_centerVertical="true"
-            android:layout_alignRight="@+id/im"
-            android:layout_alignEnd="@+id/im" />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="#ccc"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:id="@+id/im" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rl_pc_check_update"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground"
-        >
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/update"
-            android:id="@+id/imageView2" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="检查更新"
-            android:textSize="17sp"
-            android:id="@+id/textView"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_alignTop="@+id/imageView9"
-            android:layout_toRightOf="@+id/imageView2"
-            android:layout_toEndOf="@+id/imageView2" />
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/go"
-            android:id="@+id/imageView9"
-            android:layout_centerVertical="true"
-            android:layout_alignRight="@+id/imageView3"
-            android:layout_alignEnd="@+id/imageView3" />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="#ccc"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:id="@+id/imageView3" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rl_pc_sign_out"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground"
-        >
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/sign_out"
-            android:id="@+id/imageView22" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="退出登录"
-            android:textSize="17sp"
-            android:id="@+id/textView11"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_alignTop="@+id/imageView99"
-            android:layout_toRightOf="@+id/imageView22"
-            android:layout_toEndOf="@+id/imageView22" />
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/go"
-            android:id="@+id/imageView99"
-            android:layout_centerVertical="true"
-            android:layout_alignRight="@+id/imageView39"
-            android:layout_alignEnd="@+id/imageView39" />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="#ccc"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:id="@+id/imageView39" />
-    </RelativeLayout>
-</LinearLayout>
 
 </ScrollView>

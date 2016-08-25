@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F6F6"
+    android:background="@color/background"
     tools:context="com.xushuzhan.quiltnews.ui.activity.SignUpActivity">
     <include
         layout="@layout/toolbar"
@@ -19,6 +19,7 @@
         android:layout_height="150dp"
         android:layout_below="@+id/toolbar_login_in"
         android:layout_margin="20dp"
+        android:background="@color/card_view_color"
         >
         <ScrollView
             android:layout_width="match_parent"
@@ -99,7 +100,7 @@
             android:id="@+id/login_in_now"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?android:attr/selectableItemBackground"
+            android:background="@color/card_view_color"
             android:clickable="true"
             >
             <TextView
@@ -132,6 +133,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
+        android:background="@color/card_view_color"
         >
         <LinearLayout
             android:layout_width="match_parent"

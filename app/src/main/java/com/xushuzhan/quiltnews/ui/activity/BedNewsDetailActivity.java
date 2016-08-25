@@ -54,4 +54,16 @@ public class BedNewsDetailActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.tv_title_toolbar);
         title.setText("睡前精选");
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        webView.destroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        webView.destroy();
+    }
 }
