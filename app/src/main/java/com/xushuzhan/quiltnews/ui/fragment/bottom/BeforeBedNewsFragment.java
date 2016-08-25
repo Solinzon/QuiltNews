@@ -2,12 +2,9 @@ package com.xushuzhan.quiltnews.ui.fragment.bottom;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,19 +14,12 @@ import android.widget.Toast;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
-import com.xushuzhan.quiltnews.APP;
 import com.xushuzhan.quiltnews.R;
 import com.xushuzhan.quiltnews.modle.network.config.ReadInfo;
 import com.xushuzhan.quiltnews.presenter.BedNewsListPresenter;
 import com.xushuzhan.quiltnews.ui.activity.BedNewsDetailActivity;
 import com.xushuzhan.quiltnews.ui.adapter.BedNewsListAdapter;
-import com.xushuzhan.quiltnews.ui.adapter.InfoFixedPageAdapter;
-import com.xushuzhan.quiltnews.ui.fragment.News.OtherInfoPageFragment;
 import com.xushuzhan.quiltnews.ui.iview.IBedNewsListView;
-import com.xushuzhan.quiltnews.utils.DownTimer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BeforeBedNewsFragment extends Fragment implements IBedNewsListView, SwipeRefreshLayout.OnRefreshListener {
     BedNewsListPresenter bedNewsListPresenter;

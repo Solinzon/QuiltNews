@@ -5,12 +5,10 @@ import android.os.Message;
 import android.os.SystemClock;
 /**
  * Created by xushuzhan on 2016/8/20.
+ * 计时器工具类
  */
 
-/**
- *倒计时
- */
-public class DownTimer {
+public class TimerUtils {
     private long totalTime = -1;
     private long intervalTime = 0;
     private long remainTime;
@@ -20,7 +18,7 @@ public class DownTimer {
     private long curReminTime;
     private boolean isPause = false;
 
-    public DownTimer() {
+    public TimerUtils() {
     }
 
     public void setIntervalTime(long intervalTime) {

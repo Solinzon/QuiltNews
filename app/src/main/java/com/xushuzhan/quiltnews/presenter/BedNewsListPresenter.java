@@ -8,12 +8,10 @@ import com.xushuzhan.quiltnews.modle.been.BedNewsListBeen;
 import com.xushuzhan.quiltnews.modle.network.config.ReadInfo;
 import com.xushuzhan.quiltnews.modle.network.net.RequestManagerBedNewsList;
 import com.xushuzhan.quiltnews.ui.adapter.BedNewsListAdapter;
-import com.xushuzhan.quiltnews.ui.fragment.bottom.BeforeBedNewsFragment;
 import com.xushuzhan.quiltnews.ui.iview.IBedNewsListView;
-import com.xushuzhan.quiltnews.utils.DownTimer;
+import com.xushuzhan.quiltnews.utils.TimerUtils;
 import com.xushuzhan.quiltnews.utils.SharedPreferenceUtils;
 
-import rx.Observable;
 import rx.Subscriber;
 
 /**
@@ -73,10 +71,10 @@ public class BedNewsListPresenter {
 
     public void initTimer() {
         try {
-            final DownTimer timer = new DownTimer();//实例化
+            final TimerUtils timer = new TimerUtils();//实例化
             timer.setTotalTime(30*60* 1000);//设置毫秒数
             timer.setIntervalTime(30* 1000);//设置间隔数
-            timer.setTimerLiener(new DownTimer.TimeListener() {
+            timer.setTimerLiener(new TimerUtils.TimeListener() {
                 @Override
                 public void onFinish() {
                     ReadInfo.isSleepTime = true;
