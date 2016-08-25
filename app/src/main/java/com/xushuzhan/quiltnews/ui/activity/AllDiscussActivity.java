@@ -124,6 +124,9 @@ public class AllDiscussActivity extends AppCompatActivity implements IAllDiscuss
         if (isShow) {
             firstDiscuss.setVisibility(View.VISIBLE);
             firstDiscussPic.setVisibility(View.VISIBLE);
+        }else {
+            firstDiscuss.setVisibility(View.INVISIBLE);
+            firstDiscussPic.setVisibility(View.INVISIBLE);
         }
     }
 

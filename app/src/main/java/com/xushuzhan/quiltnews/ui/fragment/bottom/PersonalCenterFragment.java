@@ -108,13 +108,13 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 if (!NewsInfo.isChecked) {
                     NewsInfo.isShowPic = false;
                     NewsInfo.isChecked = true;
-                    ViewModeTV.setText("图片模式");
+                    ViewModeTV.setText(getResources().getText(R.string.picture_mode));
                     ViewModeIV.setImageResource(R.drawable.picture_mode);
 
                 } else {
                     NewsInfo.isShowPic = true;
                     NewsInfo.isChecked = false;
-                    ViewModeTV.setText("文字模式");
+                    ViewModeTV.setText(getResources().getText(R.string.font_mode));
                     ViewModeIV.setImageResource(R.drawable.font_mode);
                 }
                 break;
@@ -161,14 +161,24 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
     @Override
     public void setHeadPicture() {
-        if (UserInfo.isQQLogin || UserInfo.isNormalLogin) {
+        if (UserInfo.isNormalLogin) {
             userLogin.setImageResource(R.drawable.touxiang);
             userLogin.setClickable(false);
             nickName.setClickable(false);
             nickName.setText(UserInfo.nickName);
-
+        }else if(UserInfo.isQQLogin && !UserInfo.nickName.equals(getResources().getString(R.string.hint_user))){
+            userLogin.setImageResource(R.drawable.touxiang);
+            userLogin.setClickable(false);
+            personalCenterPresenter.setQQNickName();
+            nickName.setClickable(false);
+            editNickName.setVisibility(View.INVISIBLE);
+        }else if(UserInfo.nickName!=null&&UserInfo.nickName.equals("匿名用户")){
+            userLogin.setImageResource(R.drawable.touxiang);
+            userLogin.setClickable(false);
+            nickName.setClickable(false);
+            nickName.setText(UserInfo.nickName);
+            editNickName.setVisibility(View.VISIBLE);
         }
-
     }
 
     @Override
@@ -176,7 +186,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         userLogin.setImageResource(R.drawable.personl_certen_user);
         userLogin.setClickable(true);
         nickName.setClickable(true);
-        nickName.setText("请先登录");
+        nickName.setText(getResources().getText(R.string.login_now));
+        editNickName.setVisibility(View.INVISIBLE);
 
     }
 
@@ -209,7 +220,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
     private void checkInfo() {
         if ((UserInfo.isQQLogin || UserInfo.isNormalLogin)) {
-            if (!UserInfo.nickName.equals("匿名用户")) {
+            if (!UserInfo.nickName.equals(getResources().getText(R.string.hint_user))) {
                 userLogin.setClickable(false);
                 editNickName.setVisibility(View.INVISIBLE);
             } else {
@@ -218,24 +229,24 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
         } else if (!UserInfo.isQQLogin || !UserInfo.isNormalLogin) {
             editNickName.setVisibility(View.INVISIBLE);
-            userLogin.setClickable(false);
+            userLogin.setClickable(true);
         } else {
             editNickName.setOnClickListener(this);
         }
 
         if (!NewsInfo.isChecked) {
-            ViewModeTV.setText("文字模式");
+            ViewModeTV.setText(getResources().getText(R.string.font_mode));
             ViewModeIV.setImageResource(R.drawable.font_mode);
         } else {
-            ViewModeTV.setText("图片模式");
+            ViewModeTV.setText(getResources().getText(R.string.picture_mode));
             ViewModeIV.setImageResource(R.drawable.picture_mode);
         }
 
         if (!NewsInfo.isNightMode) {
-            ReadModeTV.setText("夜间模式");
+            ReadModeTV.setText(getResources().getText(R.string.nigt_mode));
             ReadModeIV.setImageResource(R.drawable.night_mode);
         } else {
-            ReadModeTV.setText("日间模式");
+            ReadModeTV.setText(getResources().getText(R.string.daytime_mode));
             ReadModeIV.setImageResource(R.drawable.daytime_mode);
 
         }
@@ -244,12 +255,12 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     private void changeNightModel() {
         if (NewsInfo.isNightMode) {
             ReadModeIV.setImageResource(R.drawable.daytime_mode);
-            ReadModeTV.setText("夜间模式");
+            ReadModeTV.setText(getResources().getText(R.string.nigt_mode));
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             NewsInfo.isNightMode = false;
         } else {
             ReadModeIV.setImageResource(R.drawable.night_mode);
-            ReadModeTV.setText("日间模式");
+            ReadModeTV.setText(getResources().getText(R.string.daytime_mode));
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             NewsInfo.isNightMode = true;
 

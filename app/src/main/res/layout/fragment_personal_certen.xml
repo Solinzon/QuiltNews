@@ -83,7 +83,7 @@
                     android:layout_below="@+id/iv_read_mode"
                     android:layout_marginTop="5dp"
                     android:layout_centerHorizontal="true"
-                    android:text="夜间模式" />
+                    android:text="@string/nigt_mode" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -112,7 +112,7 @@
                     android:layout_below="@+id/iv_font_mode"
                     android:layout_marginTop="5dp"
                     android:layout_centerHorizontal="true"
-                    android:text="文字模式" />
+                    android:text="@string/font_mode" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -140,7 +140,7 @@
                     android:layout_below="@+id/we_chat_p"
                     android:layout_marginTop="5dp"
                     android:layout_centerHorizontal="true"
-                    android:text="我的评论" />
+                    android:text="@string/my_discuss" />
             </RelativeLayout>
         </LinearLayout>
         <ImageView
@@ -171,7 +171,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="我的收藏"
+                android:text="@string/my_collection"
                 android:textColor="@color/defaut"
                 android:textSize="17sp"
                 android:id="@+id/textView2"
@@ -267,7 +267,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="意见反馈"
+                android:text="@string/my_idea"
                 android:textColor="@color/defaut"
                 android:textSize="17sp"
                 android:id="@+id/textView5"
@@ -314,7 +314,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="检查更新"
+                android:text="@string/check_update"
                 android:textColor="@color/defaut"
                 android:textSize="17sp"
                 android:id="@+id/textView"
@@ -361,7 +361,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="退出登录"
+                android:text="@string/sign_out"
                 android:textColor="@color/defaut"
                 android:textSize="17sp"
                 android:id="@+id/textView11"

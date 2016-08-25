@@ -15,21 +15,26 @@ public class UserModle {
     public static final String TAG = "UserModleTAG";
     Tencent mTencent;
     IUiListener baseUiListener;
+
     //QQ登录
-    public void loginByQQ(Activity activity){
-        ProgressDialog progressDialog = new ProgressDialog
-                (activity);
-        progressDialog.setTitle("提示：");
-        progressDialog.setMessage("正在跳转，请稍等...");
-        progressDialog.setCancelable(true);
-        progressDialog.show();
+    public void loginByQQ(Activity activity) {
+        try {
+            ProgressDialog progressDialog = new ProgressDialog
+                    (activity);
+            progressDialog.setTitle("提示：");
+            progressDialog.setMessage("正在跳转，请稍等...");
+            progressDialog.setCancelable(true);
+            progressDialog.show();
+        } catch (Exception e) {
+
+        }
         baseUiListener = new QQBaseUiListener();
         mTencent = Tencent.createInstance("1105625820", APP.getAppContext());
-        mTencent.login(activity, "all",baseUiListener);
+        mTencent.login(activity, "all", baseUiListener);
 
     }
 
-    public IUiListener getIUiListener(){
+    public IUiListener getIUiListener() {
         return baseUiListener;
     }
 }

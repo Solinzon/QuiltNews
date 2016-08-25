@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements IloginView,View.
 
     private void initView() {
         title = (TextView) findViewById(R.id.tv_title_toolbar);
-        title.setText("登录");
+        title.setText(getResources().getText(R.string.login));
         back = (ImageButton) findViewById(R.id.ib_toolbar_back);
         back.setOnClickListener(this);
 

@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Contacts;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -57,12 +58,16 @@ public class PersonalCenterPresenter {
     }
 
     public void signOut() {
-        if (UserInfo.isNormalLogin == true) {
+        if (UserInfo.isNormalLogin || UserInfo.isQQLogin) {
             SharedPreferenceUtils.putString(APP.getAppContext(), UserInfo.ACCOUNT, null);
             SharedPreferenceUtils.putString(APP.getAppContext(), UserInfo.PASSWORD, null);
             SharedPreferenceUtils.putString(APP.getAppContext(), UserInfo.NICKNAME, null);
-        } else if (UserInfo.isQQLogin == true) {
             SharedPreferenceUtils.putString(APP.getAppContext(), "open_id", null);
+            SharedPreferenceUtils.putString(APP.getAppContext(), "token", null);
+            UserInfo.nickName = null;
+            UserInfo.userName = null;
+            UserInfo.isQQLogin = false;
+            UserInfo.isNormalLogin = false;
         } else {
             iPersonalCenterView.showToast("请登录后再试");
         }
@@ -131,8 +136,34 @@ public class PersonalCenterPresenter {
 
     }
 
-    public void intentToNewsDetail() {
+    public void setQQNickName() {
+        if (!SharedPreferenceUtils.getString(APP.getAppContext(), "nick_name").equals("匿名用户")&&!SharedPreferenceUtils.getString(APP.getAppContext(), "nick_name").equals("匿名用户")) {
+            iPersonalCenterView.setNickName(SharedPreferenceUtils.getString(APP.getAppContext(), "nick_name"));
+            UserInfo.nickName=SharedPreferenceUtils.getString(APP.getAppContext(), "nick_name");
+        } else {
+            String objectId = SharedPreferenceUtils.getString(APP.getAppContext(), "object_id");
+            if (UserInfo.isQQLogin && objectId != null) {
+                AVQuery<AVObject> avQuery = new AVQuery<>("_User");
+                avQuery.getInBackground(objectId, new GetCallback<AVObject>() {
+                    @Override
+                    public void done(AVObject avObject, AVException e) {
+                        try {
+                            if (avObject.get("nick_name").toString() != null) {
+                                UserInfo.nickName = avObject.get("nick_name").toString();
+                                iPersonalCenterView.setNickName(UserInfo.nickName);
+                            } else {
+                                UserInfo.nickName = "匿名用户";
+                                iPersonalCenterView.setNickName("匿名用户");
+                            }
+                        } catch (Exception ee) {
+                            Log.d(TAG, "setQQNickName: " + ee.getMessage());
+                        }
+                    }
+                });
+            }
+        }
 
     }
+
 
 }

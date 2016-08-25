@@ -18,8 +18,8 @@
         android:id="@+id/tab"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#fff"
+        android:layout_height="52dp"
+        android:background="@color/card_view_color"
 
         >
         <RadioButton
@@ -36,7 +36,7 @@
             android:drawableTop="@drawable/bottom_eyeshot_selector"
             android:text="视界"
             android:background="@color/card_view_color"
-            />
+            android:checked="false" />
         <RadioButton
             android:id="@+id/bottom_before_bed_news"
             style="@style/bottom_tab"

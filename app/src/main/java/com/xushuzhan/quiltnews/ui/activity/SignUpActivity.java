@@ -49,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity implements ISignUpView, Vi
         });
 
         Title = (TextView) findViewById(R.id.tv_title_toolbar);
-        Title.setText("注册");
+        Title.setText(getResources().getText(R.string.sign_up));
 
         account = (EditText) findViewById(R.id.sign_up_account);
 

@@ -52,9 +52,7 @@ public class NewsDetailPresenter {
             public void done(List<AVObject> list, AVException e) {
                 try {
 
-                    for (int i = 0; i < list.size(); i++) {
-                        iNewsDetailView.setDiscussCount(list.size() + "");
-                    }
+                    iNewsDetailView.setDiscussCount(list.size() + "");
 
 
                 } catch (Exception ee) {
@@ -95,6 +93,7 @@ public class NewsDetailPresenter {
             });
         } else {
             iNewsDetailView.showToast("请先登录");
+            dialogPopup.dismiss();
         }
     }
 
@@ -140,7 +139,7 @@ public class NewsDetailPresenter {
                         NewsInfo.isCollect = true;
                         iNewsDetailView.setColectButton();
                         Log.d(TAG, "done: ");
-                    }else if(list.size()==0){
+                    } else if (list.size() == 0) {
                         NewsInfo.isCollect = false;
                     }
                 }
@@ -148,4 +147,6 @@ public class NewsDetailPresenter {
         });
     }
 
+
 }
+

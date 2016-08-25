@@ -49,7 +49,7 @@
                         android:id="@+id/login_in_account"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="用户名"
+                        android:hint="@string/hint_user_name"
                         android:singleLine="true"
                         />
                 </android.support.design.widget.TextInputLayout>
@@ -76,7 +76,7 @@
                         android:id="@+id/login_in_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="密码"
+                        android:hint="@string/hint_password"
                         android:inputType="textPassword"
                         android:singleLine="true"
                         />
@@ -106,7 +106,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="登录"
+                android:text="@string/login"
                 style="@style/Text_Content"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
@@ -117,7 +117,7 @@
         android:id="@+id/textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="还可以选择以下方式直接登录"
+        android:text="@string/choose_more_login_way"
         android:textColor="@color/colorTextHint"
         android:layout_below="@+id/cv_login_in"
         android:layout_marginLeft="15dp"
@@ -184,7 +184,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="使用微博登录"
+                    android:text="@string/we_bo_login"
                     style="@style/Text_Content"
                     android:id="@+id/qwe_bo_t"
                     android:layout_below="@+id/we_bo_p"
@@ -210,7 +210,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="使用微信登录"
+                    android:text="@string/we_chat_login"
                     style="@style/Text_Content"
                     android:id="@+id/we_chat_t"
                     android:layout_below="@+id/we_chat_p"
@@ -242,7 +242,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="没有被窝账号？"
+                android:text="@string/no_account"
                 style="@style/Text_Content"
                 android:layout_alignBottom="@+id/imageView"
                 android:layout_toRightOf="@+id/imageView"
@@ -252,7 +252,7 @@
                 android:id="@+id/tv_login_sign_up_now"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="立即注册一个"
+                android:text="@string/sign_up_now"
                 android:textSize="13sp"
                 android:textColor="#eb4f38"
                 android:clickable="true"

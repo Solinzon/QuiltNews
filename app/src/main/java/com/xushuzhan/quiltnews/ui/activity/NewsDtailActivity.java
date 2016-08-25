@@ -231,4 +231,10 @@ public class NewsDtailActivity extends AppCompatActivity implements INewsDetailV
         super.onBackPressed();
         webView.destroy();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        newsDetailPresenter.showDiscussCount();
+    }
 }

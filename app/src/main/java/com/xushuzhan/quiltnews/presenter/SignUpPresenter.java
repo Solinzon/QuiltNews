@@ -1,5 +1,6 @@
 package com.xushuzhan.quiltnews.presenter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -29,6 +30,12 @@ public class SignUpPresenter {
     }
 
     public void signUp() {
+        ProgressDialog progressDialog = new ProgressDialog
+                (iSignUpView.getActivity());
+        progressDialog.setTitle("提示：");
+        progressDialog.setMessage("正在注册，请稍等...");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
         final String account = iSignUpView.getAccount();
         final String password = iSignUpView.getPassword();
         if (!TextUtil.isEmail(account)) {
@@ -64,6 +71,7 @@ public class SignUpPresenter {
                 }
             });
         }
+        progressDialog.dismiss();
     }
 
     public void loginByQQ(){

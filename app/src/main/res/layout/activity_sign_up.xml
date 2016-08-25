@@ -49,7 +49,7 @@
                         android:id="@+id/sign_up_account"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="邮箱"
+                        android:hint="@string/hint_e_mail"
                         android:singleLine="true"
                         />
                 </android.support.design.widget.TextInputLayout>
@@ -76,7 +76,7 @@
                         android:id="@+id/sign_up_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="密码"
+                        android:hint="@string/hint_password"
                         android:inputType="textPassword"
                         android:singleLine="true"
                         />
@@ -106,7 +106,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="立即注册"
+                android:text="@string/sign_up_now"
                 style="@style/Text_Content"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
@@ -117,7 +117,7 @@
         android:id="@+id/textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="您可以选择以下方式直接登录"
+        android:text="@string/more_way_login"
         android:textColor="@color/colorTextHint"
         android:layout_below="@+id/cv_sign_up"
         android:layout_marginLeft="15dp"
@@ -159,7 +159,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="使用QQ登录"
+                    android:text="@string/qq_login"
                     android:textColor="@color/text_color_primary"
                     android:id="@+id/qq_t"
                     android:layout_below="@+id/qq_p"
@@ -184,7 +184,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="使用微博登录"
+                    android:text="@string/we_bo_login"
                     style="@style/Text_Content"
                     android:id="@+id/qwe_bo_t"
                     android:layout_below="@+id/we_bo_p"
@@ -210,7 +210,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="使用微信登录"
+                    android:text="@string/we_chat_login"
                     style="@style/Text_Content"
                     android:id="@+id/we_chat_t"
                     android:layout_below="@+id/we_chat_p"

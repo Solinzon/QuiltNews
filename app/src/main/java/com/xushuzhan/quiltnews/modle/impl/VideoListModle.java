@@ -86,12 +86,12 @@ public class VideoListModle {
                     Log.d(TAG, "done: 请求服务器的时候出错了>" + e.getMessage());
                 }
                 try {
-                    Log.d(TAG, "请求服务器完成，返回的插数据总大小是： " + list.size());
+                    Log.d(TAG, "请求服务器完成，返回的数据总大小是： " + list.size());
                     //返回符合条件的视频信息
                     if (list.size() > 0 && list.size() < 5) {
                         Log.d(TAG, "尴尬，视频部分更新了 ：" + list.size());
                         for (int i = 0; i < 5; i++) {
-                            for (int j = 0; j < list.size(); j++) {
+                            for (int j = 0; j < 5; j++) {
                                 if (!videoListBean.getVideos().get(i).getId().equals(list.get(j).get("video_id"))) {
                                     findUrlUsefulByAPI(
                                             videoListBean.getVideos().get(i).getLink(),
@@ -102,7 +102,6 @@ public class VideoListModle {
                                             videoListBean.getVideos().get(i).getPublished()
                                     );
                                 }
-
                             }
                         }
                     }
