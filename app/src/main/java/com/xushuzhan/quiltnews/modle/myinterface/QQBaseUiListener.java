@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.LogInCallback;
 import com.avos.avoscloud.SignUpCallback;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.UiError;
@@ -25,7 +26,7 @@ public class QQBaseUiListener implements IUiListener {
         if (o != null) {
             JSONObject jsonObject = (JSONObject) o;
             try {
-                String token = jsonObject.getString(com.tencent.connect.common.Constants.PARAM_ACCESS_TOKEN);
+                final String token = jsonObject.getString(com.tencent.connect.common.Constants.PARAM_ACCESS_TOKEN);
                 String expires = jsonObject.getString(com.tencent.connect.common.Constants.PARAM_EXPIRES_IN);
                 final String openId = jsonObject.getString(com.tencent.connect.common.Constants.PARAM_OPEN_ID);
                         Log.d(TAG, "onComplete: "+token);
@@ -48,8 +49,9 @@ public class QQBaseUiListener implements IUiListener {
                         if (e == null) {
                             SharedPreferenceUtils.putString(APP.getAppContext(),"object_id",user.getObjectId());
 
-                        } else {
-
+                        } else if(e.getCode()==202){
+                            Log.d(TAG, "done: error"+e.getMessage()+"错误码："+e.getCode()+"object_id"+user.getObjectId());
+                            login(openId,token);
                         }
                     }
                 });
@@ -69,5 +71,17 @@ public class QQBaseUiListener implements IUiListener {
 
     }
 
+    public void login(String userName, final String password){
+        AVUser.logInInBackground(userName, password, new LogInCallback<AVUser>() {
+            @Override
+            public void done(AVUser avUser, AVException e) {
+                if (e == null) {
+                    SharedPreferenceUtils.putString(APP.getAppContext(),"object_id",avUser.getObjectId());
+                } else {
+
+                }
+            }
+        });
+    }
 
 }

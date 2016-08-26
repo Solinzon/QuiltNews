@@ -129,7 +129,10 @@ public class FirstTabFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void addDataToRecyclerView(NewsListBeen newsListBeen) {
-        adapter.addAll(newsListBeen.getResult().getData());
+        try {
+            adapter.addAll(newsListBeen.getResult().getData());
+        } catch (Exception e) {
+        }
     }
 
     @Override

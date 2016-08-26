@@ -166,13 +166,15 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             userLogin.setClickable(false);
             nickName.setClickable(false);
             nickName.setText(UserInfo.nickName);
-        }else if(UserInfo.isQQLogin && !UserInfo.nickName.equals(getResources().getString(R.string.hint_user))){
+        }else if(UserInfo.isQQLogin ){
             userLogin.setImageResource(R.drawable.touxiang);
             userLogin.setClickable(false);
             personalCenterPresenter.setQQNickName();
             nickName.setClickable(false);
             editNickName.setVisibility(View.INVISIBLE);
-        }else if(UserInfo.nickName!=null&&UserInfo.nickName.equals("匿名用户")){
+        }
+
+        if(UserInfo.nickName!=null&&UserInfo.nickName.equals("匿名用户")){
             userLogin.setImageResource(R.drawable.touxiang);
             userLogin.setClickable(false);
             nickName.setClickable(false);
