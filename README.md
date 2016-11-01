@@ -14,7 +14,6 @@
 ![](http://cfqxv.img48.wal8.com/img48/556291_20160902232720/14728313667.jpg)    
 “热门”界面汇集了当天的热门新闻(找个这样优质的API真是太不容易了，中途换了无数个)，几个小时会更新一次，每次显示10个频道，40条新闻，总共400条的优质新闻，达到了定量的效果。  
 
-轮播图和RecyclerView则采用了朱大的[RollViewPager](https://github.com/Jude95/RollViewPager)和[EasyRecyelerView](https://github.com/Jude95/EasyRecyclerView) ，至于图片嘛，肯定是用了Glide来显示。  
 ####2 .「视界」  
 ![](http://cfqxv.img48.wal8.com/img48/556291_20160902232720/1472831368.jpg)
 ![](http://cfqxv.img48.wal8.com/img48/556291_20160902232720/14728313698.jpg)  
@@ -60,5 +59,5 @@
 **2.系统框架的搭建**  
  由于资讯类app频繁地涉及到了网络请求，我们必须保证其稳定性，因此立刻去学习了OkHttp、Rx	Java、Retrofit网络框架，学习成本真的很高，要从最基本的观察者模式开始学。这对我来说的确是一个挑战，不过最后还是做到了。  
 **3.定时器的实现**  
-由于“睡前”模块涉及到了限定观看时间的功能，我们也是去恶补了很多关于handler，timer，message的相关知识，最后终于做出来了。
+由于“睡前”模块涉及到了限定观看时间的功能，我也是去恶补了很多关于handler，timer，message的相关知识，最后终于做出来了。
 
